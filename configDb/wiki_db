@@ -1,0 +1,5 @@
+coneccion a la base de dato sql
+con variables de entorno 
+para evitar vulnerabilidad de credenciales
+
+falta conectar la base de mongo
