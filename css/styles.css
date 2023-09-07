@@ -1,0 +1,214 @@
+*
+{
+  margin: 0%;
+  padding: auto;
+}
+body {
+  background: rgb(225,228,230);
+  background: radial-gradient(circle, #21759b 0%, #eea412 100%);
+  transform: scale(1.0); /* Escala al 90% del tamaño original */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.fcaja {
+  max-width: 100%;
+  min-width: 200px;
+  border: 4px solid black;
+  border-top: 4px solid #017bab;
+  border-radius: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  width: 700px;
+  height: 340px;
+  margin: 50px auto;
+  margin-top: 20px;
+  padding-right: 120px;
+  box-shadow: 7px 13px 37px #000;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fcaja .controls {
+  width: 142%;
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  background-color: #252323;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
+
+.fcaja .button {
+  width: 150%;
+  height: 40px;
+  background-color: #017bab;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.fcaja_2 {
+  transform: scale(1.0);
+  margin-top: 20px;
+  max-width: 100%;
+  min-width: 200px;
+  width: 70%; /* Cambiar el ancho al 70% del contenedor padre */
+  height: auto; /* Eliminar la altura fija para que sea proporcional al contenido */
+  padding: 20px; /* Ajustar el padding según sea necesario */
+  border: 4px solid black;
+  border-top: 4px solid #017bab;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 7px 13px 37px #000;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form input[type="tel"],
+form input[type="date"],
+form input[type="password"],
+form input[type="radio"],
+form input[type="select"],
+select {
+  width: 100%;
+  border: 1px solid #017bab;
+  border-radius: 20px;
+  background-color: #252323;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.fcaja button {
+  width: 150%;
+  height: 40px;
+  text-align: center;
+  border-bottom: 1px solid;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(216, 27, 27);
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fcaja_2 .button {
+  width: 104%;
+  text-align: center;
+  border-bottom: 1px solid;
+  border-radius: 20px;
+  color: white;
+  background-color: rgb(216, 27, 27);
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fcaja_2 h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2em;
+  text-align: fixed;
+}
+
+.controls {
+  width: 100%;
+  border: 1px solid #017bab;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  padding: 11px 10px;
+  background-color: #252323;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
+
+.password-toggle {
+  position: relative;
+}
+
+.password-toggle input[type="password"] {
+  padding-right: 15px; /* Aumenta el espacio para acomodar el botón */
+}
+
+.password-toggle .show-password-button {
+  position: absolute; /* Cambiamos de sticky a absolute */
+  top: 0;
+  right: 0;
+  height: 100%; /* Hacemos que el botón ocupe toda la altura del campo de contraseña */
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.threed:hover
+{
+box-shadow:
+1px 1px #53a7ea,
+2px 2px #53a7ea,
+3px 3px #53a7ea;
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+transition: all 1s;
+}
+header {
+	background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+	text-align: center;
+	width: 100%;
+	height: 300px;
+	background-size: cover;
+	background-attachment: fixed;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0 0 85% 85% / 30%;
+}
+header .overlay{
+	width: 100%;
+	height: 100%;
+	padding: 50px;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient( 135deg, #017bab 10%,rgb(228, 140, 26) 100%);
+	
+}
+footer {
+  background: url('http://www.autodatz.com/wp-content/uploads/2017/05/Old-Car-Wallpapers-Hd-36-with-Old-Car-Wallpapers-Hd.jpg');
+  text-align: center;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  border-radius: 85% 85% 0 0/ 30%;
+}
+
+footer .overlay {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+  background-image: linear-gradient(135deg, #017bab 10%, rgb(228, 153, 14) 100%);
+}
