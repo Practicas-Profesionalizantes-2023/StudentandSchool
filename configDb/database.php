@@ -31,12 +31,5 @@ class Database
             exit;
         }
     }
-
-  
-
 }
-
-
-
 ?>
-
