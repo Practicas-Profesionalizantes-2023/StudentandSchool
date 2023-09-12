@@ -1,17 +1,18 @@
+<?php require_once '../controllers/crud_pre_registration.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="img/logo.png" rel="icon">
-    <link href="img/logo.png" rel="apple-touch-icon">
+    <link href="../images/logo.png" rel="icon">
+    <link href="../images/logo.png" rel="apple-touch-icon">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <title>Preinscripcion</title>
 </head>
 <body>
     <div>
-        <div class="fcaja_2">
-            <form>
+        <div class="fcaja_2 threed">
+            <form action="../controllers/crud_pre_registration.php" method="post" >
                 <h1>Preinscripcion</h1>
                 <label for="name">Nombre Completo:</label>
                 <input type="text" name="name" id="name" alt="name">
@@ -26,32 +27,32 @@
                 <input type="email" name="email" id="email" alt="email">
                 <br>
                 <label for="date">Fecha de nacimiento:</label>
-                <input type="datetime-local" name="date" id="date" alt="date">
+                <input type="date" name="date" id="date" alt="date">
                 <br>
                 <label for="dni">Dni:</label>
                 <input type="text" name="dni" id="dni">
                 <br>
                 <label for="carrer">Carrera:</label>
-                <input type="text" name="carrer" id="carrer">
+                <label for="carrer">Carrera:</label>
+                <select name="carrer" id="carrer">
+                    <?php foreach ($carrerData as $carrer) { ?>
+                        <option value="<?php echo $carrer['career_name']; ?>"><?php echo $carrer['career_name']; ?></option>
+                    <?php } ?>
+                </select>
                 <br>
-                <label for="Altura">Calle y Altura:</label>
-                <input type="text" name="Altura" id="Altura">
+
+                <br>
+                <label for="street">Calle y Altura</label>
+                <input type="text" name="street" id="street">
                 <br>
                 <label for="gender">Genero:</label>
                 <input type="radio" name="gender" id="Male" value="Masculino">Masculino
                 <input type="radio" name="gender" id="Female" value="Femenino">Femenino
                 <br>
                 <br>
-                <label for="password">Contraseña:</label>
-                <input type="password" name="password" id="password">
-                <br>
-                <br>
-                <label for="r_password">Repetir Contraseña:</label>
-                <input type="password" name="r_password" id="r_password">
-                <br>
-                <br>
-                <input class="button" type="submit" value="Guardar Datos">
+                <input name="save_data" class="button" type="submit" value="Guardar Datos">
             </form>
         </div>
+    </div>
 </body>
 </html>

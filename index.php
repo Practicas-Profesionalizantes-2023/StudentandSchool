@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- <!DOCTYPE html>
-=======
 <!DOCTYPE html>
->>>>>>> origin/Adjust-homepage
 <html lang="en">
 <head>
     
@@ -25,7 +21,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.../js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/../js/bootstrap.min.js"></script>
     <!-- Site CSS -->
-<<<<<<< HEAD
     <link rel="stylesheet" href="css/style.css">
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="css/versions.css">
@@ -33,30 +28,15 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
-=======
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="../css/versions.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/custom.css">
->>>>>>> origin/Adjust-homepage
-
+     <link rel="stylesheet" href="css/footer.css">
     <!-- Modernizer for Portfolio -->
     <script src="js/modernizer.js"></script>
+	
+
     <title>Institutec</title>
 </head>
 <body>
-<<<<<<< HEAD
 
-<body class="host_version"> 
-	<!-- Start header -->
-	<header class="top-navbar">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="dashboard.html">
-=======
      <!-- Start header -->
 	<header class="top-navbar">
 		<div class="header-top">
@@ -70,8 +50,8 @@
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="header-top-right text-right">
 							<ul>
-								<li><a href="#">LOGIN</a></li>
-								<li><a href="#">PREINCRIPCION</a></li>
+								<li><a href="views/login.php">LOGIN</a></li>
+								<li><a href="views/pre_register.php">PREINCRIPCION</a></li>
 							</ul>
 						</div>
 					</div>
@@ -81,7 +61,6 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">
->>>>>>> origin/Adjust-homepage
 					<img src="images/favicon.ico" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,25 +70,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
-						<li class="nav-item active"><a class="nav-link" href="dashboard.html">Inicio</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">carreras</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="teachers.html">Profesores</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#">Preinscriptos</a>
-								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
-								<a class="dropdown-item" href="#">Cargar Notas</a>
-								<a class="dropdown-item" href="#">Eventos Importantes</a>
-								<a class="dropdown-item" href="#">Finales</a>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="views/login.php">Usuario Interno</a></li>
-                        <li class="nav-item"><a class="nav-link" href="views/preisncripcion.php">Preinscripcion</a></li>
-=======
+
 						<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">carreras</a>
@@ -126,7 +87,7 @@
 							</div>
 						</li>
 						
->>>>>>> origin/Adjust-homepage
+
 					</ul>
 				</div>
 			</div>
@@ -150,11 +111,10 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-right">
 									<div class="big-tagline">
-										<h2><strong>Institutec</strong> education College</h2>
-										<p class="lead">With Landigoo responsive landing page template, you can promote your all hosting, domain and email services. </p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
+										<h2><strong>Instituto de Educación</strong> Institutec </h2>
+											<a href="#" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -169,11 +129,11 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-left">
 									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight">SmartEDU <strong>education school</strong></h2>
-										<p class="lead" data-animation="animated fadeInLeft">With Landigoo responsive landing page template, you can promote your all hosting, domain and email services. </p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
+										<h2 data-animation="animated zoomInRight">Institutec <strong> Tu Puerta al Conocimiento</strong></h2>
+										<p class="lead" data-animation="animated fadeInLeft"> Forjamos líderes con excelencia académica y compañerismo. Únete a nosotros para alcanzar tus metas. </p>
+											<a href="#" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -188,13 +148,11 @@
 							<div class="row">
 								<div class="col-md-12 col-sm-12 text-center">
 									<div class="big-tagline">
-										<h2 data-animation="animated zoomInRight"><strong>VPS Servers</strong> Company</h2>
-										<p class="lead" data-animation="animated fadeInLeft">1 IP included with each server 
-											Your Choice of any OS (CentOS, Windows, Debian, Fedora)
-											FREE Reboots</p>
-											<a href="#" class="hover-btn-new"><span>Contact Us</span></a>
+										<h2 data-animation="animated zoomInRight"><strong>Institutec</strong> Forjando Trayectorias Brillantes </h2>
+										<p class="lead" data-animation="animated fadeInLeft">Potenciamos tu potencial con educación de calidad y un ambiente de apoyo. Únete a Institutec y marca la diferencia en tu futuro.</p>
+											<a href="#" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Read More</span></a>
+											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -220,19 +178,19 @@
         <div class="container">
             <div class="section-title row text-center">
                 <div class="col-md-8 offset-md-2">
-                    <h3>About</h3>
-                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
+                    <h3>Sobre</h3>
+                    <p class="lead">Descubre Institutec: donde la excelencia académica y la camaradería convergen en un viaje educativo único y emocionante.</p>
                 </div>
             </div><!-- end title -->
         
             <div class="row align-items-center">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="message-box">
-                        <h4>2018 BEST SmartEDU education school</h4>
-                        <h2>Welcome to SmartEDU education school</h2>
-                        <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                    
+                        <h2>bienvenido a la escuela educativa institutec</h2>
+                        <p>"Institutec: Forjando Campeones del Futuro"</p>
 
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis montes, nascetur ridiculus mus. Sed vitae rutrum neque. </p>
+                        <p>Este lema refleja la idea de que en Institutec se prepara a los estudiantes para el éxito, como "jugadores" en la vida, sin importar cuál sea su camino. Además, enfatiza la importancia de la dignidad y la excelencia en la educación que ofrece Institutec. Si deseas hacer ajustes o necesitas más ideas, no dudes en preguntar.</p>
 
                         <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
                     </div><!-- end messagebox -->
@@ -253,10 +211,14 @@
 				
 				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="message-box">
-                        <h2>The standard Lorem Ipsum passage, used since the 1500s</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2>excelencia y Compañerismo: La Esencia de Institutec</h2>
+                        <p>En Institutec, nuestra pasión por la excelencia académica es el motor que impulsa nuestro compromiso diario. Nos esforzamos incansablemente para elevar el estándar de la educación terciaria, desafiando los límites del conocimiento y la innovación. Pero también sabemos que la verdadera grandeza reside en el compañerismo y la colaboración.</p>
 
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum.</p>
+                        <p>Cada día, en nuestras aulas y fuera de ellas, cultivamos un espíritu de comunidad que va más allá de las palabras. Establecemos lazos sólidos entre nuestros estudiantes, profesores y personal, nutriendo amistades que perduran toda la vida. Creemos en la importancia de apoyarnos mutuamente en cada paso del camino.</p>
+
+						<p>Esta combinación de excelencia académica y compañerismo nos impulsa hacia adelante. Juntos, exploramos nuevos horizontes del conocimiento, superamos desafíos y celebramos éxitos. Estamos construyendo un futuro donde la excelencia y la amistad van de la mano, formando líderes que hacen del mundo un lugar mejor.</p>
+
+						<p>En Institutec, estamos comprometidos con la excelencia y el compañerismo, porque creemos que son las piedras angulares de un futuro brillante y prometedor para todos nuestros estudiantes y la sociedad en su conjunto.</p>
 
                         <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
                     </div><!-- end messagebox -->
@@ -265,6 +227,29 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
+
+	<!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <a href="#">INSTITUTEC 2023</a>
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Acerca de Nosotros</a></li>
+                <li><a href="#">Programas Académicos</a></li>
+                <li><a href="#">Admisiones</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="social-icons">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 

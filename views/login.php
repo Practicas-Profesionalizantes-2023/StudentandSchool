@@ -16,7 +16,7 @@
 <body>
     <div>
         <div class="fcaja threed">
-            <form>
+            <form action="../controllers/c_login.php" method="post">
                 <input class="controls" type="text" name="user" placeholder="Usuario">
                 <br>
                 <div class="password-toggle">
