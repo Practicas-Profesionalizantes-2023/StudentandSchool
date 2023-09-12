@@ -1,0 +1,6 @@
+Proyecto Institutec.
+Fabian Hasinaver (Frontend)
+Preinscripcion:
+- Se creo un formulario de preinscripcion, manteniendo los estilos anteriores.
+- El formulario contiene los siguentes campos: Nombre, Apellido, Celular, Correo Electronico, Fecha de nacimiento, Dni, Carrera, Calle y Altura, Genero, Contraseña, Repetir Contraseña y Guardar Datos.
+- Todo fue realizado en HTML y CSS para su facil implementacion en PHP.

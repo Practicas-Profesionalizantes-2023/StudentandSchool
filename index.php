@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  <!DOCTYPE html>
+=======
+<!DOCTYPE html>
+>>>>>>> origin/Adjust-homepage
 <html lang="en">
 <head>
     
@@ -21,6 +25,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.../js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/../js/bootstrap.min.js"></script>
     <!-- Site CSS -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="css/style.css">
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="css/versions.css">
@@ -28,12 +33,22 @@
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
+=======
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="../css/versions.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+>>>>>>> origin/Adjust-homepage
 
     <!-- Modernizer for Portfolio -->
     <script src="js/modernizer.js"></script>
     <title>Institutec</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 <body class="host_version"> 
 	<!-- Start header -->
@@ -41,6 +56,32 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="dashboard.html">
+=======
+     <!-- Start header -->
+	<header class="top-navbar">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 col-xs-12">
+						<div class="header-top-left">
+							<p>CONTACTANOS:intitutec16@gmail.com</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="header-top-right text-right">
+							<ul>
+								<li><a href="#">LOGIN</a></li>
+								<li><a href="#">PREINCRIPCION</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html">
+>>>>>>> origin/Adjust-homepage
 					<img src="images/favicon.ico" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +91,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
 						<li class="nav-item active"><a class="nav-link" href="dashboard.html">Inicio</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">carreras</a>
@@ -67,6 +109,24 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="views/login.php">Usuario Interno</a></li>
                         <li class="nav-item"><a class="nav-link" href="views/preisncripcion.php">Preinscripcion</a></li>
+=======
+						<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">carreras</a>
+						</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="#">RESOLUCIONES</a>
+								<a class="dropdown-item" href="#">REGLAMENTO</a>
+								<a class="dropdown-item" href="#">CONSTANSIA</a>
+								<a class="dropdown-item" href="#">CAI</a>
+								
+							</div>
+						</li>
+						
+>>>>>>> origin/Adjust-homepage
 					</ul>
 				</div>
 			</div>

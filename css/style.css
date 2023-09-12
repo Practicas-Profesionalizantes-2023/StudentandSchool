@@ -467,6 +467,7 @@ a img.aligncenter {
 
 .top-navbar .bg-light{
 	background: #4c5a7d !important;
+    margin-top: -10.4px;
 }
 
 .top-navbar .navbar-light .navbar-nav .nav-link{
@@ -479,7 +480,7 @@ a img.aligncenter {
 	position: relative;
 	display: inline-block;
 	padding: 15px 0px;
-	margin: 0px 20px;
+    margin: 0px 50px 0px 0px; /* Ajusta el margen izquierdo aquí */
 }
 .top-navbar .navbar-light .navbar-nav .nav-item .nav-link{
 	padding: 6px 0px;
@@ -3870,10 +3871,68 @@ a.link-style3 {
 	color: #eea412;
 }
 
-
-
-
-
+.header-top{
+    background: #eea412;
+    position: relative;
+}
+.header-top:after{
+    background: #4c5a7d ;
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: "";
+    height: 100%;
+    width: 36%;
+}
+.header-top::before {
+    background: #4c5a7d  none repeat scroll 0 0;
+    content: "";
+    height: 105px;
+    position: absolute;
+    right: 37.8%;
+    top: -17px;
+    transform: rotate(-44deg);
+    width: 10px;
+    z-index: 1;
+}
+.header-top-right{position: relative}
+.header-top-right::after {
+  background: #4c5a7d  none repeat scroll 0 0;
+  content: "";
+  height: 100px;
+  left: -16%;
+  position: absolute;
+  top: -38px;
+  transform: rotate(-45deg);
+  width: 60px;
+}
+.header-top-right ul li{
+    display: inline-block;
+    margin-right: 38px;
+}
+.header-top-right ul li:last-child{
+    margin-right: 0px;
+}
+.header-top-left p, .header-top-right ul li a{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 68px;
+    position: relative;
+    z-index: 1;
+}
+.header-top-right ul li:hover a{
+    color: #eea412;
+}
+.header-area.two .main-menu > ul > li > a {
+    color: #303030;
+    line-height: 132px;
+}
+.header-area.two .main-menu > ul > li:hover > a {
+    color: #eea412;
+}
 
 
 
