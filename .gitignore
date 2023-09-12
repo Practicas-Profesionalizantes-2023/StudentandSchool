@@ -1,0 +1,17 @@
+# Ignorar la carpeta "views"
+/views/
+
+# Ignorar la carpeta "css"
+/css/
+
+# Ignorar la carpeta "configDb"
+/configDb/
+
+# Ignorar la carpeta "controllers"
+/controllers/
+
+# Ignorar la carpeta "vendor"
+/vendor/
+
+# Ignorar el archivo "index.php"
+index.php
