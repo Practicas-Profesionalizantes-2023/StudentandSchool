@@ -1,0 +1,63 @@
+/* Estilos generales */
+/*body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}*/
+
+
+.top-navbar{
+    margin-top: 10px;
+}
+
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 10px 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+
+
+/* Estilos para hacer el diseño responsivo */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section {
+        padding: 10px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+}
