@@ -15,10 +15,9 @@ $resul=$modelSql->login($user,$password);
 
 if ($resul!=false) {
   
-        $name = $row['name'];
+        $name = $resul['name'];
         $_SESSION['name'] = $name;
-
-
+       
         // Redirige al usuario al dashboard u otra página
         
         header("Location: ../views/dasboard_home_preceptor.php?mensaje=correcto"); // Cambia "dashboard.php" al nombre de tu página de destino

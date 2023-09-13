@@ -50,7 +50,8 @@
                     <span class="icon-bar"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
-					<ul class="navbar-nav ml-auto">
+                <p class="welcome" style="color: white; font-size: 25px;">Bienvenido: <?php echo $_SESSION['name'] ?></p>
+				    <ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="dashboard.html">Inicio</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
@@ -69,7 +70,7 @@
 						</li>
 						<li class="nav-item"><a class="nav-link" href="teachers.html">Gestionar Profesores</a></li>
 						<li class="nav-item"><a class="nav-link" href="views/login.php">Crear Nuevo Usuario</a></li>
-                        <li class="nav-item"><a class="nav-link" href="views/preisncripcion.php">Cerrar Session</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../controllers/destroy_Session.php">Cerrar Session</a></li>
 					</ul>
 				</div>
 			</div>
