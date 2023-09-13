@@ -21,7 +21,7 @@ if ($resul!=false) {
 
         // Redirige al usuario al dashboard u otra página
         
-        header("Location: ../views/preisncripcion.php?mensaje=correcto"); // Cambia "dashboard.php" al nombre de tu página de destino
+        header("Location: ../views/dasboard_home_preceptor.php?mensaje=correcto"); // Cambia "dashboard.php" al nombre de tu página de destino
         exit();
     } else {
         echo "Credenciales incorrectas. Por favor, intente de nuevo.";
