@@ -1,9 +1,5 @@
 <?php
 require_once '../controllers/crud_eliminate_register.php';
-/*$pre_user_id = $_GET['id_pre_user'];
-   
-$get_user = $database->getSingleShow("pre_registration",$pre_user_id);//funcion para mostrar la seleccion donde el id coincida
-*/
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -13,6 +13,7 @@ $password = $_POST['password'];
 
 $resul=$modelSql->login($user,$password);
 
+if(isset($_POST['submit'])){
 if ($resul!=false) {
   
         $name = $resul['name'];
@@ -23,7 +24,8 @@ if ($resul!=false) {
         header("Location: ../views/dasboard_home_preceptor.php?mensaje=correcto"); // Cambia "dashboard.php" al nombre de tu página de destino
         exit();
     } else {
-        echo "Credenciales incorrectas. Por favor, intente de nuevo.";
+        echo "credenciales incorrecta vuelve a ingresar porfavor";
+    }   
     }
   
 ?>

@@ -54,7 +54,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 				    <ul class="navbar-nav ml-auto">
-						<li class="nav-item "><a class="nav-link" href="dashboard.html">Inicio</a></li>
+						<li class="nav-item "><a class="nav-link" href="../views/dasboard_home_preceptor.php">Inicio</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -144,7 +144,7 @@
                                 <td><?php echo $row['heigth_street']?></td>
                                 <td><?php echo $row['gender']?></td>
                                 <td><a class="btn btn-danger" href="../views/form_edit_pre_register.php?id_pre_user=<?php echo $row['id_pre_user']?>">Editar</a></td>
-                                <td><a class="btn btn-warning" href="../views/eliminate_register.php?id_pre_user=<?php echo $row['id_pre_user']?>">Eliminar</a></td>
+                                <td><a class="btn btn-warning" href="../views/views_eliminate_register.php?id_pre_user=<?php echo $row['id_pre_user']?>">Eliminar</a></td>
                                 
                                 
                                 </tr>

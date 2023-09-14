@@ -25,28 +25,12 @@
                     <input type="checkbox" id="showPasswordCheckbox" style="display: none;">
                 </div>
                 <br>
-                <input class="button" type="submit" value="Ingresar">
+                <input class="button" type="submit" value="Ingresar" name="submit">
                 <br>
-                <button class="button"><a href="./views/preisncripcion.html">Preinscripción</a></button>
+                <button class="button" name="pre"><a href="../views/pre_register.php">Preinscripción</a></button>
                 <button>¿Olvidaste tu contraseña?</button>
             </form>
         </div>
-
-        <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
-    <!-- ALL JS FILES -->
-    <script src="../js/all.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="../js/custom.js"></script>
-	<script src="../js/timeline.min.js"></script>
-	<script>
-		timeline(document.querySelectorAll('.timeline'), {
-			forceVerticalMode: 700,
-			mode: 'horizontal',
-			verticalStartPosition: 'left',
-			visibleItems: 4
-		});
-	</script>
 
        
        <script>
