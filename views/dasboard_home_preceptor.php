@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -64,7 +67,7 @@
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#">Preinscriptos</a>
+								<a class="dropdown-item" href="views_crud_pre_registered.php">Preinscriptos</a>
 								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
 							</div>
 						</li>
