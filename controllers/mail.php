@@ -1,4 +1,7 @@
 <?php
+require_once '../model/query.php';
+$database = new model_Sql();
+$credential=$database->getFirstValidCredential(); 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -11,12 +14,12 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'institutec16@gmail.com';
-    $mail->Password   = 'addgfgthoywxcast';
+    $mail->Username   = $credential['email'];
+    $mail->Password   = $credential['token'];
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587;
 
-    $mail->setFrom('institutec16@gmail.com', 'institutec');
+    $mail->setFrom($credential['email'], 'institutec');
     $mail->addAddress($_POST["email"], 'usuario');
     $mail->isHTML(true);
     $mail->CharSet = 'UTF-8';

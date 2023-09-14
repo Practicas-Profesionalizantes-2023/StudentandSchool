@@ -3,7 +3,7 @@
 require_once "../model/query.php";
 
 $database = new model_sql();
-$carrerData = $database->show("careers"); // Obtener datos de carreras
+$carrerData = $database->show_table("careers"); // Obtener datos de carreras
 
 
 

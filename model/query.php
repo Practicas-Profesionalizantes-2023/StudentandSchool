@@ -66,7 +66,7 @@ class model_sql
 
 //funcion para Mostrar un registro
 
-public function show($table){
+public function show_table($table){
 
 $query="SELECT * FROM $table";
 $statement=$this->pdo->prepare($query);
@@ -76,7 +76,36 @@ $list_data=$statement->fetchAll();
 return $list_data;
 
 }
+//para mostrar de la tabla los que tengan estado 1
+public function show_state($table){
 
+    $query="SELECT * FROM $table WHERE state = 1";
+    $statement=$this->pdo->prepare($query);
+    $statement->execute();
+    $list_data=$statement->fetchAll();
+    
+    return $list_data;
+    
+    }
+    //mostrar un elemento de la tabla
+    public function getSingleShow($table,$value)
+    {
+        $query = "SELECT * FROM $table WHERE id_pre_user = :id_pre_user AND state = 1";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_pre_user', $value, PDO::PARAM_INT);
+        $statement->execute();
+        
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getFirstValidCredential(){
+        $query = "SELECT email, token FROM credential_email";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+    
 // Función para la validación de duplicados en una base de datos
 public function checkForDuplicates($value1, $value2)
 {
@@ -107,8 +136,8 @@ public function pre_registration($value1, $value2, $value3, $value4
 , $value5, $value6
 , $value7, $value8, $value9)
 {
-    $query = "INSERT INTO pre_registration (name, last_name, phone, mail, date, dni, carrer,heigth_street,gender)
-              VALUES (:name, :last_name, :phone, :mail, :date, :dni, :career, :heigth_street, :gender)";
+    $query = "INSERT INTO pre_registration (name, last_name, phone, mail, date, dni, carrer,heigth_street,gender,state)
+              VALUES (:name, :last_name, :phone, :mail, :date, :dni, :career, :heigth_street, :gender,1)";
 
     $statement = $this->pdo->prepare($query);
 
@@ -131,9 +160,99 @@ public function pre_registration($value1, $value2, $value3, $value4
         return false;
     }
 }
+//buscador para los pre_inscriptos
+public function search_pre_register($search) {
+    $query = "SELECT * FROM pre_registration 
+            WHERE name LIKE :name 
+            OR last_name LIKE :last_name 
+            OR dni LIKE :dni 
+            OR mail LIKE :mail";
+    
+    // Preparar la declaración
+    $statement = $this->pdo->prepare($query);
 
+    // Asignar el valor de búsqueda a los marcadores de posición
+    $searchParam = "%$search%"; // Agregar comodines para buscar coincidencias parciales
+    $statement->bindParam(':name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':last_name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':dni', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':mail', $searchParam, PDO::PARAM_STR);
 
+    // Ejecutar la consulta
+    $statement->execute();
 
+    // Obtener y devolver los resultados
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    return $results;
+}
+
+//funcion para traer el usuario que coincida con el id
+public function getUserData($userId)
+{
+    $query = "SELECT * FROM pre_registration WHERE id_pre_user = :userId and state=1";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+public function updateUserData($user_id, $name, $last_name, $phone, $mail, $career, $heigth_street)
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE pre_registration SET 
+                name = :name, 
+                last_name = :last_name, 
+                phone = :phone, 
+                mail = :mail, 
+                carrer = :career, 
+                heigth_street = :heigth_street 
+                WHERE id_pre_user = :user_id";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
+        $statement->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $statement->bindParam(':career', $career, PDO::PARAM_STR);
+        $statement->bindParam(':heigth_street', $heigth_street, PDO::PARAM_STR);
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
+
+function eliminated_register($table, $id_user)
+{
+    try {
+        // Luego, actualiza el estado del registro a 0
+        $query = "UPDATE $table SET state = 0 WHERE id_pre_user = :id_user";
+        $updateStatement = $this->pdo->prepare($query);
+        $updateStatement->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+
+        // Ejecuta la actualización
+        $updateStatement->execute();
+
+        // Verifica si se actualizó al menos una fila
+        $rowCount = $updateStatement->rowCount();
+
+        if ($rowCount > 0) {
+            // La eliminación se realizó con éxito
+            return true;
+        } 
+    } catch (PDOException $e) {
+        echo "Error al actualizar: " . $e->getMessage();
+        return false;
+    }
+}
 
 }
 ?>
