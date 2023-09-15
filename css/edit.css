@@ -47,6 +47,32 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+/* Estilo para el enlace "volver" */
+.back {
+    position: fixed;
+    top: 20px; /* Ajusta la posición vertical según tus preferencias */
+    left: 20px; /* Ajusta la posición horizontal según tus preferencias */
+    background-color: #007bff; /* Cambia el color de fondo */
+    color: #fff; /* Cambia el color del texto */
+    padding: 10px 15px; /* Ajusta el espaciado interior */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.back::before {
+    content: '\2190'; /* Agrega una flecha hacia la izquierda usando el código Unicode */
+    margin-right: 5px; /* Añade espacio entre la flecha y el texto */
+}
+
+.back:hover{
+    background-color: #0056b3;
+}
+
+.back a{
+    text-decoration: none;
+    color: #fff;
+}
+
 /* Estilos responsivos para dispositivos móviles */
 @media screen and (max-width: 600px) {
     form {

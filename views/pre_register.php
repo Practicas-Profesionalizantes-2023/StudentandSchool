@@ -4,55 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../images/logo.png" rel="icon">
-    <link href="../images/logo.png" rel="apple-touch-icon">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-    <title>Preinscripcion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/pre_register.css">
+    
+    <title>institutec</title>
 </head>
 <body>
-    <div>
-        <div class="fcaja_2 threed">
-            <form action="../controllers/crud_pre_registration.php" method="post" >
-                <h1>Preinscripcion</h1>
-                <label for="name">Nombre Completo:</label>
-                <input type="text" name="name" id="name" alt="name">
-                <br>
-                <label for="l_name">Apellido:</label>
-                <input type="text" name="l_name" id="l_name" alt="l_name">
-                <br>
-                <label for="phone">Celular:</label>
-                <input type="tel" name="phone" id="phone" alt="phone">
-                <br>
-                <label for="email">Correo Electronico:</label>
-                <input type="email" name="email" id="email" alt="email">
-                <br>
-                <label for="date">Fecha de nacimiento:</label>
-                <input type="date" name="date" id="date" alt="date">
-                <br>
-                <label for="dni">Dni:</label>
-                <input type="text" name="dni" id="dni">
-                <br>
-                <label for="carrer">Carrera:</label>
-                <label for="carrer">Carrera:</label>
-                <select name="carrer" id="carrer">
-                    <?php foreach ($carrerData as $carrer) { ?>
-                        <option value="<?php echo $carrer['career_name']; ?>"><?php echo $carrer['career_name']; ?></option>
-                    <?php } ?>
-                </select>
-                <br>
-
-                <br>
-                <label for="street">Calle y Altura</label>
-                <input type="text" name="street" id="street">
-                <br>
-                <label for="gender">Genero:</label>
-                <input type="radio" name="gender" id="Male" value="Masculino">Masculino
-                <input type="radio" name="gender" id="Female" value="Femenino">Femenino
-                <br>
-                <br>
-                <input name="save_data" class="button" type="submit" value="Guardar Datos">
-            </form>
+    <section class="login">
+        <div class="login_box">
+            <div class="left">
+                <div class="top_link"><a href="../index.php"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Return home</a></div>
+                <div class="contact">
+                    <form action="../controllers/crud_pre_registration.php" method="post">
+                        <h3>Pre Inscribirse</h3>
+                        <input type="text" placeholder="Ingrese su Nombre Completo" name="name">
+                        <input type="text" placeholder="Ingrese su Apellido" name="l_name">
+                        <input type="text" placeholder="Ingrese su Celular " name="phone">
+                        <input type="text" placeholder="Ingrese su Email" name="email">
+                        <input type="date" placeholder="Ingrese su Fecha de Nacimiento" name="date">
+                        <input type="text" placeholder="Ingrese su Dni" name="dni">
+                        <label for="carrer">Carrera:</label>
+                        <select name="carrer" id="carrer">
+                            <?php foreach ($carrerData as $carrer) { ?>
+                                <option value="<?php echo $carrer['career_name']; ?>"><?php echo $carrer['career_name']; ?></option>
+                            <?php } ?>
+                        </select>
+                        <input type="text" placeholder="Ingrese su Direccion" name="street">
+                        <div class="gender-radio">
+                            <label for="gender">Género:</label>
+                            <input type="radio" name="gender" id="Male" value="Masculino">
+                            <label for="Male">Masculino</label>
+                            <input type="radio" name="gender" id="Female" value="Femenino">
+                            <label for="Female">Femenino</label>
+                        </div>
+                        <button class="submit" name="save_data">Enviar Datos</button>
+                    </form>
+                </div>
+            </div>
+            <div class="right">
+                <div class="right-text">
+                    <h2>Institutec</h2>
+                    <h5>Escuela Educativa</h5>
+                </div>
+                <div class="right-inductor"><img src="https://lh3.googleusercontent.com/fife/ABSRlIoGiXn2r0SBm7bjFHea6iCUOyY0N2SrvhNUT-orJfyGNRSMO2vfqar3R-xs5Z4xbeqYwrEMq2FXKGXm-l_H6QAlwCBk9uceKBfG-FjacfftM0WM_aoUC_oxRSXXYspQE3tCMHGvMBlb2K1NAdU6qWv3VAQAPdCo8VwTgdnyWv08CmeZ8hX_6Ty8FzetXYKnfXb0CTEFQOVF4p3R58LksVUd73FU6564OsrJt918LPEwqIPAPQ4dMgiH73sgLXnDndUDCdLSDHMSirr4uUaqbiWQq-X1SNdkh-3jzjhW4keeNt1TgQHSrzW3maYO3ryueQzYoMEhts8MP8HH5gs2NkCar9cr_guunglU7Zqaede4cLFhsCZWBLVHY4cKHgk8SzfH_0Rn3St2AQen9MaiT38L5QXsaq6zFMuGiT8M2Md50eS0JdRTdlWLJApbgAUqI3zltUXce-MaCrDtp_UiI6x3IR4fEZiCo0XDyoAesFjXZg9cIuSsLTiKkSAGzzledJU3crgSHjAIycQN2PH2_dBIa3ibAJLphqq6zLh0qiQn_dHh83ru2y7MgxRU85ithgjdIk3PgplREbW9_PLv5j9juYc1WXFNW9ML80UlTaC9D2rP3i80zESJJY56faKsA5GVCIFiUtc3EewSM_C0bkJSMiobIWiXFz7pMcadgZlweUdjBcjvaepHBe8wou0ZtDM9TKom0hs_nx_AKy0dnXGNWI1qftTjAg=w1920-h979-ft" alt=""></div>
+            </div>
         </div>
-    </div>
+    </section>
 </body>
 </html>

@@ -1,0 +1,215 @@
+/* Mantén tus reglas de estilo para las imágenes intactas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilo del contenedor principal */
+.login {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #017bab;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Contenedor de inicio de sesión */
+.login_box {
+    width: 100%;
+    max-width: 1050px;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 4px 22px -8px #0004;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Parte izquierda del contenedor de inicio de sesión */
+.login_box .left {
+    width: 50%;
+    padding: 25px;
+    box-sizing: border-box; /* Añade esto para incluir el relleno en el ancho total */
+}
+
+.left .top_link a {
+    color: #452A5A;
+    font-weight: 400;
+}
+
+.left .top_link {
+    height: 20px;
+}
+
+.left .contact {
+    display: flex;
+    flex-direction: column; /* Cambia la dirección del contenido para ajustarlo mejor */
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+.left h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.left input {
+    border: none;
+    width: 100%;
+    margin: 10px 0;
+    border-bottom: 1px solid #4f30677d;
+    padding: 7px 9px;
+    overflow: hidden;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.left input[type="date"],
+.left select {
+    padding: 7px;
+}
+
+.left label {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.left input[type="radio"] {
+    margin-right: 5px;
+}
+
+.left {
+    background: linear-gradient(-45deg, #dcd7e0, #fff);
+}
+
+.submit {
+    border: none;
+    padding: 15px 70px;
+    border-radius: 8px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    background: #017bab;
+    color: #fff;
+    font-weight: bold;
+}
+
+.submit:hover {
+    background-color: #015176;
+}
+
+/* Parte derecha del contenedor de inicio de sesión */
+.right {
+    width: 50%;
+    max-height: 100%;
+    background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%),
+        url(https://static.seattletimes.com/wp-content/uploads/2019/01/web-typing-ergonomics-1020x680.jpg);
+    color: #fff;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.right .right-text {
+    height: 100%;
+    position: relative;
+    transform: translate(0%, 45%);
+}
+
+.right-text h2 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+.right-text h5 {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.right .right-inductor {
+    position: absolute;
+    width: 70px;
+    height: 7px;
+    background: #fff0;
+    left: 50%;
+    bottom: 70px;
+    transform: translate(-50%, 0%);
+}
+
+.top_link img {
+    width: 28px;
+    padding-right: 7px;
+    margin-top: -3px;
+}
+
+.password-toggle {
+    position: relative;
+}
+
+.password-toggle input[type="password"] {
+    padding-right: 15px;
+}
+
+.password-toggle .show-password-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.left input:focus,
+.password-toggle input:focus {
+    outline: none;
+    border-bottom: 2px solid #017bab;
+    transition: border-bottom 0.2s ease-in-out;
+}
+
+.password-toggle input:focus + label {
+    color: #017bab;
+}
+
+.link a {
+    text-decoration: none;
+    color: #017bab;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+.gender-radio {
+    display: flex;
+    align-items: center;
+}
+
+.gender-radio input[type="radio"] {
+    margin-right: 5px;
+}

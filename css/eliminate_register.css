@@ -1,0 +1,64 @@
+/* Estilos para el formulario de eliminación */
+.advertencia {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.advertencia h2 {
+    color: #e74c3c; /* Color del encabezado */
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.advertencia p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn-delete {
+    background-color: #e74c3c; /* Color del botón de eliminar */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b; /* Color de fondo al pasar el cursor */
+}
+
+
+.back {
+    position: fixed;
+    top: 20px; /* Ajusta la posición vertical según tus preferencias */
+    left: 20px; /* Ajusta la posición horizontal según tus preferencias */
+    background-color: #007bff; /* Cambia el color de fondo */
+    color: #fff; /* Cambia el color del texto */
+    padding: 10px 15px; /* Ajusta el espaciado interior */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.back::before {
+    content: '\2190'; /* Agrega una flecha hacia la izquierda usando el código Unicode */
+    margin-right: 5px; /* Añade espacio entre la flecha y el texto */
+}
+
+.back:hover{
+    background-color: #0056b3;
+}
+
+.back a{
+    text-decoration: none;
+    color: #fff;
+}
+

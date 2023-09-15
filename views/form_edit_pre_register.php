@@ -47,6 +47,9 @@
         
         <!-- Botón para enviar el formulario -->
         <button type="submit">Actualizar</button>
+        <button class="back"><a href="../views/views_crud_pre_registered.php" >volver</a></button>
     </form>
+    
+
 </body>
 </html>

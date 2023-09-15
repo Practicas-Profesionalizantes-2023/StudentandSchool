@@ -11,7 +11,7 @@ require '../vendor/autoload.php';
 
 try {
     $mail = new PHPMailer;
-    $mail->isSMTP();
+    $mail->isSMTP();//base de dato
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
     $mail->Username   = $credential['email'];

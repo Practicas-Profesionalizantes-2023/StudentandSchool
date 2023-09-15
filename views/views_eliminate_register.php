@@ -6,8 +6,7 @@ require_once '../controllers/crud_eliminate_register.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/barnavfooter.css">   
-    <link rel="stylesheet" href="../assets/css/warning_delete.css">
+    <link rel="stylesheet" href="../css/eliminate_register.css">
     <title>Borrar</title>
 </head>
 <body>
@@ -18,6 +17,7 @@ require_once '../controllers/crud_eliminate_register.php';
         <input type="hidden" name="id_pre_user" value="<?php echo $get_user['id_pre_user'];?>">
             <button type="submit" class="btn-delete" name="delete">Eliminar</button>
         </form>
+        <button class="back"><a href="../views/views_crud_pre_registered.php" >volver</a></button>
     </div>
 </body>
 </html>
