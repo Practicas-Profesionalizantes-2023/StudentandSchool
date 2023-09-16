@@ -1,5 +1,9 @@
 <?php
 require_once '../controllers/crud_eliminate_register.php';
+require_once '../controllers/stop_session.php';
+session_start();
+checkSession();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

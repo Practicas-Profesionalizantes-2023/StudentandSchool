@@ -1,5 +1,8 @@
 <?php
+require_once '../controllers/stop_session.php';
 session_start();
+checkSession();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
