@@ -75,7 +75,12 @@ checkSession();
 							</div>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="teachers.html">Gestionar Profesores</a></li>
-						<li class="nav-item"><a class="nav-link" href="views/login.php">Crear Nuevo Usuario</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Usuarios</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="·">Crear Nuevo Usuario</a>
+								<a class="dropdown-item" href="#">Ver Usuarios</a>
+							</div>
                         <li class="nav-item"><a class="nav-link" href="../controllers/destroy_Session.php">Cerrar Session</a></li>
 					</ul>
 				</div>

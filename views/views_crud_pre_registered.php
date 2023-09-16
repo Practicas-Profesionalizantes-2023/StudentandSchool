@@ -1,4 +1,8 @@
-<?php require_once '../controllers/crud_pre_registered_controller.php'?>
+<?php require_once '../controllers/crud_pre_registered_controller.php';
+      require_once '../controllers/stop_session.php';
+      session_start();
+      checkSession();
+?>
 
 <!DOCTYPE html>
 <html lang="es">

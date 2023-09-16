@@ -1,8 +1,10 @@
 <?php
 
  require_once  '../controllers/crud_edit_controller.php'; 
-
-
+ require_once '../controllers/stop_session.php';
+ session_start();
+ checkSession();
+ 
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/edit.css">
-    <title>Editar Usuario</title>
+    <title>Editar Preinscriptos</title>
 </head>
 <body>
     <form action="../controllers/crud_edit_controller.php" method="post">

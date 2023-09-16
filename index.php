@@ -47,7 +47,7 @@ session_start();
 				<div class="row">
 					<div class="col-md-8 col-sm-8 col-xs-12">
 						<div class="header-top-left">
-							<p>CONTACTANOS:intitutec16@gmail.com</p>
+							<p>CONTACTANOS:institutec16@gmail.com</p>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-4 col-xs-12">
@@ -115,7 +115,7 @@ session_start();
 								<div class="col-md-12 col-sm-12 text-right">
 									<div class="big-tagline">
 										<h2><strong>Instituto de Educación</strong> Institutec </h2>
-											<a href="#" class="hover-btn-new"><span>Contáctanos</span></a>
+											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
@@ -134,7 +134,7 @@ session_start();
 									<div class="big-tagline">
 										<h2 data-animation="animated zoomInRight">Institutec <strong> Tu Puerta al Conocimiento</strong></h2>
 										<p class="lead" data-animation="animated fadeInLeft"> Forjamos líderes con excelencia académica y compañerismo. Únete a nosotros para alcanzar tus metas. </p>
-											<a href="#" class="hover-btn-new"><span>Contáctanos</span></a>
+											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
@@ -153,7 +153,7 @@ session_start();
 									<div class="big-tagline">
 										<h2 data-animation="animated zoomInRight"><strong>Institutec</strong> Forjando Trayectorias Brillantes </h2>
 										<p class="lead" data-animation="animated fadeInLeft">Potenciamos tu potencial con educación de calidad y un ambiente de apoyo. Únete a Institutec y marca la diferencia en tu futuro.</p>
-											<a href="#" class="hover-btn-new"><span>Contáctanos</span></a>
+											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
