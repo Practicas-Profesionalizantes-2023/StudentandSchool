@@ -47,23 +47,25 @@ class model_sql
     }
 
     //funcion credencial login
-    public function login($user, $password)
-{
-    $query = "SELECT dni, name,fk_rol_id,state FROM internal_users WHERE dni = :user AND password = :password";
+    // Función credencial login
+ public function login($user, $password)
+ {
+    $query = "SELECT dni, name, fk_rol_id, state, password FROM internal_users WHERE dni = :user";
     $statement = $this->pdo->prepare($query);
     $statement->bindParam(':user', $user);
-    $statement->bindParam(':password', $password);
     $statement->execute();
 
     $row = $statement->fetch(PDO::FETCH_ASSOC);
-    
-    if ($row) {
-        return $row; // Devuelve la fila si las credenciales son correctas
-    } else {
-        return false; // Devuelve false si las credenciales son incorrectas
-    }
-}
 
+    if ($row) {
+        // Verifica si la contraseña coincide usando password_verify
+        if (password_verify($password, $row['password'])) {
+            return $row; // Devuelve la fila si las credenciales son correctas
+        }
+    }
+    
+    return false; // Devuelve false si las credenciales son incorrectas
+}
 //funcion para Mostrar un registro
 
 public function show_table($table){
