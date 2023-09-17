@@ -1,0 +1,107 @@
+body {
+   
+    font-family: Arial, sans-serif;
+    background-color: #e7ebed !important;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.create_box {
+    width: 350px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.create_box h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #017bab;
+}
+
+.create_box input[type="text"],
+.create_box input[type="password"],
+.create_box select {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #017bab;
+    padding: 10px;
+    margin: 10px 0;
+    transition: border-bottom 0.3s;
+    font-size: 16px;
+    outline: none;
+}
+
+.create_box input[type="text"]:focus,
+.create_box input[type="password"]:focus,
+.create_box select:focus {
+    border-bottom: 2px solid #015176;
+}
+
+.create_box button.submit {
+    background-color: #017bab;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.create_box button.submit:hover {
+    background-color: #015176;
+}
+
+/* CSS para el botón y el espacio */
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* Ajusta el espacio según tus preferencias */
+}
+
+/* Estilo para el enlace "volver" */
+.back {
+    position: fixed;
+    top: 20px; /* Ajusta la posición vertical según tus preferencias */
+    left: 20px; /* Ajusta la posición horizontal según tus preferencias */
+    background-color: #007bff; /* Cambia el color de fondo */
+    color: #fff; /* Cambia el color del texto */
+    padding: 10px 15px; /* Ajusta el espaciado interior */
+    border-radius: 5px; /* Agrega bordes redondeados */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.back::before {
+    content: '\2190'; /* Agrega una flecha hacia la izquierda usando el código Unicode */
+    margin-right: 5px; /* Añade espacio entre la flecha y el texto */
+}
+
+.back:hover{
+    background-color: #0056b3;
+    
+}
+
+.back a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.back a{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+/* CSS adicional para hacer el diseño más responsive */
+@media (max-width: 768px) {
+    .create_box {
+        width: 80%; /* Cambia el ancho del formulario en pantallas más pequeñas */
+        max-width: 350px; /* Establece un ancho máximo */
+    }
+}

@@ -25,7 +25,7 @@ if (isset($save_data)) {
         echo "Todos los campos son obligatorios. Por favor, llene todos los campos.";
     } else {
         // Verifica duplicados antes de intentar la inserción
-        $checkforduplicated = $database->checkForDuplicates($dni_pre, $email_pre);
+        $checkforduplicated = $database->checkForDuplicates("pre_registration",$dni_pre, $email_pre);
         if ($checkforduplicated !== false) {
             // Se encontraron duplicados, muestra el mensaje personalizado
             echo $checkforduplicated;

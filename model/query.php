@@ -107,11 +107,11 @@ public function show_state($table){
     }
     
 // Función para la validación de duplicados en una base de datos
-public function checkForDuplicates($value1, $value2)
+public function checkForDuplicates($table,$value1, $value2)
 {
     try {
         // Verificar si ya existe un registro con el mismo DNI o correo electrónico
-        $checkQuery = "SELECT COUNT(*) FROM pre_registration WHERE dni = :dni OR mail = :mail";
+        $checkQuery = "SELECT COUNT(*) FROM $table WHERE dni = :dni OR mail = :mail";
         $checkStatement = $this->pdo->prepare($checkQuery);
         $checkStatement->bindParam(':dni', $value1, PDO::PARAM_STR);
         $checkStatement->bindParam(':mail', $value2, PDO::PARAM_STR);
@@ -252,6 +252,134 @@ function eliminated_register($table, $id_user)
         echo "Error al actualizar: " . $e->getMessage();
         return false;
     }
+}
+
+function create_account($value1,$value2,$value3,$value4,$value5){
+    $query = "INSERT INTO internal_users (name, dni, password,mail, fk_rol_id, state)
+          VALUES (:name, :dni, :password,:mail, :fk_rol_id, 1)";
+
+
+$statement = $this->pdo->prepare($query);
+$statement->bindParam(':name', $value1, PDO::PARAM_STR);
+$statement->bindParam(':dni', $value2, PDO::PARAM_STR);
+$statement->bindParam(':password', $value3, PDO::PARAM_STR);
+$statement->bindParam(':mail', $value4, PDO::PARAM_STR);
+$statement->bindParam(':fk_rol_id', $value5, PDO::PARAM_INT);
+
+try{
+    if($statement->execute()){
+        return true;
+    }
+}catch (PDOException $e) {
+    echo "Error en la inserción: " . $e->getMessage();
+    return false;
+}
+
+}
+
+function union_table(){
+    $query = "SELECT
+      internal_users.id_user AS 'id_user',
+      internal_users.password AS 'password',
+      internal_users.name 'name',
+      internal_users.dni AS 'dni',
+      internal_users.state AS 'state',
+      internal_users.mail AS 'mail',
+      rol.details AS 'details'
+    FROM internal_users
+    JOIN rol ON internal_users.fk_rol_id = rol.id_rol"; 
+    $statement = $this->pdo->prepare($query);
+    $statement->execute();
+    $union_data = $statement->fetchAll();
+    return $union_data;
+  }
+  
+
+  public function disableUser($user_id) {
+    try {
+        $query = "UPDATE internal_users SET state = 0 WHERE id_user = :user_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $statement->execute();
+        return true; // Success in disabling the user
+    } catch (PDOException $e) {
+        // Error handling, you can log the error or throw an exception as needed
+        return false; // Error in disabling the user
+    }
+}
+
+public function enableUser($user_id) {
+    try {
+        $query = "UPDATE internal_users SET state = 1 WHERE id_user = :user_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $statement->execute();
+        return true; // Success in enabling the user
+    } catch (PDOException $e) {
+        // Error handling, you can log the error or throw an exception as needed
+        return false; // Error in enabling the user
+    }
+}
+
+public function search_internal_users($search) {
+    $query = "SELECT * FROM internal_users
+              WHERE name LIKE :name 
+              OR dni LIKE :dni 
+              OR mail LIKE :mail";
+    
+    // Preparar la declaración
+    $statement = $this->pdo->prepare($query);
+
+    // Asignar el valor de búsqueda a los marcadores de posición
+    $searchParam = "%$search%"; // Agregar comodines para buscar coincidencias parciales
+    $statement->bindParam(':name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':dni', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':mail', $searchParam, PDO::PARAM_STR);
+
+    // Ejecutar la consulta
+    $statement->execute();
+
+    // Obtener y devolver los resultados
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    return $results;
+}
+
+public function getUserById($table,$user_id) {
+    // Preparar la consulta SQL para seleccionar un usuario por su ID
+    $query = "SELECT * FROM $table WHERE $user_id = :user_id";
+
+    // Preparar la declaración
+    $statement = $this->pdo->prepare($query);
+
+    // Asignar el valor del ID de usuario al marcador de posición
+    $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+    // Ejecutar la consulta
+    $statement->execute();
+
+    // Obtener y devolver los detalles del usuario
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    
+    return $user;
+}
+
+public function getSingleuser($table,$value)
+{
+    $query = "SELECT * FROM $table WHERE id_user = :id_user";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_user', $value, PDO::PARAM_INT);
+    $statement->execute();
+    
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+//borrar un usuario interno
+public function deleteUserData($table, $user_id) {
+    $query = "DELETE FROM $table WHERE id_user = :user_id";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    return $statement->execute();
 }
 
 }
