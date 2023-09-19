@@ -347,24 +347,6 @@ public function search_internal_users($search) {
     return $results;
 }
 
-public function getUserById($table,$user_id) {
-    // Preparar la consulta SQL para seleccionar un usuario por su ID
-    $query = "SELECT * FROM $table WHERE $user_id = :user_id";
-
-    // Preparar la declaración
-    $statement = $this->pdo->prepare($query);
-
-    // Asignar el valor del ID de usuario al marcador de posición
-    $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-
-    // Ejecutar la consulta
-    $statement->execute();
-
-    // Obtener y devolver los detalles del usuario
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-    
-    return $user;
-}
 
 public function getSingleuser($table,$value)
 {

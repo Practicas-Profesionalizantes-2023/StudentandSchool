@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_POST['desability'];
       
        
-        $user = $database->getUserById($table,$user_id); 
+        $user = $database->getSingleuser($table,$user_id); 
 
     
         if (!$user) {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user_id = $_POST['hability'];
 
         // Verificar el estado actual del usuario
-        $user = $database->getUserById($table,$user_id);
+        $user = $database->getSingleuser($table,$user_id);
 
         if (!$user) {
             // El usuario no se encontró en la base de datos, maneja el error
@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             if ($user['state'] == 1) {
                 // El usuario ya está habilitado
-                //echo "El usuario ya está habilitado";
-                // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+
+              
                 header("Location: ../views/views_internal_users.php?habilitado=error");
             } else {
                 // Llamar a la función para habilitar el usuario
