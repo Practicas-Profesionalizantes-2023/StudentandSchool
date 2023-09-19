@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             if ($user['state'] == 0) {
                 // El usuario ya está deshabilitado
-                echo "El usuario ya está deshabilitado";
+               header("Location: ../views/views_internal_users.php?desabilitado=error");
             } else {
                 // Llamar a la función para deshabilitar el usuario
                 $desability = $database->disableUser($user_id);
 
                 if ($desability) {
-                    header("Location: ../views/views_internal_users.php?mensaje=correcto");
+                    header("Location: ../views/views_internal_users.php?desabilitado_correcto=correcto");
                 } else {
                     echo "Error al deshabilitar al usuario";
                 }
@@ -42,13 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             if ($user['state'] == 1) {
                 // El usuario ya está habilitado
-                echo "El usuario ya está habilitado";
+                //echo "El usuario ya está habilitado";
+                // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+                header("Location: ../views/views_internal_users.php?habilitado=error");
             } else {
                 // Llamar a la función para habilitar el usuario
                 $hability = $database->enableUser($user_id);
 
                 if ($hability) {
-                    header("Location: ../views/views_internal_users.php?mensaje=correcto");
+                    header("Location: ../views/views_internal_users.php?habilitado_correcto=correcto");
                 } else {
                     echo "Error al habilitar al usuario";
                 }

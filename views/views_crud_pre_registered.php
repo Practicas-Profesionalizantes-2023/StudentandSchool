@@ -1,5 +1,6 @@
 <?php require_once '../controllers/crud_pre_registered_controller.php';
       require_once '../controllers/stop_session.php';
+      require_once '../controllers/message_control.php';
       session_start();
       checkSession();
 ?>
@@ -93,6 +94,10 @@
             <h3 class="text-center"><small class="mensaje"></small></h3>
         </div>
 		<input type="text" class="search" placeholder="Buscar..." name="search">
+        <?php
+        show_messages_verify('eliminado', "se elimino el registro correctamente");
+        show_messages_verify('editado', "se  edito el registro correctamente");
+        ?>
             <table id="table-body" class="table table-bordered table-hover" cellspacing="0" width="100%">
                 <thead style="background-color: #4c5a7d;">
                     <tr>

@@ -1,6 +1,7 @@
 <?php
 require_once '../controllers/stop_session.php';
 require_once '../controllers/crud_view_internal_user.php';
+require_once '../controllers/message_control.php';
 session_start();
 checkSession();
 
@@ -99,6 +100,12 @@ checkSession();
         </div>
 		<input type="text" class="search" placeholder="Buscar..." name="search_name">
 	    <input type="submit" name="search" value="buscar">
+		<?php show_messages_verify('eliminado', "se elimino el registro correctamente"); 
+		      show_messages_error('desabilitado', "el registro ya esta desabilitado");
+			  show_messages_verify('desabilitado_correcto', "el registro ya se encuentra desabilito correctamente");
+		      show_messages_error('habilitado', "el registro ya se encuentra habilitado");
+			  show_messages_verify('habilitado_correcto', "se registro se habilito correctamente");
+		?>
             <table id="table-body" class="table table-bordered table-hover" cellspacing="0" width="100%">
                 <thead style="background-color: #4c5a7d;">
                     <tr>

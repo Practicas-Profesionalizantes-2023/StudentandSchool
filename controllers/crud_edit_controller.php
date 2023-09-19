@@ -30,7 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($updated) {
         // La actualización fue exitosa, redirige a una página de éxito o muestra un mensaje de éxito
-        header("Location: ../views/views_crud_pre_registered.php");
+        //header("Location: ../views/views_crud_pre_registered.php");
+        // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+        header("Location: ../views/views_crud_pre_registered.php?editado=correcto");
         exit;
     } else {
         // Hubo un error en la actualización, muestra un mensaje de error

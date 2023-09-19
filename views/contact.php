@@ -25,6 +25,7 @@
 
 	<div class="contact1">
 		<div class="container-contact1">
+			<?php show_messages_verify('mensaje_enviado', "Se envio correctamente el mensaje"); ?>
 			<div class="contact1-pic js-tilt" data-tilt>
 				<img src="../images/img_01.png" alt="IMG">
 			</div>

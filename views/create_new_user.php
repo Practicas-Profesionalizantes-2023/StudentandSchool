@@ -26,6 +26,7 @@
 					<form action="../controllers/crud_create_new_user.php" method="post">
 						<?php
 						show_messages_verify('creado', "se registro correctamente");
+						show_messages_error('campo', "Recurda que debes llenar todos los campos");
 						?>
 						<h3>Crear Cuenta</h3>
 						<input type="text" placeholder="Ingrese el Nombre" name="name">

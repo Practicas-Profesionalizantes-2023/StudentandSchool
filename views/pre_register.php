@@ -13,14 +13,14 @@
     <title>institutec</title>
 </head>
 <body>
-    <?php show_messages_verify('mail_correcto', "revise su casilla de correo, registro exitoso!");  ?>
+    <?php show_messages_verify('mail_correcto', "registro exitoso,revise su casilla de correo");  ?>
     <section class="login">
         <div class="login_box">
             <div class="left">
                 <div class="top_link"><a href="../index.php"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Return home</a></div>
                 <div class="contact">
                     <form action="../controllers/crud_pre_registration.php" method="post">
-                        <?php show_messages_error('campo', "debe llenar todos los campos"); ?>
+                        <?php show_messages_error('campo', "Reduerde que debe llenar todos los campos"); ?>
                         <h3>Pre Inscribirse</h3>
                         <input type="text" placeholder="Ingrese su Nombre Completo" name="name">
                         <input type="text" placeholder="Ingrese su Apellido" name="l_name">

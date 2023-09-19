@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validar que los campos no estén vacíos
     if (empty($name) || empty($dni) || empty($hash_password) || empty($fk_rol_id)||empty($mail)) {
         // Al menos uno de los campos está vacío, muestra un mensaje de error.
-        echo "Todos los campos son obligatorios. Por favor, llene todos los campos.";
+        //echo "Todos los campos son obligatorios. Por favor, llene todos los campos.";
+        header("Location: ../views/create_new_user.php?campo=error");
     } else {
         // Verifica duplicados antes de intentar la inserción
         $checkforduplicated = $database->checkForDuplicates("internal_users", $dni,$mail);
