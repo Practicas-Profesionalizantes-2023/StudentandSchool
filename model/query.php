@@ -50,7 +50,7 @@ class model_sql
     // Función credencial login
  public function login($user, $password)
  {
-    $query = "SELECT dni, name, fk_rol_id, state, password FROM internal_users WHERE dni = :user";
+    $query = "SELECT dni, name, fk_rol_id, state,password_changed,id_user, password FROM internal_users WHERE dni = :user";
     $statement = $this->pdo->prepare($query);
     $statement->bindParam(':user', $user);
     $statement->execute();
@@ -356,7 +356,25 @@ public function deleteUserData($table, $user_id) {
     return $statement->execute();
 }
 
+public function update_password($table,$user_id,$password){
+   try{
+    $query = "UPDATE $table SET password=:password, password_changed=1
+    WHERE id_user=:id_user";
+    
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_user', $user_id, PDO::PARAM_INT);
+    $statement->bindParam(':password', $password, PDO::PARAM_STR);
 
+    $result = $statement->execute();
+
+    return $result; 
+} catch (PDOException $e) {
+    echo "Error in update: " . $e->getMessage();
+    return false;
+}
+   
+
+}
 
 }
 ?>

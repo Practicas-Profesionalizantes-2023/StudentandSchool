@@ -24,6 +24,7 @@ require_once '../controllers/message_control.php';
 					<form action="../controllers/c_login.php" method="post">
 					<?php show_messages_error('no_coinciden', "las credenciales no son válidas");
 	  					  show_messages_error('desactivo', "su cuenta fue desactivada comuniquese con institutec");
+						  show_messages_verify('cambio', "la contraseña se cambio correctamente,vuelva a iniciar session");
    					?>
 						<h3>Login</h3>
 						<input type="text" placeholder="Ingrese su Usuario" name="user">
