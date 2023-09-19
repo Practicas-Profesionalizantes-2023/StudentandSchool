@@ -2,8 +2,8 @@
  //require_once '../controllers/stop_session.php';
  require_once '../controllers/message_control.php';
  require_once '../controllers/crud_changed_password.php';
- /*session_start();
- checkSession();*/
+ session_start();
+ checkSession();
 
 ?>
 <!DOCTYPE html>
