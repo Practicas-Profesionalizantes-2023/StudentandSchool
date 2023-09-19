@@ -303,10 +303,10 @@ function union_table(){
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $statement->execute();
-        return true; // Success in disabling the user
+        return true; 
     } catch (PDOException $e) {
-        // Error handling, you can log the error or throw an exception as needed
-        return false; // Error in disabling the user
+       
+        return false; 
     }
 }
 
@@ -316,10 +316,10 @@ public function enableUser($user_id) {
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $statement->execute();
-        return true; // Success in enabling the user
+        return true;
     } catch (PDOException $e) {
-        // Error handling, you can log the error or throw an exception as needed
-        return false; // Error in enabling the user
+        
+        return false; 
     }
 }
 
@@ -383,6 +383,8 @@ public function deleteUserData($table, $user_id) {
     $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     return $statement->execute();
 }
+
+
 
 }
 ?>

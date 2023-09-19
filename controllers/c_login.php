@@ -30,20 +30,27 @@ if (isset($_POST['submit'])) {
                     exit();
                 case 2:
                     // Redirige al usuario con rol 2 a otra página específica
-                    header("Location: ../views/dasboard_home_rol2.php?mensaje=correcto");
+                    header("Location: ../views/dasboard_home_rol.php?mensaje=correcto");
                     exit();
                 case 3:
                     // Redirige al usuario con rol 3 a otra página específica
-                    header("Location: ../views/dasboard_home_rol3.php?mensaje=correcto");
+                    header("Location: ../views/dasboard_home_rol.php?mensaje=correcto");
                     exit();
                 
             }
         } else {
             // El estado de la cuenta está desactivado
-            echo "Su cuenta está desactivada comuniquese con institutec";
+            //echo "Su cuenta está desactivada comuniquese con institutec";
+           // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+           // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+           header("Location: ../views/login.php?desactivo=error");
+          
         }
     } else {
-        echo "Credenciales incorrectas. Por favor, inténtelo de nuevo.";
+        //echo "Credenciales incorrectas. Por favor, inténtelo de nuevo.";
+        // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+      // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+      header("Location: ../views/login.php?no_coinciden=error");
     }
 }
 ?>

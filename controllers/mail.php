@@ -44,7 +44,8 @@ try {
     if (!$mail->send()) {
         echo 'Error al enviar el mensaje: ' . $mail->ErrorInfo;
     } else {
-        echo 'Los datos se registraron Correctamente revise la casilla de correo porfavor!';
+        /*echo 'Los datos se registraron Correctamente revise la casilla de correo porfavor!';*/
+        header("Location: ../views/pre_register.php?mail_correcto=correcto");
     }
 } catch (Exception $e) {
     echo 'Error inesperado al enviar el mensaje: ' . $e->getMessage();

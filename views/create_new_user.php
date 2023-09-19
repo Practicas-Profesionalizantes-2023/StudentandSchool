@@ -1,5 +1,6 @@
 <?php require_once '../controllers/crud_create_new_user.php';
       require_once '../controllers/stop_session.php';
+	  require_once '../controllers/message_control.php';
       session_start();
       checkSession();
 
@@ -23,6 +24,9 @@
 			<div class="left">
 				<div class="contact">
 					<form action="../controllers/crud_create_new_user.php" method="post">
+						<?php
+						show_messages_verify('creado', "se registro correctamente");
+						?>
 						<h3>Crear Cuenta</h3>
 						<input type="text" placeholder="Ingrese el Nombre" name="name">
                         <input type="text" placeholder="Ingrese el dni" name="dni">

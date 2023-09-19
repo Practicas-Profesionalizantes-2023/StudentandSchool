@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if ($insert_usser) {
                 // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
-                header("Location: ../views/create_new_user.php?mensaje=correcto");
+                header("Location: ../views/create_new_user.php?creado=correcto");
                 exit(); // Asegura que no se ejecuten más instrucciones después de la redirección
             } else {
                 echo "Error en la inserción: No se pudo crear la cuenta.";

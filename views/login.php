@@ -1,10 +1,13 @@
-<?php session_start(); ?>
+<?php session_start(); 
+require_once '../controllers/message_control.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/login.css">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -19,6 +22,9 @@
 				<div class="top_link"><a href="../index.php"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Return home</a></div>
 				<div class="contact">
 					<form action="../controllers/c_login.php" method="post">
+					<?php show_messages_error('no_coinciden', "las credenciales no son válidas");
+	  					  show_messages_error('desactivo', "su cuenta fue desactivada comuniquese con institutec");
+   					?>
 						<h3>Login</h3>
 						<input type="text" placeholder="Ingrese su Usuario" name="user">
 						<div class="password-toggle">

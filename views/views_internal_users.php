@@ -121,7 +121,7 @@ checkSession();
 						<?php foreach($searchResults as $row){?>	
 				   
 				   <tr>
-						   <td><?php  echo $row['id_user']?></td>
+						   <td><?php echo $row['id_user']?></td>
 						   <td><?php echo $row['name']?></td>
 						   <td><?php echo $row['dni']?></td>
 						   <td><?php echo $row['mail']?></td>
@@ -130,6 +130,7 @@ checkSession();
 						   <td><button class="btn btn-danger" name="desability" value="<?php echo $row['id_user']?>">Desabilitar</button></td>
 						   <td><button class="btn btn-primary" name="hability" value="<?php echo $row['id_user']?>">Habilitar</button></td>
 						   <td><a class="btn btn-warning" href="../views/eliminate_new_user.php?id_user=<?php echo $row['id_user']?>">Eliminar</a></td>
+
 				   </tr>
 					  <?php } ?>
 					  <?php } else { ?>

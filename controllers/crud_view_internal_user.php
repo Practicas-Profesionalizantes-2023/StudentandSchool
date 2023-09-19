@@ -2,14 +2,16 @@
 require_once '../model/query.php';
 $database= new model_sql();
 $table="internal_users";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['desability'])) {
        
         $user_id = $_POST['desability'];
-
+      
        
         $user = $database->getUserById($table,$user_id); 
 
+    
         if (!$user) {
             // El usuario no se encontró en la base de datos, maneja el error
             echo "Usuario no encontrado";
@@ -53,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
+
 
     if (isset($_POST['search'])) {
         $searchTerm = $_POST['search_name'];
