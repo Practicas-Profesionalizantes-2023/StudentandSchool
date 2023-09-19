@@ -66,18 +66,19 @@ class model_sql
     
     return false; // Devuelve false si las credenciales son incorrectas
 }
-//funcion para Mostrar un registro
+
 
 public function show_table($table){
 
-$query="SELECT * FROM $table";
-$statement=$this->pdo->prepare($query);
-$statement->execute();
-$list_data=$statement->fetchAll();
+    $query="SELECT * FROM $table";
+    $statement=$this->pdo->prepare($query);
+    $statement->execute();
+    $list_data=$statement->fetchAll();
+    
+    return $list_data;
+    
+    }
 
-return $list_data;
-
-}
 //para mostrar de la tabla los que tengan estado 1
 public function show_state($table){
 
@@ -187,17 +188,6 @@ public function search_pre_register($search) {
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     
     return $results;
-}
-
-//funcion para traer el usuario que coincida con el id
-public function getUserData($userId)
-{
-    $query = "SELECT * FROM pre_registration WHERE id_pre_user = :userId and state=1";
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $statement->execute();
-
-    return $statement->fetch(PDO::FETCH_ASSOC);
 }
 
 public function updateUserData($user_id, $name, $last_name, $phone, $mail, $career, $heigth_street)

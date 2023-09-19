@@ -6,7 +6,7 @@ $show=$database->show_table("careers");//llama la tabla carreras para mostrarlas
 if (isset($_GET['id_pre_user'])) {
     $pre_user_id = $_GET['id_pre_user'];
     
-    $get_user = $database->getUserData($pre_user_id);//funcion para mostrar la seleccion donde el id coincida
+    $get_user = $database->getSingleShow("pre_registration",$pre_user_id);//funcion para mostrar la seleccion donde el id coincida
 } else {
     // Manejar el caso en el que no se proporciona un ID de usuario válido
     $get_user = null;
