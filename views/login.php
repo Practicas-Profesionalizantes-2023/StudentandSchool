@@ -25,6 +25,7 @@ require_once '../controllers/message_control.php';
 					<?php show_messages_error('no_coinciden', "las credenciales no son válidas");
 	  					  show_messages_error('desactivo', "su cuenta fue desactivada comuniquese con institutec");
 						  show_messages_verify('cambio', "la contraseña se cambio correctamente,vuelva a iniciar session");
+						  show_messages_verify('cambio_exito', "la contraseña olvidada se cambio correctamente");
    					?>
 						<h3>Login</h3>
 						<input type="text" placeholder="Ingrese su Usuario" name="user">
@@ -35,7 +36,7 @@ require_once '../controllers/message_control.php';
 						</div>
 						<button class="submit" name="submit">Inicia Session</button>
 						<div class="link">
-							<a href="#" class="control_link">¿te olvidaste la contraseña?</a>
+							<a href="../views/view_i_forgot_password.php" class="control_link">¿te olvidaste la contraseña?</a>
 						</div>
 					</form>
 				</div>

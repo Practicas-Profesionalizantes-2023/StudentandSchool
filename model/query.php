@@ -376,5 +376,40 @@ public function update_password($table,$user_id,$password){
 
 }
 
+//mostrar un solo registro del dni que coincida con el front
+
+public function getSingleuserByDNI($table, $dni) {
+    try {
+        $query = "SELECT * FROM $table WHERE dni = :dni";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':dni', $dni, PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error al buscar usuario por DNI: ' . $e->getMessage();
+        return false;
+    }
+}
+
+//actualizar la contraseña si el dni ingresado es el mismo que el de la base de dato
+public function forgot_password($table, $dni, $password) {
+    try {
+       
+        $query = "UPDATE $table SET password = :password WHERE dni = :dni";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':dni', $dni, PDO::PARAM_INT); // Debe ser INT si el ID es un entero.
+        $statement->bindParam(':password', $password, PDO::PARAM_STR);
+        return $statement->execute();
+    } catch (PDOException $e) {
+        echo 'Error al actualizar la contraseña: ' . $e->getMessage();
+        return false;
+    }
+}
+
+
+
+
+
+
 }
 ?>

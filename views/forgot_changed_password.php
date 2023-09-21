@@ -1,9 +1,7 @@
 <?php
- require_once '../controllers/stop_session.php';
  require_once '../controllers/message_control.php';
- require_once '../controllers/crud_changed_password.php';
  session_start();
- checkSession();
+
 
 ?>
 <!DOCTYPE html>
@@ -20,8 +18,11 @@
 		<div class="create_box">
 			<div class="left">
 				<div class="contact">
-                    <?php show_messages_error('no_coinciden', "las contraseñas no coinciden");?>
-                        <form action="../controllers/crud_changed_password.php" method="post">
+                        <form action="../controllers/crud_forgot_changed_password.php" method="post">
+                        <?php
+                        show_messages_error('error', "No se pudo cambiar la contraseña");
+                        show_messages_error('no_coinciden', "Las contraseñas no coinciden. Por favor, inténtalo nuevamente");
+                        ?>
 						<h3>Cambiar la Contraseña</h3>
 						<input type="password" placeholder="Ingrese la contraseña" name="password" required>
                         <input type="password" placeholder="Repita la contraseña" name="repeat_password"  required>
