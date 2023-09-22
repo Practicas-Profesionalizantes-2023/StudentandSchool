@@ -375,6 +375,97 @@ public function update_password($table,$user_id,$password){
    
 
 }
+function insertCareer($career, $title, $amount ,$book) {
+    
+    
+     $query = "INSERT INTO careers (career_name , title, amount_subjects, date_high, state, fk_book_career_id)
+      VALUES (:careers,:title, :amount_subjects, CURRENT_TIMESTAMP, '1', :book)";
+
+    $consulta = $this->pdo->prepare($query);
+
+
+    $consulta->bindParam(':careers', $career, PDO::PARAM_STR);
+    $consulta->bindParam(':title', $title, PDO::PARAM_STR);
+    $consulta->bindParam(':amount_subjects', $amount, PDO::PARAM_INT);
+    $consulta->bindParam(':book', $book, PDO::PARAM_INT);
+    try {
+        if ($consulta->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+
+public function getSingleShowCareer($table,$value)
+    {
+        $query = "SELECT * FROM $table WHERE id_career = :id_career AND state = 1";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_career', $value, PDO::PARAM_INT);
+        $statement->execute();
+        
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+    function eliminated_career($table, $id_user)
+{
+    try {
+        // Luego, actualiza el estado del registro a 0
+        $query = "UPDATE $table SET state = 0 WHERE id_career = :id_career";
+        $updateStatement = $this->pdo->prepare($query);
+        $updateStatement->bindParam(':id_career', $id_user, PDO::PARAM_INT);
+
+        // Ejecuta la actualización
+        $updateStatement->execute();
+
+        // Verifica si se actualizó al menos una fila
+        $rowCount = $updateStatement->rowCount();
+
+        if ($rowCount > 0) {
+            // La eliminación se realizó con éxito
+            return true;
+        } 
+    } catch (PDOException $e) {
+        echo "Error al actualizar: " . $e->getMessage();
+        return false;
+    }
+}
+public function getUserCareer($idcareer)
+{
+    $query = "SELECT * FROM careers WHERE id_career = :id_career and state=1";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_career', $idcareer, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+public function updateUserCareer($id_career, $career, $title, $subjects)
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE careers SET 
+                career_name = :career, 
+                title = :title, 
+                amount_subjects = :subjects
+                WHERE id_career = :id_career";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_career', $id_career, PDO::PARAM_INT);
+        $statement->bindParam(':career', $career, PDO::PARAM_STR);
+        $statement->bindParam(':title', $title, PDO::PARAM_STR);
+        $statement->bindParam(':subjects', $subjects, PDO::PARAM_INT);
+       
+        
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
 
 //mostrar un solo registro del dni que coincida con el front
 
@@ -412,4 +503,6 @@ public function forgot_password($table, $dni, $password) {
 
 
 }
+
+
 ?>
