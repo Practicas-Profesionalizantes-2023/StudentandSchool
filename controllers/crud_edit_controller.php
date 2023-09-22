@@ -1,7 +1,7 @@
 <?php
 require_once "../model/query.php";
 $database = new model_sql();
-$show=$database->show_table("careers");//llama la tabla carreras para mostrarlas
+$show=$database->show_state("careers");//llama la tabla carreras para mostrarlas
 
 if (isset($_GET['id_pre_user'])) {
     $pre_user_id = $_GET['id_pre_user'];

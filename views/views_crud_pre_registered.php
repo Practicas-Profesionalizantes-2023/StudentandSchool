@@ -63,7 +63,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#">Carreras</a>
+								<a class="dropdown-item" href="../views/views_crud_admin_careers.php">Carreras</a>
 								<a class="dropdown-item" href="#">Materia</a>
 								
 							</div>
