@@ -29,7 +29,7 @@
 						<div class="button-container">
                             <button class="submit" name="submit">Cambiar Contraseña</button>
                         </div>
-                        <button class="back"><a href="../views/login.php" >volver</a></button>
+                       
                     </form>
 				</div>
 			
