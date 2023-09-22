@@ -85,9 +85,9 @@ $careerData=$database->show_state("careers");
     </div>
     <div class="row py-3">
         <div class="col">
-           <table class="table table-border">
+           <table class="table table-border ">
                <thead>
-                <tr>
+                <tr class="btn-primary">
                     
                     <th>id Carrera</th>
                     <th>Carrera</th>
@@ -95,7 +95,6 @@ $careerData=$database->show_state("careers");
                     <th>materias</th>
                     <th>fecha de creacion</th>
                     <th>estados</th>
-                    <th>libros</th>
                     <th>editar</th>
                     <th>eliminar</th>
                     
@@ -114,7 +113,6 @@ $careerData=$database->show_state("careers");
                 <td> <?php echo $row['amount_subjects'] ?></td>
                 <td> <?php echo $row['date_high'] ?></td>
                 <td> <?php echo $row['state'] ?></td>
-                <td> <?php echo $row['fk_book_career_id'] ?></td>
                 <td><a href="form_edit_careers.php?id=<?php echo $row['id_career'] ?>" class="btn btn-warning float-right">Editar carrera</a></td>
                 <td><a href="views_delete_careers.php?id=<?php echo $row['id_career'] ?>" class="btn btn-danger float-right">Eliminar carrera</a></td>
                </tr>

@@ -32,11 +32,6 @@
                     <input type="text" name="amoun_subjects" id="amoun_subjects" class="form-control" required >
                 </div>
                 <div class="col-md-8">
-                    <label for="book" class="form-label">Cantidad de libros</label>
-                    <input type="text" name="book" id="book" class="form-control" required >
-                </div>
-               
-                <div class="col-md-8">
                   <a class="btn btn-secondary" href="views_crud_admin_careers.php">Regresar</a>
                   <button type="submit" class="btn btn-primary" name="keep">Guardar</button>
                 </div>

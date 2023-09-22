@@ -379,7 +379,7 @@ function insertCareer($career, $title, $amount ,$book) {
     
     
      $query = "INSERT INTO careers (career_name , title, amount_subjects, date_high, state, fk_book_career_id)
-      VALUES (:careers,:title, :amount_subjects, CURRENT_TIMESTAMP, '1', :book)";
+      VALUES (:careers,:title, :amount_subjects, CURRENT_TIMESTAMP, '1', '1')";
 
     $consulta = $this->pdo->prepare($query);
 
@@ -387,7 +387,7 @@ function insertCareer($career, $title, $amount ,$book) {
     $consulta->bindParam(':careers', $career, PDO::PARAM_STR);
     $consulta->bindParam(':title', $title, PDO::PARAM_STR);
     $consulta->bindParam(':amount_subjects', $amount, PDO::PARAM_INT);
-    $consulta->bindParam(':book', $book, PDO::PARAM_INT);
+  
     try {
         if ($consulta->execute()) {
             return true; // Devuelve verdadero si la inserción fue exitosa
