@@ -123,9 +123,9 @@ checkSession();
                 </thead>
                 <tbody>
                 
-				<?php
+				<?php 
                         if (isset($searchResults)) {?>
-						<?php foreach($searchResults as $row){?>	
+						<?php foreach($searchResults as $row){;?>	
 				   
 				   <tr>
 						   <td><?php echo $row['id_user']?></td>
@@ -193,7 +193,7 @@ checkSession();
         ],
         searching: false, // Desactiva la barra de búsqueda
     });
-});
+});*/
 </script>
     <script src="js/custom.js"></script>
 	<script src="js/timeline.min.js"></script>
@@ -211,5 +211,3 @@ checkSession();
 </html>
 
 
-
- 

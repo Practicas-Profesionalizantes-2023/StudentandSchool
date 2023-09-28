@@ -167,9 +167,10 @@ public function pre_registration($value1, $value2, $value3, $value4
 public function search_pre_register($search) {
     $query = "SELECT * FROM pre_registration 
             WHERE name LIKE :name 
-            OR last_name LIKE :last_name 
-            OR dni LIKE :dni 
             OR mail LIKE :mail";
+
+
+         
     
     // Preparar la declaración
     $statement = $this->pdo->prepare($query);
@@ -177,9 +178,9 @@ public function search_pre_register($search) {
     // Asignar el valor de búsqueda a los marcadores de posición
     $searchParam = "%$search%"; // Agregar comodines para buscar coincidencias parciales
     $statement->bindParam(':name', $searchParam, PDO::PARAM_STR);
-    $statement->bindParam(':last_name', $searchParam, PDO::PARAM_STR);
-    $statement->bindParam(':dni', $searchParam, PDO::PARAM_STR);
     $statement->bindParam(':mail', $searchParam, PDO::PARAM_STR);
+
+ 
 
     // Ejecutar la consulta
     $statement->execute();
@@ -313,29 +314,33 @@ public function enableUser($user_id) {
     }
 }
 
+
 public function search_internal_users($search) {
-    $query = "SELECT * FROM internal_users
-              WHERE name LIKE :name 
-              OR dni LIKE :dni 
-              OR mail LIKE :mail";
-    
+    $query = "SELECT internal_users.id_user AS 'id_user', internal_users.name AS 'name'
+            , internal_users.dni AS 'dni', internal_users.mail AS 'mail', rol.details AS 'details',
+            internal_users.state AS 'state' 
+              FROM internal_users 
+              JOIN rol ON internal_users.fk_rol_id = rol.id_rol 
+              WHERE internal_users.mail LIKE :search_name
+              or internal_users.name LIKE :search_mail" ;
+
     // Preparar la declaración
     $statement = $this->pdo->prepare($query);
 
     // Asignar el valor de búsqueda a los marcadores de posición
     $searchParam = "%$search%"; // Agregar comodines para buscar coincidencias parciales
-    $statement->bindParam(':name', $searchParam, PDO::PARAM_STR);
-    $statement->bindParam(':dni', $searchParam, PDO::PARAM_STR);
-    $statement->bindParam(':mail', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':search_name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':search_mail', $searchParam, PDO::PARAM_STR);
 
     // Ejecutar la consulta
     $statement->execute();
 
     // Obtener y devolver los resultados
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    
+
     return $results;
 }
+
 
 
 public function getSingleuser($table,$value)
@@ -497,12 +502,124 @@ public function forgot_password($table, $dni, $password) {
     }
 }
 
+// Insertar una materia asociada a una carrera
+public function insert_subject($subject_name, $fk_career_id) {
+    $query = "INSERT INTO subjects (subject_name, create_date, state, fk_career_id)
+              VALUES (:subject_name, CURRENT_TIMESTAMP, '1', :fk_career_id)";
+
+    $statement = $this->pdo->prepare($query);
+
+    $statement->bindParam(':subject_name', $subject_name, PDO::PARAM_STR);
+    $statement->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
+  
+    try {
+        if ($statement->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+
+//mostrando los datos de materia y carrerra donde los id coinciden
+public function show_date_id_career($value) {
+    try {
+        $query = "SELECT
+        subjects.id_subjects AS id_subjects,
+        subjects.subject_name AS subject_name,
+        subjects.create_date AS create_date,
+        subjects.state AS state,
+        subjects.fk_career_id AS fk_career_id,
+        careers.id_career AS id_career,
+        careers.career_name AS career_name
+    FROM
+        subjects
+    JOIN
+        careers ON subjects.fk_career_id = careers.id_career
+    WHERE
+        subjects.fk_career_id = :fk_career_id
+        AND subjects.state = 1;";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':fk_career_id', $value, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error al buscar la carrera: ' . $e->getMessage();
+        return false;
+    }
+}
+
+// seleccionar donde los id acoincidan
+public function getSingle_subject($table,$value)
+{
+    $query = "SELECT * FROM $table WHERE id_subjects = :id_subjects";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_subjects', $value, PDO::PARAM_INT);
+    $statement->execute();
+    
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
 
 
+
+public function update_subject($value1, $value2)
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE subjects SET 
+        subject_name = :subject_name
+        WHERE id_subjects = :id_subjects";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_subjects', $value1, PDO::PARAM_INT);
+        $statement->bindParam(':subject_name', $value2, PDO::PARAM_STR);
+       
+       
+        
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
+
+// eliminar una materia cambiando su estado a 0
+
+
+function eliminated_subject($table, $value)
+{
+    try {
+        // Luego, actualiza el estado del registro a 0
+        $query = "UPDATE $table SET state = 0 WHERE id_subjects = :id_subjects";
+        $updateStatement = $this->pdo->prepare($query);
+        $updateStatement->bindParam(':id_subjects', $value, PDO::PARAM_INT);
+
+        // Ejecuta la actualización
+        $updateStatement->execute();
+
+        // Verifica si se actualizó al menos una fila
+        $rowCount = $updateStatement->rowCount();
+
+        if ($rowCount > 0) {
+            // La eliminación se realizó con éxito
+            return true;
+        } 
+    } catch (PDOException $e) {
+        echo "Error al actualizar: " . $e->getMessage();
+        return false;
+    }
+}
 
 
 
 }
+
 
 
 ?>

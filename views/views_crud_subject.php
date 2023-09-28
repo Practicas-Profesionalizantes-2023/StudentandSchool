@@ -1,8 +1,8 @@
 <?php
 require_once '../model/query.php';
+require_once '../controllers/crud_views_subject.php';
 
-$database = new model_sql();
-$careerData=$database->show_state("careers");
+
 
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $careerData=$database->show_state("careers");
     <!-- Custom CSS -->
      <!-- Modernizer for Portfolio -->
      <script src="../js/modernizer.js"></script>
-    <title>Document</title>
+    <title>institutec</title>
 </head>
 <body class="py-3">
 
@@ -68,13 +68,19 @@ $careerData=$database->show_state("careers");
 	</header>
     <br>
     <br>
+
+
     <main class="container">
      
+    <h1 style="text-align: center;">Materias de la carrera <?php echo $get_career['career_name']?></h1>
+
+    
     <div class="row">
      <div class="col">
-        <h4>Crud de Carreras
+        <h4>Crud de Materias
         
-       <a href="create_careers.php" class="btn btn-primary float-right">Crear</a>
+        <a href="../views/create_subject.php" class="btn btn-primary float-right">Crear</a>
+
 
        </h4>
         
@@ -89,10 +95,9 @@ $careerData=$database->show_state("careers");
                <thead>
                 <tr class="btn-primary">
                     
-                    <th> Nombre de la Carrera</th>
-                    <th>Titulo</th>
-                    <th> Cantidad de Materias</th>
-                    <th>fecha de creacion</th>
+                    <th>Materia</th>
+                    <th>Creada</th>
+                    <th>Carrera</th>
                     <th>estados</th>
                     <th>Ver detalles</th>
                     <th>editar</th>
@@ -102,19 +107,19 @@ $careerData=$database->show_state("careers");
                </thead>
                <tbody>
                <?php
-               foreach ($careerData as $row) {
+               foreach ($show as $row) {
                 # code...
                
                ?>
                <tr>
+                <!--<td> </*?php echo $row['id_subjects'] ?*/></td>-->
+                <td> <?php echo $row['subject_name'] ?></td>
+                <td> <?php echo $row['create_date'] ?></td>
                 <td> <?php echo $row['career_name'] ?></td>
-                <td> <?php echo $row['title'] ?></td>
-                <td> <?php echo $row['amount_subjects'] ?></td>
-                <td> <?php echo $row['date_high'] ?></td>
                 <td> <?php echo $row['state'] ?></td>
-                <td><a href="../views/views_crud_subject.php?id=<?php echo $row['id_career'] ?>" class="btn btn-info float-right">Ver Detalles</a></td>
-                <td><a href="form_edit_careers.php?id=<?php echo $row['id_career'] ?>" class="btn btn-warning float-right">Editar carrera</a></td>
-                <td><a href="views_delete_careers.php?id=<?php echo $row['id_career'] ?>" class="btn btn-danger float-right">Eliminar carrera</a></td>
+                <td><a href="form_edit_careers.php?id=<?php echo $row['id_subjects'] ?>" class="btn btn-info float-right">Ver Detalles</a></td>
+                <td><a href="../views/form_edit_subject.php?id=<?php echo $row['id_subjects'] ?>" class="btn btn-warning float-right">Editar Materia</a></td>
+                <td><a href="../views/eliminate_Subject.php?id=<?php echo $row['id_subjects'] ?>" class="btn btn-danger float-right">Eliminar Materia</a></td>
                </tr>
                <?php }?>
                </tbody>
