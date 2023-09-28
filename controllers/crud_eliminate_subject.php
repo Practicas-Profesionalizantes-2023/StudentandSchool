@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($eliminated) {
             //header("Location: ../views/views_crud_pre_registered.php");
-            header("Location: ../views/views_crud_admin_careers.php?eliminado=correcto");
+            header("Location: ../views/views_crud_admin_careers.php?eliminar_materia=correcto");
             exit(); // Agrega esta línea para evitar que se ejecute código adicional después de la redirección
         } 
     }

@@ -1,6 +1,8 @@
 <?php
  require_once '../controllers/message_control.php';
- session_start();
+ 
+session_start();
+
 
 
 ?>

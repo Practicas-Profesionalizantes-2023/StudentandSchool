@@ -1,7 +1,6 @@
 <?php
 require_once "../model/query.php";
-$database = new model_sql();
-
+$database = new model_sql();// Si no se encontraron datos o hubo un error, devuelve un mensaje de error
 
 if (isset($_GET['id'])) {
     $id_career = $_GET['id'];
@@ -26,10 +25,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($updated) {
         // La actualización fue exitosa, redirige a una página de éxito o muestra un mensaje de éxito
-        header("Location: ../views/views_crud_admin_careers.php");
-        exit;
+        // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+        header("Location: ../views/views_crud_admin_careers.php?modifico=correcto");
+        exit();
     } else {
-        // Hubo un error en la actualización, muestra un mensaje de error
-        echo "Error al actualizar los datos.";
+      
+       // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+       header("Location: ../views/views_crud_admin_careers.php?no_se_actualizo=error");
+       exit();
     }
 }
+?>

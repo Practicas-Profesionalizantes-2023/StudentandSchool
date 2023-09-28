@@ -14,7 +14,7 @@ if(!empty($subject_name)){
     
     if($insert){
         // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
-        header("Location: ../views/views_crud_admin_careers.php?mensaje=correcto");
+        header("Location: ../views/views_crud_admin_careers.php?creo=correcto");
     }
     
 }else{

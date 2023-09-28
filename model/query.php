@@ -380,7 +380,7 @@ public function update_password($table,$user_id,$password){
    
 
 }
-function insertCareer($career, $title, $amount ,$book) {
+function insertCareer($career, $title, $amount) {
     
     
      $query = "INSERT INTO careers (career_name , title, amount_subjects, date_high, state, fk_book_career_id)

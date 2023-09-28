@@ -218,7 +218,7 @@
         ],
         searching: false, // Desactiva la barra de búsqueda
     });
-});
+});*/
 </script>
     <script src="js/custom.js"></script>
 	<script src="js/timeline.min.js"></script>

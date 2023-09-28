@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($updated) {
      
-      header("Location: ../views/views_crud_admin_careers.php?Modifico=correcto");
+      header("Location: ../views/views_crud_admin_careers.php?correcto=correcto");
         exit();
     } else {
         // Hubo un error en la actualización, muestra un mensaje de error
