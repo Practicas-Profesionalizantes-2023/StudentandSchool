@@ -25,6 +25,28 @@ $('.subject_edit_Btn').click(function () {// modal para poder editar las Materia
     $('#editModal').modal('show');
 });
 
+
+$('.editBtn').click(function () {// modal para poder editar las preinscriptos
+    var id_pre = $(this).data('id');
+    var name_pre = $(this).data('name');
+    var last=$(this).data('last');
+    var phone=$(this).data('phone');
+    var mail=$(this).data('mail');
+    var career_pre=$(this).data('career');
+    var street=$(this).data('street');
+
+
+    $('#id_pre_user').val(id_pre);
+    $('#name').val(name_pre);
+    $('#last').val(last);
+    $('#phone').val(phone);
+    $('#mail').val(mail);
+    $('#career').val(career_pre);
+    $('#street').val(street);
+    $('#editModal').modal('show');
+});
+
+
 //----------------------------------------------
 //modal de eliminar
 $('.subject_delete_Btn').click(function () {// modal para poder eliminar las Materias
@@ -48,11 +70,35 @@ $('.career_delete_Btn').click(function () {// modal para poder eliminar las Mate
 });
 
 
+$('.user_delete_Btn').click(function () {// modal para poder eliminar las Materias
+    var user = $(this).data('id_user'); 
+    
+   
+    
+    $('#id_user_eliminate').val(user);
+    
+    $('#delete_modal').modal('show');
+});
+
+
+
+
+$('.user_delete_Btn').click(function () {// modal para poder eliminar las Materias
+    var pre_user = $(this).data('id_pre_user'); 
+    
+   
+    
+    $('#id_pre_user').val(pre_user);
+    
+    $('#delete_modal').modal('show');
+});
+
+
 //----------------------------------------------------
 //modal para crear
 
 
-$(document).ready(function () {
+$(document).ready(function () {//modal para crear materias
     $('.create_subject_Btn').click(function () {
         $('#create_Modal').modal('show');
     });
@@ -60,8 +106,12 @@ $(document).ready(function () {
 
 
 
-$(document).ready(function () {
+$(document).ready(function () {// modal para crear carreras
     $('.create_career_Btn').click(function () {
         $('#create_Modal').modal('show');
     });
 });
+
+
+
+

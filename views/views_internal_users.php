@@ -1,8 +1,11 @@
 <?php
+session_start();
 require_once '../controllers/stop_session.php';
 require_once '../controllers/crud_view_internal_user.php';
 require_once '../controllers/message_control.php';
-session_start();
+require_once '../controllers/crud_create_new_user.php';
+require_once '../controllers/crud_eliminate_user.php';
+
 checkSession();
 
 ?>
@@ -24,9 +27,8 @@ checkSession();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.../js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Site CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- ALL VERSION CSS -->
@@ -37,8 +39,6 @@ checkSession();
     <link rel="stylesheet" href="css/custom.css">
     <!--my links css home_page and footer css-->
     <link rel="stylesheet" href="../css/footer.css">
-     <link rel="stylesheet" href="../css/datatable.css">
-     
     <!-- Modernizer for Portfolio -->
     <script src="../js/modernizer.js"></script>
     <title>Institutec</title>
@@ -65,7 +65,6 @@ checkSession();
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="../views/views_crud_admin_careers.php">Carreras</a>
-								<a class="dropdown-item" href="#">Materia</a>
 								
 							</div>
 						</li>
@@ -80,7 +79,6 @@ checkSession();
 						<li class="nav-item dropdown active">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Usuarios</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="../views/create_new_user.php">Crear Nuevo Usuario</a>
 								<a class="dropdown-item" href="#">Ver Usuarios</a>
 							</div>
                         <li class="nav-item"><a class="nav-link" href="../controllers/destroy_Session.php">Cerrar Session</a></li>
@@ -91,122 +89,191 @@ checkSession();
 	</header>
 	<!-- End header -->
 	
-
-	<form action="../controllers/crud_view_internal_user.php" method="post">
-	<div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="col-sm-offset-2 col-sm-8">
-            <h3 class="text-center"><small class="mensaje"></small></h3>
+	<!---vista usuarios internos-->
+	<main class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <br>
+            <br>
+            <?php
+                show_messages_verify('eliminado', "se eliminó el registro correctamente");
+                show_messages_error('desabilitado', "el registro ya está deshabilitado");
+                show_messages_verify('desabilitado_correcto', "el registro ya se encuentra deshabilitado correctamente");
+                show_messages_error('habilitado', "el registro ya se encuentra habilitado");
+                show_messages_verify('habilitado_correcto', "se registro se habilitó correctamente");
+                show_messages_verify('creado', "se registro correctamente");
+                show_messages_error('dato_no_encontrado', "no se encontraron datos");
+            ?>
+            <a class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
         </div>
-		<input type="text" class="search" placeholder="Buscar..." name="search_name">
-	    <input type="submit" name="search" value="buscar">
-		<?php show_messages_verify('eliminado', "se elimino el registro correctamente"); 
-		      show_messages_error('desabilitado', "el registro ya esta desabilitado");
-			  show_messages_verify('desabilitado_correcto', "el registro ya se encuentra desabilito correctamente");
-		      show_messages_error('habilitado', "el registro ya se encuentra habilitado");
-			  show_messages_verify('habilitado_correcto', "se registro se habilito correctamente");
-		?>
-            <table id="table-body" class="table table-bordered table-hover" cellspacing="0" width="100%">
-                <thead style="background-color: #4c5a7d;">
-                    <tr>
-                        <th>id usuario</th>
-                        <th>Nombre</th>
-                        <th>Dni</th>
-                        <th>Email</th>
-						<th>tipo de rol</th>
-						<th>Estado</th>
-						<th>Desabilitar Cuenta</th>
-						<th>Habilitar Cuenta</th>
-						<th>Eliminar Cuenta</th>
+    </div>
 
-                    </tr>
-                </thead>
-                <tbody>
-                
-				<?php 
-                        if (isset($searchResults)) {?>
-						<?php foreach($searchResults as $row){;?>	
-				   
-				   <tr>
-						   <td><?php echo $row['id_user']?></td>
-						   <td><?php echo $row['name']?></td>
-						   <td><?php echo $row['dni']?></td>
-						   <td><?php echo $row['mail']?></td>
-						   <td><?php echo $row['details']?></td>
-						   <td><?php echo $row['state']?></td>
-						   <td><button class="btn btn-danger" name="desability" value="<?php echo $row['id_user']?>">Desabilitar</button></td>
-						   <td><button class="btn btn-primary" name="hability" value="<?php echo $row['id_user']?>">Habilitar</button></td>
-						   <td><a class="btn btn-warning" href="../views/eliminate_new_user.php?id_user=<?php echo $row['id_user']?>">Eliminar</a></td>
+    <div class="row py-3">
+        <div class="col">
+            <form action="../controllers/crud_view_internal_user.php" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <input type="text" class="search" placeholder="Buscar..." name="search_name">
+                        <button class="btn btn-outline-primary" type="submit" name="search">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+           
+                <table id="table-body" class="table table-border">
+                    <thead class="btn-primary">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>Email</th>
+                            <th>Tipo de Rol</th>
+                            <th>Estado</th>
+                            <th>Desabilitar Cuenta</th>
+                            <th>Habilitar Cuenta</th>
+                            <th>Eliminar Cuenta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (isset($searchResults)) { ?>
+                            <?php foreach($searchResults as $row) { ?>
+                                <tr>
+                                    <td><?php echo $row['name'] ?></td>
+                                    <td><?php echo $row['dni'] ?></td>
+                                    <td><?php echo $row['mail'] ?></td>
+                                    <td><?php echo $row['details'] ?></td>
+                                    <td><?php echo ($row['state'] == 1) ? 'Activo' : 'Inactivo'; ?></td>
+                                    <td>
+                                        <button class="btn btn-danger" name="desability" value="<?php echo $row['id_user'] ?>">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" name="hability" value="<?php echo $row['id_user'] ?>">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning float-right user_delete_Btn text-white" data-id_user="<?php echo $row['id_user']; ?>">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php foreach ($union as $row) { ?>
+                                <tr>
+                                    <td><?php echo $row['name'] ?></td>
+                                    <td><?php echo $row['dni'] ?></td>
+                                    <td><?php echo $row['mail'] ?></td>
+                                    <td><?php echo $row['details'] ?></td>
+                                    <td><?php echo ($row['state'] == 1) ? 'Activo' : 'Inactivo'; ?></td>
+                                    <td>
+                                        <button class="btn btn-danger" name="desability" value="<?php echo $row['id_user'] ?>">
+                                            <i class="fas fa-ban"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" name="hability" value="<?php echo $row['id_user'] ?>">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning float-right user_delete_Btn text-white" data-id_user="<?php echo $row['id_user']; ?>">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</main>
 
-				   </tr>
-					  <?php } ?>
-					  <?php } else { ?>
+<!-- Modal para Crear nuevo usuario -->
+<div id="create_Modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h5 class="modal-title text-white">Dar de Alta a un Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"  style="color: white";>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="../controllers/crud_create_new_user.php" method="post">
+                    <div class="form-group">
+                        <label for="subject">Ingrese Nombre Completo</label>
+                        <input type="text" placeholder="Ingrese el Nombre" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Ingrese el Documento de Identidad</label>
+                        <input type="text" placeholder="Ingrese el dni" name="dni" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Ingrese un Correo Electrónico</label>
+                        <input type="text" placeholder="Ingrese el correo electrónico" name="mail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Ingrese La Contraseña</label>
+                        <input class="form-control" type="password" name="password" placeholder="Contraseña" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rol">Elija el rol del usuario:</label>
+                        <select name="rol" id="rool" class="form-control" required>
+                            <?php foreach ($rol as $roles) { ?>
+                                <option value="<?php echo $roles['id_rol']; ?>"><?php echo $roles['details']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="text-center">
+                        <a href="../views/views_internal_users.php" class="btn btn-outline-secondary mr-2">Cerrar</a>
+                        <button type="submit" class="btn btn-outline-primary" name="save_data">Guardar Datos</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-				<?php foreach($union as $row){?>	
-				   
-				<tr>
-						<td><?php  echo $row['id_user']?></td>
-                        <td><?php echo $row['name']?></td>
-                        <td><?php echo $row['dni']?></td>
-						<td><?php echo $row['mail']?></td>
-						<td><?php echo $row['details']?></td>
-						<td><?php echo $row['state']?></td>
-						<td><button class="btn btn-danger" name="desability" value="<?php echo $row['id_user']?>">Desabilitar</button></td>
-						<td><button class="btn btn-primary" name="hability" value="<?php echo $row['id_user']?>">Habilitar</button></td>
-						<td><a class="btn btn-warning" href="../views/eliminate_new_user.php?id_user=<?php echo $row['id_user']; ?>">Eliminar</a>
-</td>
-				</tr>
-                   <?php } ?>
-				   <?php } ?>
-               </tbody>
-    	</table>
 
-    
+<!-- Eliminar Usuario -->
+<div id="delete_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h5 class="modal-title text-white">Eliminar Materia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="advertencia">
+                    <h2>Advertencia</h2>
+                    <p>¿Seguro que desea eliminar este elemento?</p>
+                    <form action="../controllers/crud_eliminate_user.php" method="post">
+                        <input type="hidden" name="id_user" id="id_user_eliminate" value="<?php echo $get_user['id_user']; ?>">
+                        <div class="btn-group" role="group" aria-label="Botones de acción">
+                            <button type="submit" class="btn btn-outline-danger mr-2" name="delete">Eliminar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+				
+<!-- Agrega este código JavaScript al final de tu archivo -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/modal.js"></script>
+<script src="../js/all.js"></script>
 
 
-
-
-
-
-    <!-- ALL JS FILES -->
-    <script src="../js/all.js"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jsPDF/2.4.0/jspdf.umd.min.js"></script>
-
-<script>
-/*$(document).ready(function () {
-    // Inicializa la tabla DataTables sin barra de búsqueda
-    var table = $('#table-body').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'csv', 'excel', 'pdf', 'print'
-        ],
-        searching: false, // Desactiva la barra de búsqueda
-    });
-});*/
-</script>
-    <script src="js/custom.js"></script>
-	<script src="js/timeline.min.js"></script>
-	
-    <script>
-		timeline(document.querySelectorAll('.timeline'), {
-			forceVerticalMode: 700,
-			mode: 'horizontal',
-			verticalStartPosition: 'left',
-			visibleItems: 4
-		});
-	
-</script>
 </body>
 </html>
 

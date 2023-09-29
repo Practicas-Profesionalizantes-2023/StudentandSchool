@@ -13,7 +13,12 @@ if (isset($_GET['id_pre_user'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-   
+  
+
+
+    if(isset($_POST['save_data'])){
+
+         
     // Verifica si se ha enviado el formulario
     $user_id = $_POST["user_id"];
     $name = isset($_POST["name"]) ? $_POST["name"] : null;
@@ -22,8 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mail = isset($_POST["mail"]) ? $_POST["mail"] : null;
     $career = isset($_POST["carrer"]) ? $_POST["carrer"] : null;
     $heigth_street = isset($_POST["heigth_street"]) ? $_POST["heigth_street"] : null;// La siguiente línea asigna el valor de $_POST["heigth_street"] a $heigth_street si está definido, de lo contrario, asigna null.
-
-    
 
     // Llama a la función de actualización de la base de datos
     $updated = $database->updateUserData($user_id, $name, $last_name, $phone, $mail, $career, $heigth_street);
@@ -37,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Hubo un error en la actualización, muestra un mensaje de error
         echo "Error al actualizar los datos.";
+    }
     }
 }
 

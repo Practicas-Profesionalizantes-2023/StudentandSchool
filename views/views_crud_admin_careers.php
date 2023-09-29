@@ -63,7 +63,6 @@ $careerData=$database->show_state("careers");
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Gestionar Usuarios</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="../views/create_new_user.php">Crear Nuevo Usuario</a>
 								<a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>
 							</div>
                         <li class="nav-item"><a class="nav-link" href="../controllers/destroy_Session.php">Cerrar Session</a></li>
@@ -106,7 +105,7 @@ $careerData=$database->show_state("careers");
                         <th style="max-width: 170px; white-space: nowrap;">Nombre de la Carrera</th>
                         <th style="max-width: 170px; white-space: nowrap;">Título</th>
                         <th style="max-width: 170px; white-space: nowrap;">Cantidad de Materias</th>
-                        <th style="max-width: 150px; white-space: nowrap;">Fecha de Creación</th>
+                        <th style="max-width: 150px; white-space: nowrap;">Fecha de Alta</th>
                         <th style="max-width: 150px; white-space: nowrap;">Ver Detalles</th>
                         <th style="max-width: 150px; white-space: nowrap;">Editar</th>
                         <th style="max-width: 150px; white-space: nowrap;">Eliminar</th>
@@ -120,10 +119,10 @@ $careerData=$database->show_state("careers");
                
             <tr>
                
-               <td> <?php echo $row['career_name'] ?></td>
+                <td> <?php echo $row['career_name'] ?></td>
                 <td> <?php echo $row['title'] ?></td>
                 <td> <?php echo $row['amount_subjects'] ?></td>
-                <td> <?php echo $row['date_high'] ?></td>
+                <td><?php echo date('d/m/Y H:i:s', strtotime($row['date_high'])); ?></td>
                 <td><a href="../views/views_crud_subject.php?id=<?php echo $row['id_career'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
                 <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_career']; ?>" data-career="<?php echo $row['career_name']; ?>" data-title="<?php echo $row['title']; ?>" data-subjects="<?php echo $row['amount_subjects']; ?>"><i class="fas fa-edit"></i></a></td>
                 <td> <a class="btn btn-danger float-right career_delete_Btn text-white" data-id_career="<?php echo $row['id_career']; ?>"><i class="fas fa-trash-alt"></i></a></td>
@@ -146,7 +145,7 @@ $careerData=$database->show_state("careers");
         <div class="modal-content">
             <div class="modal-header btn-primary">
                 <h5 class="modal-title text-white" >Dar de Alta Una Carrera</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -179,7 +178,7 @@ $careerData=$database->show_state("careers");
         <div class="modal-content">
             <div class="modal-header btn-primary">
                 <h5 class="modal-title text-white">Editar Carrera</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -212,13 +211,13 @@ $careerData=$database->show_state("careers");
 
 
 
-<!-- Eliminar Materia -->
+<!-- Eliminar Carrera -->
 <div id="delete_career_modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header btn-primary">
                 <h5 class="modal-title text-white">Eliminar Materia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

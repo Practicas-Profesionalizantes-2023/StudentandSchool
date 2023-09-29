@@ -58,11 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-
+     
     if (isset($_POST['search'])) {
         $searchTerm = $_POST['search_name'];
         $searchResults = $database->search_internal_users($searchTerm);
-
+      
         // Incluye la vista HTML pasando los resultados de la búsqueda
         require_once '../views/views_internal_users.php';
         exit; // Detiene la ejecución del script después de mostrar los resultados

@@ -94,7 +94,7 @@ checkSession();
                 <tr class="btn-primary">
                     
                     <th>Materia</th>
-                    <th>Creada</th>
+                    <th>Fecha de Alta</th>
                     <th>Carrera</th>
                     <th>Ver detalles</th>
                     <th>editar</th>
@@ -112,7 +112,7 @@ checkSession();
               <tr>
                 <!--<td> </*?php echo $row['id_subjects'] ?*/></td>-->
                 <td> <?php echo $row['subject_name'] ?></td>
-                <td> <?php echo $row['create_date'] ?></td>
+                <td><?php echo date('d/m/Y H:i:s', strtotime($row['create_date'])); ?></td>
                 <td> <?php echo $row['career_name'] ?></td>
                 <td><a href="form_edit_careers.php?id=<?php echo $row['id_subjects'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
                 <td><a class="btn btn-warning float-right subject_edit_Btn  text-white" data-id="<?php echo $row['id_subjects']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
@@ -133,7 +133,7 @@ checkSession();
         <div class="modal-content">
             <div class="modal-header btn-primary">
                 <h5 class="modal-title text-white" >Dar de alta Materia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -168,7 +168,7 @@ checkSession();
         <div class="modal-content">
             <div class="modal-header btn-primary">
                 <h5 class="modal-title text-white">Editar Materia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -199,7 +199,7 @@ checkSession();
         <div class="modal-content">
             <div class="modal-header btn-primary">
                 <h5 class="modal-title text-white">Eliminar Materia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
