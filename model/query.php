@@ -615,7 +615,106 @@ function eliminated_subject($table, $value)
         return false;
     }
 }
+function insertTeacher($name, $surname, $phone, $email, $direction, $height, $dni, $fk_gender_id) {
+    $query = "INSERT INTO teachers (name, surname, phone, email, direction, height, state, dni, fk_gender_id, fech)
+              VALUES (:name, :surname, :phone, :email, :direction, :height, 1, :dni, :gender, NOW())";
 
+    $consulta = $this->pdo->prepare($query);
+
+    $consulta->bindParam(':name', $name, PDO::PARAM_STR);
+    $consulta->bindParam(':surname', $surname, PDO::PARAM_STR);
+    $consulta->bindParam(':phone', $phone, PDO::PARAM_INT);
+    $consulta->bindParam(':email', $email, PDO::PARAM_STR);
+    $consulta->bindParam(':direction', $direction, PDO::PARAM_STR);
+    $consulta->bindParam(':height', $height, PDO::PARAM_INT);
+    $consulta->bindParam(':dni', $dni, PDO::PARAM_INT);
+    $consulta->bindParam(':gender', $fk_gender_id, PDO::PARAM_INT);
+
+    try {
+        if ($consulta->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+
+public function getUserTeacher($id_teacher)
+{
+    $query = "SELECT * FROM teachers WHERE id_teacher = :id_teacher and state=1";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_teacher', $id_teacher, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+public function updateUserTeacher($id_teacher, $name, $surname, $phone,$direction, $height )
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE teachers SET 
+                name = :name, 
+                surname = :surname, 
+                phone = :phone,
+                direction=:direction,
+                height=:height
+                WHERE id_teacher =:id_teacher";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_teacher', $id_teacher, PDO::PARAM_INT);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':surname', $surname, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
+        $statement->bindParam(':direction', $direction, PDO::PARAM_STR);
+        $statement->bindParam(':height', $height, PDO::PARAM_INT);
+
+      
+       
+        
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
+
+public function getSingleShowTeacher($table,$value)
+    {
+        $query = "SELECT * FROM $table WHERE id_teacher = :id_teacher AND state = 1";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_teacher', $value, PDO::PARAM_INT);
+        $statement->execute();
+        
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+    function eliminated_Teacher($table, $id_user)
+{
+    try {
+        // Luego, actualiza el estado del registro a 0
+        $query = "UPDATE $table SET state = 0 WHERE id_teacher = :id_teacher";
+        $updateStatement = $this->pdo->prepare($query);
+        $updateStatement->bindParam(':id_teacher', $id_user, PDO::PARAM_INT);
+
+        // Ejecuta la actualización
+        $updateStatement->execute();
+
+        // Verifica si se actualizó al menos una fila
+        $rowCount = $updateStatement->rowCount();
+
+        if ($rowCount > 0) {
+            // La eliminación se realizó con éxito
+            return true;
+        } 
+    } catch (PDOException $e) {
+        echo "Error al actualizar: " . $e->getMessage();
+        return false;
+    }
+}
 
 
 }
