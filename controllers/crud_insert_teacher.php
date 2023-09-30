@@ -3,8 +3,8 @@
 require_once '../model/query.php';
 
 $database = new model_sql();
-
 $gender_data=$database->show_table("genders");
+
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $phone=$_POST['phone'];

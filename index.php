@@ -54,7 +54,7 @@ session_start();
 						<div class="header-top-right text-right">
 							<ul>
 								<li><a href="views/login.php">LOGIN</a></li>
-								<li><a href="views/pre_register.php">PREINCRIPCION</a></li>
+								<li><a href="controllers/control_state_page_pre.php">PREINCRIPCION</a></li>
 							</ul>
 						</div>
 					</div>

@@ -692,7 +692,7 @@ public function getSingleShowTeacher($table,$value)
         
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
-    function eliminated_Teacher($table, $id_user)
+   public function eliminated_Teacher($table, $id_user)
 {
     try {
         // Luego, actualiza el estado del registro a 0
@@ -716,6 +716,63 @@ public function getSingleShowTeacher($table,$value)
     }
 }
 
+//parte para poder habilitar y desabilitar las preinscripciones
+public function get_state($table,$value)
+    {
+        $query = "SELECT state FROM $table WHERE id_control = :id_control";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_control', $value, PDO::PARAM_INT);
+        $statement->execute();
+        
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+public function disable_preinscription($table, $value2)
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE $table SET state = 0 WHERE id_control = :id_control";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_control', $value2, PDO::PARAM_INT);
+      
+       
+       
+        
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
+
+
+public function enable_preinscription($table, $value2)
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE $table SET state = 1 WHERE id_control = :id_control";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_control', $value2, PDO::PARAM_INT);
+      
+       
+       
+        
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
 
 }
 
