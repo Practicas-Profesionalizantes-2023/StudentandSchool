@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         if ($eliminated) {
             
-            header("Location: ../views/views_teacher.php?borrado=correcto");
+            header("Location: ../views/views_teacher.php?se_ah_borrado=correcto");
             exit(); // Agrega esta línea para evitar que se ejecute código adicional después de la redirección
         } 
     }

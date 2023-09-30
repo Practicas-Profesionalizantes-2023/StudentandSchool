@@ -68,6 +68,12 @@ checkSession();
                                
                             </div>
                         </li>
+                        <li class="nav-item dropdown ">
+							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+							</div>
+						</li>
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -75,14 +81,19 @@ checkSession();
                                 <a class="dropdown-item" href="#">Inscribir Alumnos</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="teachers.html">Gestionar Profesores</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Usuarios</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>
                             </div>
-                        <li class="nav-item"><a class="nav-link" href="../controllers/destroy_Session.php">Cerrar Sesión</a></li>
-                    </ul>
+                            <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="../controllers/disable_preinscription.php">Desactivar Preinscripción</a>
+                                <a class="dropdown-item" href="../controllers/Enable_Preregistration.php">Habilitar Preinscripción</a>
+                                <a class="dropdown-item" href="../controllers/destroy_Session.php">Cerrar Session</a>
+							</div>
+                        </ul>
                 </div>
             </div>
         </nav>

@@ -616,7 +616,7 @@ function eliminated_subject($table, $value)
     }
 }
 function insertTeacher($name, $surname, $phone, $email, $direction, $height, $dni, $fk_gender_id) {
-    $query = "INSERT INTO teachers (name, surname, phone, email, direction, height, state, dni, fk_gender_id, fech)
+    $query = "INSERT INTO teachers (name, surname, phone, mail, direction, height, state, dni, fk_gender_id, fech)
               VALUES (:name, :surname, :phone, :email, :direction, :height, 1, :dni, :gender, NOW())";
 
     $consulta = $this->pdo->prepare($query);
@@ -626,7 +626,7 @@ function insertTeacher($name, $surname, $phone, $email, $direction, $height, $dn
     $consulta->bindParam(':phone', $phone, PDO::PARAM_INT);
     $consulta->bindParam(':email', $email, PDO::PARAM_STR);
     $consulta->bindParam(':direction', $direction, PDO::PARAM_STR);
-    $consulta->bindParam(':height', $height, PDO::PARAM_INT);
+    $consulta->bindParam(':height', $height, PDO::PARAM_STR);
     $consulta->bindParam(':dni', $dni, PDO::PARAM_INT);
     $consulta->bindParam(':gender', $fk_gender_id, PDO::PARAM_INT);
 
@@ -649,17 +649,19 @@ public function getUserTeacher($id_teacher)
 
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
-public function updateUserTeacher($id_teacher, $name, $surname, $phone,$direction, $height )
+
+public function updateUserTeacher($id_teacher, $name, $surname, $phone, $mail, $direction, $height)
 {
     try {
         // Create the SQL query
         $query = "UPDATE teachers SET 
-                name = :name, 
-                surname = :surname, 
+                name = :name,
+                surname = :surname,  
                 phone = :phone,
-                direction=:direction,
-                height=:height
-                WHERE id_teacher =:id_teacher";
+                mail = :mail,  -- Agrega una coma aquí
+                direction = :direction,  -- Agrega una coma aquí
+                height = :height
+                WHERE id_teacher = :id_teacher";
 
         // Prepare and execute the SQL statement
         $statement = $this->pdo->prepare($query);
@@ -669,10 +671,7 @@ public function updateUserTeacher($id_teacher, $name, $surname, $phone,$directio
         $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
         $statement->bindParam(':direction', $direction, PDO::PARAM_STR);
         $statement->bindParam(':height', $height, PDO::PARAM_INT);
-
-      
-       
-        
+        $statement->bindParam(':mail', $mail, PDO::PARAM_STR);
 
         $result = $statement->execute();
 
@@ -682,6 +681,7 @@ public function updateUserTeacher($id_teacher, $name, $surname, $phone,$directio
         return false;
     }
 }
+
 
 public function getSingleShowTeacher($table,$value)
     {

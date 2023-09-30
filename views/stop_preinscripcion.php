@@ -15,7 +15,7 @@
                     <div class="card-body text-center">
                         <h2 class="card-title">Preinscripciones no disponibles</h2>
                         <p class="card-text">Lamentablemente, en este momento las preinscripciones no están disponibles. Te invitamos a regresar más tarde o ponerte en contacto con nosotros para obtener más información.</p>
-                        <a href="#" class="btn btn-outline-primary">Volver</a>
+                        <a href="../index.php" class="btn btn-outline-primary">Volver</a>
                     </div>
                 </div>
             </div>

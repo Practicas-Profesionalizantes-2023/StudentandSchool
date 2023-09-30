@@ -18,29 +18,27 @@ if(isset($_GET['id'])){
         $name = isset($_POST["name"]) ? $_POST["name"] : null;
         $surname = isset($_POST["surname"]) ? $_POST["surname"] : null;
         $phone = isset($_POST["phone"]) ? $_POST["phone"] : null;// La siguiente línea asigna el valor de $_POST["heigth_street"] a $heigth_street si está definido, de lo contrario, asigna null.
+        $mail = isset($_POST["mail"]) ? $_POST["mail"]: null;
         $direction = isset($_POST["direction"]) ? $_POST["direction"] : null;
         $height = isset($_POST["height"]) ? $_POST["height"]: null;
-        
-        
-     
-        
-        
-        
-         
-
+        $keep=$_POST['save_data'];
+      
+        if(isset($keep)){
 
         // Llama a la función de actualización de la base de datos
-        $updated = $database->updateUserTeacher($id_teacher, $name, $surname, $phone,$direction, $height);
+        $updated = $database->updateUserTeacher($id_teacher, $name,$surname,$phone,$mail,$direction, $height);
     
         if ($updated) {
-            // La actualización fue exitosa, redirige a una página de éxito o muestra un mensaje de éxito
-            header("Location: ../views/views_teacher.php");
+           header("Location: ../views/views_teacher.php?editado=correcto");
             exit;
         } else {
             // Hubo un error en la actualización, muestra un mensaje de error
             echo "Error al actualizar los datos.";
         }
-    }
+        }
+        
+     
+        }
 
 
 ?>

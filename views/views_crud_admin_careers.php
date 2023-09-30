@@ -52,6 +52,12 @@ $careerData=$database->show_state("careers");
 								
 							</div>
 						</li>
+                        <li class="nav-item dropdown ">
+							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+							</div>
+						</li>
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -59,14 +65,19 @@ $careerData=$database->show_state("careers");
 								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
 							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="teachers.html">Gestionar Profesores</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Gestionar Usuarios</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>
 							</div>
-                        <li class="nav-item"><a class="nav-link" href="../controllers/destroy_Session.php">Cerrar Session</a></li>
-					</ul>
+                            <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="../controllers/disable_preinscription.php">Desactivar Preinscripción</a>
+                                <a class="dropdown-item" href="../controllers/Enable_Preregistration.php">Habilitar Preinscripción</a>
+                                <a class="dropdown-item" href="../controllers/destroy_Session.php">Cerrar Session</a>
+							</div>
+                        </ul>
 				</div>
 			</div>
 		</nav>
@@ -216,7 +227,7 @@ $careerData=$database->show_state("careers");
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header btn-primary">
-                <h5 class="modal-title text-white">Eliminar Materia</h5>
+                <h5 class="modal-title text-white">Eliminar Carrera</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>

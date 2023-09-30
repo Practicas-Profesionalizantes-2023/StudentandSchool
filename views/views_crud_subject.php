@@ -50,6 +50,12 @@ checkSession();
 								
 							</div>
 						</li>
+                        <li class="nav-item dropdown ">
+							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+							</div>
+						</li>
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -57,8 +63,10 @@ checkSession();
 								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
 							</div>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="teachers.html">Gestionar Profesores</a></li>
-						<li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+                        <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Gestionar Usuarios</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>

@@ -59,7 +59,7 @@ checkSession();
 				<div class="collapse navbar-collapse" id="navbars-host">
                 <p class="welcome" style="color: white; font-size: 25px;">Bienvenido: <?php echo $_SESSION['name'] ?></p>
 				    <ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="dashboard.html">Inicio</a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">

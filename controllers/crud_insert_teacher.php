@@ -4,6 +4,7 @@ require_once '../model/query.php';
 
 $database = new model_sql();
 $gender_data=$database->show_table("genders");
+$teacherData=$database->show_state("teachers");
 
     $name = $_POST['name'];
     $surname = $_POST['surname'];
@@ -13,25 +14,21 @@ $gender_data=$database->show_table("genders");
     $height=$_POST['height'];
     $dni=$_POST['dni'];
     $fk_gender_id=$_POST['fk_gender_id'];
-    $keep=$_POST['submit'];
-
-    if (isset($keep)) {
+    $keep=$_POST['keep'];
+   
+    if(isset($keep)){
+    $checkforduplicated = $database->checkForDuplicates("teachers",$dni, $email);
+    if($checkforduplicated !== false){
+        echo $checkforduplicated;
+    }else{
+      
         $insert=$database->insertTeacher($name, $surname, $phone, $email,$direction,$height,$dni,$fk_gender_id);
         if($insert){
-            echo "se insertaron los datos correctamente";
+         // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+         header("Location: ../views/views_teacher.php?creado=correcto");
             
         }
+    
+    }
     }
     ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
-<a class="btn btn-secondary" href="../views/views_teacher.php">Regresar</a>
-</body>
-</html>
