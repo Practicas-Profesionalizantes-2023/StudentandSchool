@@ -63,9 +63,7 @@ checkSession();
 								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
 							</div>
 						</li>
-                        <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+                       
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Gestionar Usuarios</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">

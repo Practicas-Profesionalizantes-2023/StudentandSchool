@@ -128,6 +128,22 @@ $('.teacher_delete_Btn').click(function () {// modal para poder eliminar Profeso
 });
 
 
+
+
+
+$('.teacher_delete_Btn').click(function () {// modal para poder eliminar la materia de profesores
+    var teachers = $(this).data('id_teacher_subject'); 
+    
+   
+    
+    $('#id_teacher_eliminate').val(teachers);
+    
+    $('#delete_career_modal').modal('show');
+});
+
+
+
+
 //----------------------------------------------------
 //modal para crear
 

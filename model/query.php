@@ -774,8 +774,80 @@ public function enable_preinscription($table, $value2)
     }
 }
 
+
+
+
+//mostrando los datos de materia y el profesor donde los id coinciden
+public function show_date_id_teacher($teacherId) {
+    try {
+        $query = "SELECT
+            teachers.name AS teacher_name,
+            teachers.surname AS teacher_surname,
+            subjects.subject_name AS subject_name,
+            subjects.state AS 'state',
+            teachers_subjects.id_teacher_subject AS 'id_teacher_subject'
+        FROM
+            teachers_subjects
+        JOIN
+            teachers ON teachers_subjects.fk_teacher_id = teachers.id_teacher
+        JOIN
+            subjects ON teachers_subjects.fk_subject_id = subjects.id_subjects
+        WHERE
+            teachers.id_teacher = :teacher_id
+            AND teachers.state = 1
+            AND subjects.state = 1;";
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':teacher_id', $teacherId, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error al obtener los datos del maestro y las materias: ' . $e->getMessage();
+        return false;
+    }
+}
+
+public function insert_subject_teacher($value1,$value2) {
+    $query = "INSERT INTO teachers_subjects (fk_subject_id,fk_teacher_id)
+              VALUES (:fk_subject_id,:fk_teacher_id)";
+
+    $statement = $this->pdo->prepare($query);
+
+    $statement->bindParam(':fk_subject_id', $value1, PDO::PARAM_INT);
+    $statement->bindParam(':fk_teacher_id', $value2, PDO::PARAM_INT);
+  
+    try {
+        if ($statement->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+
+// seleccionar donde los id acoincidan
+public function getSingle_subject_teacher($table,$value)
+{
+    $query = "SELECT * FROM $table WHERE id_teacher_subject = :id_teacher_subject";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_teacher_subject', $value, PDO::PARAM_INT);
+    $statement->execute();
+    
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+//borrar un usuario interno
+public function delete_teacher_subject($table, $value) {
+    $query = "DELETE FROM $table WHERE id_teacher_subject = :id_teacher_subject";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_teacher_subject', $value, PDO::PARAM_INT);
+    return $statement->execute();
 }
 
 
+
+
+}
 
 ?>

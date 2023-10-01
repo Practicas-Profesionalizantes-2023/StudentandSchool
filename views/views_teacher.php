@@ -203,7 +203,7 @@ checkSession();
                 <td> <?php echo $row['height'] ?></td>
                 <td> <?php echo $row['dni'] ?></td>
                 <td><?php echo date('d/m/Y ', strtotime($row['fech'])); ?></td>
-                <td><a href="../views/views_crud_subject.php?id=<?php echo $row['id_teacher'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
+                <td><a href="../views/view_crud_teacher_subject.php?id=<?php echo $row['id_teacher'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
                 <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_teacher']; ?>" data-name="<?php echo $row['name']; ?>" data-surname="<?php echo $row['surname']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-direcction="<?php echo $row['direction']; ?>" data-height="<?php echo $row['height']; ?>"><i class="fas fa-edit"></i></a></td>
                 <td><a class="btn btn-danger float-right teacher_delete_Btn text-white" data-id_teacher="<?php echo $row['id_teacher']; ?>"><i class="fas fa-trash-alt"></i></a></td>
                
