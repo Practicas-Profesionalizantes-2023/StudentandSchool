@@ -75,16 +75,21 @@ session_start();
 					<ul class="navbar-nav ml-auto">
 
 						<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+						
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">carreras</a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Carrera</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="views/views_carrer.php">Ver Carreras</a>
+								
+							</div>
 						</li>
 						
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="#">RESOLUCIONES</a>
-								<a class="dropdown-item" href="#">REGLAMENTO</a>
-								<a class="dropdown-item" href="#">CONSTANSIA</a>
+								<a class="dropdown-item" href="views/reglament.php">REGLAMENTO</a>
+								<a class="dropdown-item" href="#">CONSTANCIA</a>
 								<a class="dropdown-item" href="#">CAI</a>
 								
 							</div>

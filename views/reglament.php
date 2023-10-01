@@ -46,8 +46,8 @@
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="header-top-right text-right">
 							<ul>
-								<li><a href="views/login.php">LOGIN</a></li>
-								<li><a href="views/pre_register.php">PREINSCRIPCION</a></li>
+								<li><a href="../views/login.php">LOGIN</a></li>
+								<li><a href="../views/pre_register.php">PREINSCRIPCION</a></li>
 							</ul>
 						</div>
 					</div>
@@ -67,12 +67,18 @@
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 
-						<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="../StudentandSchool/views/views_carrer.php" id="dropdown-a" data-toggle="dropdown">Carreras</a>
+						<li class="nav-item "><a class="nav-link" href="../index.php">Inicio</a></li>
+						
+                        <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Carrera</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="../views/views_carrer.php">Ver Carreras</a>
+								
+							</div>
 						</li>
 						
-						<li class="nav-item dropdown">
+						
+						<li class="nav-item dropdown active">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="#">RESOLUCIONES</a>
@@ -87,7 +93,7 @@
 		</nav>
 	</header>
 	<!-- End header -->
-    <embed src="../views/Res HCS 57-2011-REGLAMENTO GENERAL DE ALUMNOS-1.pdf" width="100%" height="900px" />
+    <embed src="../views/Res HCS 57-2011-REGLAMENTO GENERAL DE ALUMNOS-1.pdf" width="100%" height="900px"/>
     <!-- Footer -->
     <footer>
         <div class="footer-logo">
