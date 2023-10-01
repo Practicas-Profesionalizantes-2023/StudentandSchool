@@ -80,6 +80,12 @@ checkSession();
 								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
 							</div>
 						</li>
+                        <li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Usuarios</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="views_internal_users.php">Ver Usuario</a>
+							
+							</div>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">

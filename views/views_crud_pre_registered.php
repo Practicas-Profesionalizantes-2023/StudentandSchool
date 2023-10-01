@@ -159,7 +159,7 @@ checkSession();
                                         <td><?php echo $row['gender']?></td>
                                         <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a></td>
                                         <td>
-                                            <a class="btn btn-warning float-right user_delete_Btn text-white" data-id_user="<?php echo $row['id_user']; ?>">
+                                            <a class="btn btn-danger float-right user_delete_Btn text-white" data-id_user="<?php echo $row['id_user']; ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>  
@@ -179,7 +179,7 @@ checkSession();
                                         <td><?php echo $row['gender']?></td>
                                         <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a></td>
                                         <td>
-                                            <a class="btn btn-warning float-right user_delete_Btn text-white" data-id_pre_user="<?php echo $row['id_pre_user']; ?>">
+                                            <a class="btn btn-danger float-right user_delete_Btn text-white" data-id_pre_user="<?php echo $row['id_pre_user']; ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>  
@@ -250,7 +250,7 @@ checkSession();
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header btn-primary">
-                    <h5 class="modal-title text-white">Eliminar Materia</h5>
+                    <h5 class="modal-title text-white">Eliminar Preinscriptos</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
                         <span aria-hidden="true">&times;</span>
                     </button>
