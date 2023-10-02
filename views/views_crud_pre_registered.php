@@ -65,15 +65,14 @@ checkSession();
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="../views/views_crud_admin_careers.php">Carreras</a>
-                               
                             </div>
                         </li>
                         <li class="nav-item dropdown ">
-							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
-							</div>
-						</li>
+                            <a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                                <a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+                            </div>
+                        </li>
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -86,23 +85,21 @@ checkSession();
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>
                             </div>
-                            <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuración</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="../controllers/disable_preinscription.php">Desactivar Preinscripción</a>
                                 <a class="dropdown-item" href="../controllers/Enable_Preregistration.php">Habilitar Preinscripción</a>
-                                <a class="dropdown-item" href="../controllers/destroy_Session.php">Cerrar Session</a>
-							</div>
-                        </ul>
+                                <a class="dropdown-item" href="../controllers/destroy_Session.php">Cerrar Sesión</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <!-- End header -->
-
-    <!-- Agrega aquí el resto de tu código HTML -->
-
-    <!-- Vista usuarios internos -->
+   
     <main class="container">
         <div class="row">
             <div class="col">
@@ -110,8 +107,8 @@ checkSession();
                 <br>
                 <br>
                 <?php
-                show_messages_verify('eliminado', "se elimino el registro correctamente");
-                show_messages_verify('editado', "se  edito el registro correctamente");
+                show_messages_verify('eliminado', "se eliminó el registro correctamente");
+                show_messages_verify('editado', "se editó el registro correctamente");
                 ?>
             </div>
         </div>
@@ -133,13 +130,13 @@ checkSession();
                             <tr>
                                 <th style="max-width: 170px; white-space: nowrap;">Nombre Completo</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Apellido</th>
-                                <th style="max-width: 170px; white-space: nowrap;">Telefono</th>
-                                <th style="max-width: 170px; white-space: nowrap;">E_mail</th>
+                                <th style="max-width: 170px; white-space: nowrap;">Teléfono</th>
+                                <th style="max-width: 170px; white-space: nowrap;">Email</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Fecha de nacimiento</th>
-                                <th style="max-width: 170px; white-space: nowrap;">Dni</th>
+                                <th style="max-width: 170px; white-space: nowrap;">DNI</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Carrera</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Calle y Altura</th>
-                                <th style="max-width: 170px; white-space: nowrap;">Genero</th>
+                                <th style="max-width: 170px; white-space: nowrap;">Género</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Editar</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Borrar</th>
                             </tr>
@@ -149,7 +146,7 @@ checkSession();
                                 <?php foreach($searchResults as $row) { ?>
                                     <tr>
                                         <td><?php echo $row['name']?></td>
-                                        <td> <?php echo $row['last_name']?></td>
+                                        <td><?php echo $row['last_name']?></td>
                                         <td><?php echo $row['phone']?></td>
                                         <td><?php echo $row['mail']?></td>
                                         <td><?php echo date('d/m/Y', strtotime($row['date'])); ?></td>
@@ -157,9 +154,11 @@ checkSession();
                                         <td><?php echo $row['carrer']?></td>
                                         <td><?php echo $row['heigth_street']?></td>
                                         <td><?php echo $row['gender']?></td>
-                                        <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a></td>
                                         <td>
-                                            <a class="btn btn-danger float-right user_delete_Btn text-white" data-id_user="<?php echo $row['id_user']; ?>">
+                                            <a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-danger float-right delete_Btn text-white" data-id_user="<?php echo $row['id_user']; ?>">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>  
@@ -169,7 +168,7 @@ checkSession();
                                 <?php foreach ($show_pre_register as $row) { ?>
                                     <tr>
                                         <td><?php echo $row['name']?></td>
-                                        <td> <?php echo $row['last_name']?></td>
+                                        <td><?php echo $row['last_name']?></td>
                                         <td><?php echo $row['phone']?></td>
                                         <td><?php echo $row['mail']?></td>
                                         <td><?php echo date('d/m/Y', strtotime($row['date'])); ?></td>
@@ -177,12 +176,11 @@ checkSession();
                                         <td><?php echo $row['carrer']?></td>
                                         <td><?php echo $row['heigth_street']?></td>
                                         <td><?php echo $row['gender']?></td>
-                                        <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a></td>
                                         <td>
-                                            <a class="btn btn-danger float-right user_delete_Btn text-white" data-id_pre_user="<?php echo $row['id_pre_user']; ?>">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        </td>  
+                                            <a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                        <td> <a class="btn btn-danger float-right delete_Btn text-white" data-id_id_pre="<?php echo $row['id_pre_user']; ?>"><i class="fas fa-trash-alt"></i></a></td>
+ 
                                     </tr>
                                 <?php } ?>
                             <?php } ?>
@@ -193,12 +191,12 @@ checkSession();
         </div>
     </main>
 
-    <!--Modal de Editar pre inscripto-->
+    <!-- Modal de Editar preinscripto -->
     <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header btn-primary">
-                    <h5 class="modal-title text-white">Editar A Preinscriptos</h5>
+                    <h5 class="modal-title text-white">Editar Preinscriptos</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -208,23 +206,23 @@ checkSession();
                     <form action="../controllers/crud_edit_controller.php" method="post">
                         <input type="hidden" name="user_id" id="id_pre_user" class="form-control" value="<?php echo $get_user['id_pre_user']; ?>">
                         <div class="form-group">
-                            <label for="edit_name">editar Nombre</label>
+                            <label for="edit_name">Editar Nombre</label>
                             <input type="text" class="form-control" id="name" name="name" required value="<?php echo $get_user['name']; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="edit_last">editar Apellido</label>
+                            <label for="edit_last">Editar Apellido</label>
                             <input type="text" class="form-control" id="last" name="last_name" required value="<?php echo $get_user['last_name']; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="edit_phone">editar Telefono</label>
+                            <label for="edit_phone">Editar Teléfono</label>
                             <input type="text" class="form-control" id="phone" name="phone" required value="<?php echo $get_user['phone']; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="edit_mail">editar Email</label>
+                            <label for="edit_mail">Editar Email</label>
                             <input type="text" class="form-control" id="mail" name="mail" required value="<?php echo $get_user['mail']; ?>">
                         </div>
                         <div class="form-group">
-                            <label for="edit_Career">editar Carrera</label>
+                            <label for="edit_Career">Editar Carrera</label>
                             <select name="carrer" id="carrer" class="form-control">
                                 <?php foreach ($show as $carrer) { ?>
                                  <option value="<?php echo $carrer['career_name']; ?>"><?php echo $carrer['career_name']; ?></option>
@@ -232,7 +230,7 @@ checkSession();
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="edit_direction">editar Direccion</label>
+                            <label for="edit_direction">Editar Dirección</label>
                             <input type="text" class="form-control" id="street" name="heigth_street" required value="<?php echo $get_user['heigth_street']; ?>">
                         </div>
                         <div class="modal-footer">
@@ -245,38 +243,40 @@ checkSession();
         </div>
     </div>
 
-    <!-- Eliminar preinscripto -->
-    <div id="delete_modal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header btn-primary">
-                    <h5 class="modal-title text-white">Eliminar Preinscriptos</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white;">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="advertencia">
-                        <h2>Advertencia</h2>
-                        <p>¿Seguro que desea eliminar este elemento?</p>
-                        <form action="../controllers/crud_eliminate_register.php" method="post">
-                        <input type="hidden" id="id" name="id_pre_user" value="<?php echo $get_user['id_pre_user'];?>">
-                            <div class="btn-group" role="group" aria-label="Botones de acción">
-                                <button type="submit" class="btn btn-outline-danger mr-2" name="delete">Eliminar</button>
-                            </div>
-                        </form>
-                    </div>
+
+
+<!-- Eliminar Carrera -->
+<div id="delete_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h5 class="modal-title text-white">Eliminar Carrera</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="advertencia">
+                    <h2>Advertencia</h2>
+                    <p>¿Seguro que desea eliminar este elemento?</p>
+                    <form action="../controllers/crud_eliminate_register.php" method="post">
+                        <input type="hidden" name="id_pre_user" id="pre_user" value="<?php echo $get_user['id_pre_user']; ?>">
+                        <div class="btn-group" role="group" aria-label="Botones de acción">
+                            <button type="submit" class="btn btn-outline-danger mr-2" name="delete">Eliminar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Agrega este código JavaScript al final de tu archivo -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/modal.js"></script>
-    <script src="../js/all.js"></script>
+
+
+<!-- Agrega este código JavaScript al final de tu archivo -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/modal_pre_user.js"></script>
+<script src="../js/all.js"></script>
 </body>
 </html>
-
- 

@@ -285,7 +285,7 @@ checkSession();
 <!-- Agrega este código JavaScript al final de tu archivo -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/modal.js"></script>
+<script src="../js/modal_internal_user.js"></script>
 <script src="../js/all.js"></script>
 
 
