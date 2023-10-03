@@ -238,7 +238,7 @@ session_start();
         </div><!-- end container -->
     </div><!-- end section -->
 	<!-- Footer -->
-    <footer>
+	<footer>
         <div class="footer-logo">
             <a href="#">INSTITUTEC 2023</a>
         </div>
@@ -249,11 +249,12 @@ session_start();
                 <a href="#">Admisiones</a>
                 <a href="contact.php">Contacto</a>
         </div>
-        <div class="social-icons">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-        </div>
+		<div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+</div>
+
     </footer>
 </body>
 </html>

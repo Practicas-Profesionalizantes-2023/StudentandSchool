@@ -50,3 +50,7 @@ footer {
 .social-icons a:hover {
     color: #fca311; /* Cambia el color al pasar el mouse */
 }
+.icon-img {
+    width: 32px; /* Cambia el ancho según tus necesidades */
+    height: 32px; /* Cambia la altura según tus necesidades */
+}

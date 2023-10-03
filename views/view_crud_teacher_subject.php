@@ -5,6 +5,7 @@ require_once '../model/query.php';
 require_once '../controllers/crud_teacher_subject.php';
 require_once '../controllers/crud_asignament_teacher.php';
 require_once '../controllers/crud_eliminate_asignament.php';
+require_once '../controllers/edit_teacher_subject.php';
 require_once '../controllers/message_control.php';
 //require_once '../controllers/stop_session.php';
 //checkSession();
@@ -111,6 +112,7 @@ $careerData = $database->show_state("careers");
                             <th class="align-middle">Nombre del Profesor</th>
                             <th class="align-middle">Apellido del Profesor</th>
                             <th class="align-middle">Materia que da</th>
+                            <th class="text-center">Editar</th>
                             <th class="text-center">Eliminar</th>
                         </tr>
                     </thead>
@@ -121,6 +123,8 @@ $careerData = $database->show_state("careers");
                                 <td class="align-middle"><?php echo $row['teacher_name'] ?></td>
                                 <td class="align-middle"><?php echo $row['teacher_surname'] ?></td>
                                 <td class="align-middle"><?php echo $row['subject_name'] ?></td>
+                                <?php $_SESSION['teacher_surname']=$row['teacher_surname'] ?>
+                                <td><a class="btn btn-warning float-right edit_Btn text-white" data-id="<?php echo $row['id_teacher_subject']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
                                 <td><a class="btn btn-danger float-right teacher_delete_Btn text-white"
                                         data-id_teacher_subject="<?php echo $row['id_teacher_subject']; ?>"><i
                                             class="fas fa-trash-alt"></i></a></td>
@@ -170,6 +174,40 @@ $careerData = $database->show_state("careers");
             </div>
         </div>
     </div>
+
+
+<!--Modal de Editar Profesor Materia-->
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h5 class="modal-title text-white">Actualizar datos del Profesor y la Materia</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+           
+            <div class="modal-body">
+                <form action="../controllers/edit_teacher_subject.php" method="post">
+                    <input type="hidden" name="id_teacher_subject" id="id_teacher_subject" class="form-control" value="<?php $get['id_teacher_subject'] ?>">
+                    <div class="form-group">
+                        <label for="title_edit">Modifique la Materia del profesor</label>
+                        <select name="subjects" id="id_subject"  class="form-control"  required>
+                         <?php foreach ($show_subject as $row) { ?>
+                                    <option value="<?php echo $row['id_subjects']; ?>"><?php echo $row['subject_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-outline-primary" name="keep">Actualizar Datos</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- Modal para Eliminar Profesor -->
     <div id="delete_career_modal" class="modal fade" tabindex="-1" role="dialog">

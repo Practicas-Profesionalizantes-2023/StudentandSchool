@@ -28,6 +28,7 @@ checkSession();
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/footer.css/">
     <link rel="stylesheet" href="css/custom.css">
     <!--my links css home_page and footer css-->
     <link rel="stylesheet" href="../css/home_page_preceptor.css">
@@ -37,11 +38,13 @@ checkSession();
     <title>institutec</title>
 </head>
 <body>
+
+
 <header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="dashboard.html">
-					<img src="images/favicon.ico" alt="" />
+					<img src="images/favicon.ico" alt=""/>
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -49,18 +52,18 @@ checkSession();
                     <span class="icon-bar"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
-                <p class="welcome" style="color: white; font-size: 25px;">Bienvenido: <?php echo $_SESSION['name'] ?></p>
 				    <ul class="navbar-nav ml-auto">
 						<li class="nav-item "><a class="nav-link" href="../views/dasboard_home_preceptor.php">Inicio</a></li>
-						<li class="nav-item dropdown">
+						<li class="nav-item dropdown ">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="../views/views_crud_admin_careers.php">Carreras</a>
+								<a class="dropdown-item" href="#">Carreras</a>
+								
 								
 							</div>
 						</li>
-                        <li class="nav-item dropdown active">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+                        <li class="nav-item dropdown active ">
+							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
 							</div>
@@ -68,20 +71,23 @@ checkSession();
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_crud_pre_registered.php">Preinscriptos</a>
+								<a class="dropdown-item" href="../views/views_crud_pre_registered.php">Preinscriptos</a>
 								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Gestionar Usuarios</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>
+							</div>
+                            <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="../controllers/disable_preinscription.php">Desactivar Preinscripción</a>
                                 <a class="dropdown-item" href="../controllers/Enable_Preregistration.php">Habilitar Preinscripción</a>
                                 <a class="dropdown-item" href="../controllers/destroy_Session.php">Cerrar Session</a>
 							</div>
-                            
-                              
-					</ul>
+                        </ul>
 				</div>
 			</div>
 		</nav>
@@ -96,6 +102,7 @@ checkSession();
      show_messages_verify('creado', "se  creo el registro correctamente");
      show_messages_verify('asignado', "se asigno al maestro materias  correctamente");
      show_messages_verify('asignacion', "se elimino correctamente la asignacion del profesor a la materia");
+     show_messages_verify('actualizar', "se Actualizo  correctamente la Materia");
      ?>
     <div class="row">
      <div class="col">
@@ -156,8 +163,10 @@ checkSession();
            </table>
         </div>
     </div>
+    </main>
 
-    </main><!-- Modal para Crear Profesores -->
+   
+<!-- Modal para Crear Profesores -->
 <div id="create_Modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -288,6 +297,8 @@ checkSession();
             </div>
         </div>
     </div>
+
+   
 
 
 

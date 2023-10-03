@@ -93,7 +93,7 @@
 		</nav>
 	</header>
 	<!-- End header -->
-    <embed src="../views/Res HCS 57-2011-REGLAMENTO GENERAL DE ALUMNOS-1.pdf" width="100%" height="900px"/>
+    <embed src="../views/Res-HCS-57-2011-REGLAMENTO-GENERAL-DE-ALUMNOS-1.pdf" width="100%" height="900px"/>
     <!-- Footer -->
     <footer>
         <div class="footer-logo">

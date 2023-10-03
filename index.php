@@ -25,6 +25,8 @@ session_start();
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/../js/bootstrap.min.js"></script>
     <!-- Site CSS -->
     <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="css/versions.css">
     <!-- Responsive CSS -->
@@ -236,25 +238,23 @@ session_start();
         </div><!-- end container -->
     </div><!-- end section -->
 
-	<!-- Footer -->
-    <footer>
+	<footer>
         <div class="footer-logo">
             <a href="#">INSTITUTEC 2023</a>
         </div>
-        <div class="footer-links">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Acerca de Nosotros</a></li>
-                <li><a href="#">Programas Académicos</a></li>
-                <li><a href="#">Admisiones</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
+		<div class="footer-links">
+                <a href="index.php">Inicio</a>
+                <a href="#">Acerca de Nosotros</a>
+                <a href="#">Programas Académicos</a>
+                <a href="#">Admisiones</a>
+                <a href="contact.php">Contacto</a>
         </div>
-        <div class="social-icons">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-        </div>
+		<div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+</div>
+
     </footer>
 </body>
 </html>
