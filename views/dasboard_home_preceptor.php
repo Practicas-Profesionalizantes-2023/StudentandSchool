@@ -77,7 +77,7 @@ checkSession();
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="views_crud_pre_registered.php">Preinscriptos</a>
-								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
+								<a class="dropdown-item" href="../views/views_students.php">Inscribir Alumnos</a>
 							</div>
 						</li>
                         <li class="nav-item dropdown">
