@@ -5,6 +5,9 @@ require_once '../model/query.php';
 $database = new model_sql();
 $data_career =$database->show_table("careers");
 $data_gender =$database->show_table("genders");
+$union_Student=$database->union_Student_gender_career("estudents");
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $name = $_POST['name'];
     $last_name = $_POST['last_name'];
@@ -17,25 +20,16 @@ $data_gender =$database->show_table("genders");
     $fk_career_id=$_POST['fk_career_id'];
     $fk_id_gender=$_POST['id_gender'];
    
-    $keep=$_POST['submit'];
+    $keep=$_POST['keep'];
 
     if (isset($keep)) {
         $insert=$database->insertStudent($name,$last_name,$direction,$height,$uk_dni,$email,$phone,$fk_career_id,$birth_date,$fk_id_gender);
         if($insert){
-            echo "se insertaron los datos correctamente";
+            // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+            header("Location: ../views/views_students.php?insertado=correcto");
             
         }
-    }
+
+}
+}
     ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
-<a class="btn btn-secondary" href="../views/views_students.php">Regresar</a>
-</body>
-</html>

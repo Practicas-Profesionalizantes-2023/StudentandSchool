@@ -123,7 +123,6 @@ $careerData = $database->show_state("careers");
                                 <td class="align-middle"><?php echo $row['teacher_name'] ?></td>
                                 <td class="align-middle"><?php echo $row['teacher_surname'] ?></td>
                                 <td class="align-middle"><?php echo $row['subject_name'] ?></td>
-                                <?php $_SESSION['teacher_surname']=$row['teacher_surname'] ?>
                                 <td><a class="btn btn-warning float-right edit_Btn text-white" data-id="<?php echo $row['id_teacher_subject']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
                                 <td><a class="btn btn-danger float-right teacher_delete_Btn text-white"
                                         data-id_teacher_subject="<?php echo $row['id_teacher_subject']; ?>"><i

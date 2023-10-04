@@ -936,23 +936,19 @@ function union_Student_gender_career(){
 
     return $statement->fetch(PDO::FETCH_ASSOC);
 }
-  public function updateStudent($id_student, $name, $last_name, $direction,$height, $uk_dni, $email,$phone,$birth_date, $fk_career_id,$fk_id_gender)
+  public function updateStudent($id_student, $name,$last_name,$direction,$height,$uk_dni, $email,$phone)
 {
     try {
         // Create the SQL query
         $query = "UPDATE estudents SET 
-                name = :name, 
-                last_name = :last_name, 
-                direction=:direction,
-                height=:height,
-                uk_dni = :uk_dni,
-                email= :email,
-                phone= :phone,
-                birth_date=:birth_date,
-                fk_career_id=:fk_career_id,
-                fk_id_gender=:fk_id_gender
-
-                WHERE id_estudents =:id_estudents";
+        name = :name, 
+        last_name = :last_name, 
+        direction = :direction,
+        height = :height,
+        uk_dni = :uk_dni,
+        email = :email,
+        phone = :phone
+        WHERE id_estudents = :id_estudents";
 
         // Prepare and execute the SQL statement
         $statement = $this->pdo->prepare($query);
@@ -964,9 +960,7 @@ function union_Student_gender_career(){
         $statement->bindParam(':uk_dni', $uk_dni, PDO::PARAM_INT);
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
         $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
-        $statement->bindParam(':birth_date', $birth_date, PDO::PARAM_INT);
-        $statement->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
-        $statement->bindParam(':fk_id_gender', $fk_id_gender, PDO::PARAM_INT);
+       
 
       
        
@@ -981,7 +975,8 @@ function union_Student_gender_career(){
     }
 }
     
-    function eliminated_Student($table, $id_user)
+   
+function eliminated_Student($table, $id_user)
 {
     try {
         // Luego, actualiza el estado del registro a 0
