@@ -52,9 +52,7 @@ if(!empty($name) && !empty($email) && !empty($subject) && !empty($message))
 
 if(Contact_mail($name,$email,$subject,$message)==true)
 {
-    //header("Location: ../views/contact.php");
-    // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
-    header("Location: ../views/contact.php?mensaje_enviado=correcto");
+    header("Location: ../views/contact.php");
     exit;
 }
 

@@ -1,4 +1,4 @@
-<?php
+?php
 session_start();
 require_once '../controllers/stop_session.php';
 require_once '../controllers/message_control.php';

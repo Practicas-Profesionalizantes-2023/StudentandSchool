@@ -9,8 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $eliminated = $database->eliminated_register("pre_registration", $pre_user_id);
         
         if ($eliminated) {
-            //header("Location: ../views/views_crud_pre_registered.php");
-            header("Location: ../views/views_crud_pre_registered.php?eliminado=correcto");
+            header("Location: ../views/views_crud_pre_registered.php");
             exit(); // Agrega esta línea para evitar que se ejecute código adicional después de la redirección
         } 
     }
