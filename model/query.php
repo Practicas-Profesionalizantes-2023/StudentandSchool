@@ -872,6 +872,138 @@ public function update_subject_teacher($value1,$value2)
         return false;
     }
 }
+function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $fk_career_id,$birth_date,$fk_id_gender) {
+    $query = "INSERT INTO estudents (name, last_name, direction, height, uk_dni, email, state, phone, fk_career_id, birth_date,fech_creation,fk_id_gender)
+              VALUES (:name, :last_name, :direction, :height, :uk_dni, :email, 1, :phone, :fk_career_id,:birth_date , NOW(),:fk_id_gender)";
+
+
+        
+    $consulta = $this->pdo->prepare($query);
+
+    $consulta->bindParam(':name', $name, PDO::PARAM_STR);
+    $consulta->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+    $consulta->bindParam(':direction', $direction, PDO::PARAM_STR);
+    $consulta->bindParam(':height', $height, PDO::PARAM_STR);
+    $consulta->bindParam(':uk_dni', $uk_dni, PDO::PARAM_STR);
+    $consulta->bindParam(':email', $email, PDO::PARAM_STR);
+    $consulta->bindParam(':phone', $phone, PDO::PARAM_INT);
+    $consulta->bindParam(':fk_id_gender', $fk_id_gender, PDO::PARAM_INT);
+    $consulta->bindParam(':birth_date', $birth_date, PDO::PARAM_STR);
+    $consulta->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
+
+    try {
+        if ($consulta->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+function union_Student_gender_career(){
+    $query = "SELECT
+    estudents.id_estudents AS 'id_estudents',
+    estudents.name AS 'name',
+    estudents.last_name AS 'last_name',
+    estudents.birth_date AS 'birth_date',
+    estudents.direction AS 'direction',
+    estudents.height AS 'height',
+    estudents.uk_dni AS 'uk_dni',
+    estudents.email AS 'email',
+    estudents.phone AS 'phone',
+    estudents.state AS 'state',
+    estudents.fech_creation AS 'fech_creation',
+    careers.career_name AS 'career_name',
+    genders.details AS 'details'
+  
+  FROM estudents
+  JOIN careers ON estudents.fk_career_id = careers.id_career
+  JOIN genders ON estudents.fk_id_gender = genders.id_gender
+  WHERE estudents.state = 1"; // Agregamos esta condición para filtrar por estado igual a 1
+  
+    $statement = $this->pdo->prepare($query);
+    $statement->execute();
+    $union_Student = $statement->fetchAll();
+    return $union_Student;
+}
+
+  public function getStudent($id_student)
+{
+    $query = "SELECT * FROM estudents WHERE id_estudents = :id_estudents and state=1";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_estudents', $id_student, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+  public function updateStudent($id_student, $name, $last_name, $direction,$height, $uk_dni, $email,$phone,$birth_date, $fk_career_id,$fk_id_gender)
+{
+    try {
+        // Create the SQL query
+        $query = "UPDATE estudents SET 
+                name = :name, 
+                last_name = :last_name, 
+                direction=:direction,
+                height=:height,
+                uk_dni = :uk_dni,
+                email= :email,
+                phone= :phone,
+                birth_date=:birth_date,
+                fk_career_id=:fk_career_id,
+                fk_id_gender=:fk_id_gender
+
+                WHERE id_estudents =:id_estudents";
+
+        // Prepare and execute the SQL statement
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':id_estudents', $id_student, PDO::PARAM_INT);
+        $statement->bindParam(':name', $name, PDO::PARAM_STR);
+        $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+        $statement->bindParam(':direction', $direction, PDO::PARAM_STR);
+        $statement->bindParam(':height', $height, PDO::PARAM_INT);
+        $statement->bindParam(':uk_dni', $uk_dni, PDO::PARAM_INT);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
+        $statement->bindParam(':birth_date', $birth_date, PDO::PARAM_INT);
+        $statement->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
+        $statement->bindParam(':fk_id_gender', $fk_id_gender, PDO::PARAM_INT);
+
+      
+       
+        
+
+        $result = $statement->execute();
+
+        return $result; 
+    } catch (PDOException $e) {
+        echo "Error in update: " . $e->getMessage();
+        return false;
+    }
+}
+    
+    function eliminated_Student($table, $id_user)
+{
+    try {
+        // Luego, actualiza el estado del registro a 0
+        $query = "UPDATE $table SET state = 0 WHERE id_estudents = :id_estudents";
+        $updateStatement = $this->pdo->prepare($query);
+        $updateStatement->bindParam(':id_estudents', $id_user, PDO::PARAM_INT);
+
+        // Ejecuta la actualización
+        $updateStatement->execute();
+
+        // Verifica si se actualizó al menos una fila
+        $rowCount = $updateStatement->rowCount();
+
+        if ($rowCount > 0) {
+            // La eliminación se realizó con éxito
+            return true;
+        } 
+    } catch (PDOException $e) {
+        echo "Error al actualizar: " . $e->getMessage();
+        return false;
+    }
+}
 
 
 

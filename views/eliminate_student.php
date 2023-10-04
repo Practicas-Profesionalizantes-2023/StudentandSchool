@@ -1,0 +1,26 @@
+<?php
+require_once '../controllers/crud_eliminate_student.php';
+
+
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/eliminate_register.css">
+    <title>Borrar</title>
+</head>
+<body>
+    <div class="advertencia">
+        <h2>Advertencia</h2>
+        <p>¿Seguro que desea eliminar este Alumno?</p>
+        <form action="../controllers/crud_eliminate_student.php" method="post">
+        <button type="submit" class="btn-delete" name="delete">Eliminar</button>
+        <input type="hidden" name="id_estudent" value="<?php echo $get_student['id_estudents'];?>">
+           
+        </form>
+        <button class="back"><a href="../views/views_students.php" >volver</a></button>
+    </div>
+</body>
+</html>
