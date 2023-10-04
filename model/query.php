@@ -50,7 +50,7 @@ class model_sql
     // Función credencial login
  public function login($user, $password)
  {
-    $query = "SELECT dni, name, fk_rol_id, state,password_changed,id_user, password FROM internal_users WHERE dni = :user";
+    $query = "SELECT dni, name, fk_rol_id, state, password FROM internal_users WHERE dni = :user";
     $statement = $this->pdo->prepare($query);
     $statement->bindParam(':user', $user);
     $statement->execute();
@@ -66,19 +66,18 @@ class model_sql
     
     return false; // Devuelve false si las credenciales son incorrectas
 }
-
+//funcion para Mostrar un registro
 
 public function show_table($table){
 
-    $query="SELECT * FROM $table";
-    $statement=$this->pdo->prepare($query);
-    $statement->execute();
-    $list_data=$statement->fetchAll();
-    
-    return $list_data;
-    
-    }
+$query="SELECT * FROM $table";
+$statement=$this->pdo->prepare($query);
+$statement->execute();
+$list_data=$statement->fetchAll();
 
+return $list_data;
+
+}
 //para mostrar de la tabla los que tengan estado 1
 public function show_state($table){
 
@@ -167,10 +166,9 @@ public function pre_registration($value1, $value2, $value3, $value4
 public function search_pre_register($search) {
     $query = "SELECT * FROM pre_registration 
             WHERE name LIKE :name 
+            OR last_name LIKE :last_name 
+            OR dni LIKE :dni 
             OR mail LIKE :mail";
-
-
-         
     
     // Preparar la declaración
     $statement = $this->pdo->prepare($query);
@@ -178,9 +176,9 @@ public function search_pre_register($search) {
     // Asignar el valor de búsqueda a los marcadores de posición
     $searchParam = "%$search%"; // Agregar comodines para buscar coincidencias parciales
     $statement->bindParam(':name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':last_name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':dni', $searchParam, PDO::PARAM_STR);
     $statement->bindParam(':mail', $searchParam, PDO::PARAM_STR);
-
- 
 
     // Ejecutar la consulta
     $statement->execute();
@@ -189,6 +187,17 @@ public function search_pre_register($search) {
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
     
     return $results;
+}
+
+//funcion para traer el usuario que coincida con el id
+public function getUserData($userId)
+{
+    $query = "SELECT * FROM pre_registration WHERE id_pre_user = :userId and state=1";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
 }
 
 public function updateUserData($user_id, $name, $last_name, $phone, $mail, $career, $heigth_street)
@@ -294,10 +303,10 @@ function union_table(){
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $statement->execute();
-        return true; 
+        return true; // Success in disabling the user
     } catch (PDOException $e) {
-       
-        return false; 
+        // Error handling, you can log the error or throw an exception as needed
+        return false; // Error in disabling the user
     }
 }
 
@@ -307,41 +316,55 @@ public function enableUser($user_id) {
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $statement->execute();
-        return true;
+        return true; // Success in enabling the user
     } catch (PDOException $e) {
-        
-        return false; 
+        // Error handling, you can log the error or throw an exception as needed
+        return false; // Error in enabling the user
     }
 }
 
-
 public function search_internal_users($search) {
-    $query = "SELECT internal_users.id_user AS 'id_user', internal_users.name AS 'name'
-            , internal_users.dni AS 'dni', internal_users.mail AS 'mail', rol.details AS 'details',
-            internal_users.state AS 'state' 
-              FROM internal_users 
-              JOIN rol ON internal_users.fk_rol_id = rol.id_rol 
-              WHERE internal_users.mail LIKE :search_name
-              or internal_users.name LIKE :search_mail" ;
-
+    $query = "SELECT * FROM internal_users
+              WHERE name LIKE :name 
+              OR dni LIKE :dni 
+              OR mail LIKE :mail";
+    
     // Preparar la declaración
     $statement = $this->pdo->prepare($query);
 
     // Asignar el valor de búsqueda a los marcadores de posición
     $searchParam = "%$search%"; // Agregar comodines para buscar coincidencias parciales
-    $statement->bindParam(':search_name', $searchParam, PDO::PARAM_STR);
-    $statement->bindParam(':search_mail', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':dni', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':mail', $searchParam, PDO::PARAM_STR);
 
     // Ejecutar la consulta
     $statement->execute();
 
     // Obtener y devolver los resultados
     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+    
     return $results;
 }
 
+public function getUserById($table,$user_id) {
+    // Preparar la consulta SQL para seleccionar un usuario por su ID
+    $query = "SELECT * FROM $table WHERE $user_id = :user_id";
 
+    // Preparar la declaración
+    $statement = $this->pdo->prepare($query);
+
+    // Asignar el valor del ID de usuario al marcador de posición
+    $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+    // Ejecutar la consulta
+    $statement->execute();
+
+    // Obtener y devolver los detalles del usuario
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    
+    return $user;
+}
 
 public function getSingleuser($table,$value)
 {
@@ -361,521 +384,5 @@ public function deleteUserData($table, $user_id) {
     return $statement->execute();
 }
 
-public function update_password($table,$user_id,$password){
-   try{
-    $query = "UPDATE $table SET password=:password, password_changed=1
-    WHERE id_user=:id_user";
-    
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_user', $user_id, PDO::PARAM_INT);
-    $statement->bindParam(':password', $password, PDO::PARAM_STR);
-
-    $result = $statement->execute();
-
-    return $result; 
-} catch (PDOException $e) {
-    echo "Error in update: " . $e->getMessage();
-    return false;
 }
-   
-
-}
-function insertCareer($career, $title, $amount) {
-    
-    
-     $query = "INSERT INTO careers (career_name , title, amount_subjects, date_high, state, fk_book_career_id)
-      VALUES (:careers,:title, :amount_subjects, CURRENT_TIMESTAMP, '1', '1')";
-
-    $consulta = $this->pdo->prepare($query);
-
-
-    $consulta->bindParam(':careers', $career, PDO::PARAM_STR);
-    $consulta->bindParam(':title', $title, PDO::PARAM_STR);
-    $consulta->bindParam(':amount_subjects', $amount, PDO::PARAM_INT);
-  
-    try {
-        if ($consulta->execute()) {
-            return true; // Devuelve verdadero si la inserción fue exitosa
-        }
-    } catch (PDOException $e) {
-        echo "Error en la inserción: " . $e->getMessage();
-        return false;
-    }
-}
-
-public function getSingleShowCareer($table,$value)
-    {
-        $query = "SELECT * FROM $table WHERE id_career = :id_career AND state = 1";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_career', $value, PDO::PARAM_INT);
-        $statement->execute();
-        
-        return $statement->fetch(PDO::FETCH_ASSOC);
-    }
-    function eliminated_career($table, $id_user)
-{
-    try {
-        // Luego, actualiza el estado del registro a 0
-        $query = "UPDATE $table SET state = 0 WHERE id_career = :id_career";
-        $updateStatement = $this->pdo->prepare($query);
-        $updateStatement->bindParam(':id_career', $id_user, PDO::PARAM_INT);
-
-        // Ejecuta la actualización
-        $updateStatement->execute();
-
-        // Verifica si se actualizó al menos una fila
-        $rowCount = $updateStatement->rowCount();
-
-        if ($rowCount > 0) {
-            // La eliminación se realizó con éxito
-            return true;
-        } 
-    } catch (PDOException $e) {
-        echo "Error al actualizar: " . $e->getMessage();
-        return false;
-    }
-}
-public function getUserCareer($idcareer)
-{
-    $query = "SELECT * FROM careers WHERE id_career = :id_career and state=1";
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_career', $idcareer, PDO::PARAM_INT);
-    $statement->execute();
-
-    return $statement->fetch(PDO::FETCH_ASSOC);
-}
-public function updateUserCareer($id_career, $career, $title, $subjects)
-{
-    try {
-        // Create the SQL query
-        $query = "UPDATE careers SET 
-                career_name = :career, 
-                title = :title, 
-                amount_subjects = :subjects
-                WHERE id_career = :id_career";
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_career', $id_career, PDO::PARAM_INT);
-        $statement->bindParam(':career', $career, PDO::PARAM_STR);
-        $statement->bindParam(':title', $title, PDO::PARAM_STR);
-        $statement->bindParam(':subjects', $subjects, PDO::PARAM_INT);
-       
-        
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
-
-//mostrar un solo registro del dni que coincida con el front
-
-public function getSingleuserByDNI($table, $dni) {
-    try {
-        $query = "SELECT * FROM $table WHERE dni = :dni";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':dni', $dni, PDO::PARAM_STR);
-        $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo 'Error al buscar usuario por DNI: ' . $e->getMessage();
-        return false;
-    }
-}
-
-//actualizar la contraseña si el dni ingresado es el mismo que el de la base de dato
-public function forgot_password($table, $dni, $password) {
-    try {
-       
-        $query = "UPDATE $table SET password = :password WHERE dni = :dni";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':dni', $dni, PDO::PARAM_INT); // Debe ser INT si el ID es un entero.
-        $statement->bindParam(':password', $password, PDO::PARAM_STR);
-        return $statement->execute();
-    } catch (PDOException $e) {
-        echo 'Error al actualizar la contraseña: ' . $e->getMessage();
-        return false;
-    }
-}
-
-// Insertar una materia asociada a una carrera
-public function insert_subject($subject_name, $fk_career_id) {
-    $query = "INSERT INTO subjects (subject_name, create_date, state, fk_career_id)
-              VALUES (:subject_name, CURRENT_TIMESTAMP, '1', :fk_career_id)";
-
-    $statement = $this->pdo->prepare($query);
-
-    $statement->bindParam(':subject_name', $subject_name, PDO::PARAM_STR);
-    $statement->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
-  
-    try {
-        if ($statement->execute()) {
-            return true; // Devuelve verdadero si la inserción fue exitosa
-        }
-    } catch (PDOException $e) {
-        echo "Error en la inserción: " . $e->getMessage();
-        return false;
-    }
-}
-
-//mostrando los datos de materia y carrerra donde los id coinciden
-public function show_date_id_career($value) {
-    try {
-        $query = "SELECT
-        subjects.id_subjects AS id_subjects,
-        subjects.subject_name AS subject_name,
-        subjects.create_date AS create_date,
-        subjects.state AS state,
-        subjects.fk_career_id AS fk_career_id,
-        careers.id_career AS id_career,
-        careers.career_name AS career_name
-    FROM
-        subjects
-    JOIN
-        careers ON subjects.fk_career_id = careers.id_career
-    WHERE
-        subjects.fk_career_id = :fk_career_id
-        AND subjects.state = 1;";
-
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':fk_career_id', $value, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo 'Error al buscar la carrera: ' . $e->getMessage();
-        return false;
-    }
-}
-
-// seleccionar donde los id acoincidan
-public function getSingle_subject($table,$value)
-{
-    $query = "SELECT * FROM $table WHERE id_subjects = :id_subjects";
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_subjects', $value, PDO::PARAM_INT);
-    $statement->execute();
-    
-    return $statement->fetch(PDO::FETCH_ASSOC);
-}
-
-
-
-public function update_subject($value1, $value2)
-{
-    try {
-        // Create the SQL query
-        $query = "UPDATE subjects SET 
-        subject_name = :subject_name
-        WHERE id_subjects = :id_subjects";
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_subjects', $value1, PDO::PARAM_INT);
-        $statement->bindParam(':subject_name', $value2, PDO::PARAM_STR);
-       
-       
-        
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
-
-// eliminar una materia cambiando su estado a 0
-
-
-function eliminated_subject($table, $value)
-{
-    try {
-        // Luego, actualiza el estado del registro a 0
-        $query = "UPDATE $table SET state = 0 WHERE id_subjects = :id_subjects";
-        $updateStatement = $this->pdo->prepare($query);
-        $updateStatement->bindParam(':id_subjects', $value, PDO::PARAM_INT);
-
-        // Ejecuta la actualización
-        $updateStatement->execute();
-
-        // Verifica si se actualizó al menos una fila
-        $rowCount = $updateStatement->rowCount();
-
-        if ($rowCount > 0) {
-            // La eliminación se realizó con éxito
-            return true;
-        } 
-    } catch (PDOException $e) {
-        echo "Error al actualizar: " . $e->getMessage();
-        return false;
-    }
-}
-function insertTeacher($name, $surname, $phone, $email, $direction, $height, $dni, $fk_gender_id) {
-    $query = "INSERT INTO teachers (name, surname, phone, mail, direction, height, state, dni, fk_gender_id, fech)
-              VALUES (:name, :surname, :phone, :email, :direction, :height, 1, :dni, :gender, NOW())";
-
-    $consulta = $this->pdo->prepare($query);
-
-    $consulta->bindParam(':name', $name, PDO::PARAM_STR);
-    $consulta->bindParam(':surname', $surname, PDO::PARAM_STR);
-    $consulta->bindParam(':phone', $phone, PDO::PARAM_INT);
-    $consulta->bindParam(':email', $email, PDO::PARAM_STR);
-    $consulta->bindParam(':direction', $direction, PDO::PARAM_STR);
-    $consulta->bindParam(':height', $height, PDO::PARAM_STR);
-    $consulta->bindParam(':dni', $dni, PDO::PARAM_INT);
-    $consulta->bindParam(':gender', $fk_gender_id, PDO::PARAM_INT);
-
-    try {
-        if ($consulta->execute()) {
-            return true; // Devuelve verdadero si la inserción fue exitosa
-        }
-    } catch (PDOException $e) {
-        echo "Error en la inserción: " . $e->getMessage();
-        return false;
-    }
-}
-
-public function getUserTeacher($id_teacher)
-{
-    $query = "SELECT * FROM teachers WHERE id_teacher = :id_teacher and state=1";
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_teacher', $id_teacher, PDO::PARAM_INT);
-    $statement->execute();
-
-    return $statement->fetch(PDO::FETCH_ASSOC);
-}
-
-public function updateUserTeacher($id_teacher, $name, $surname, $phone, $mail, $direction, $height)
-{
-    try {
-        // Create the SQL query
-        $query = "UPDATE teachers SET 
-                name = :name,
-                surname = :surname,  
-                phone = :phone,
-                mail = :mail,  -- Agrega una coma aquí
-                direction = :direction,  -- Agrega una coma aquí
-                height = :height
-                WHERE id_teacher = :id_teacher";
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_teacher', $id_teacher, PDO::PARAM_INT);
-        $statement->bindParam(':name', $name, PDO::PARAM_STR);
-        $statement->bindParam(':surname', $surname, PDO::PARAM_STR);
-        $statement->bindParam(':phone', $phone, PDO::PARAM_INT);
-        $statement->bindParam(':direction', $direction, PDO::PARAM_STR);
-        $statement->bindParam(':height', $height, PDO::PARAM_INT);
-        $statement->bindParam(':mail', $mail, PDO::PARAM_STR);
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
-
-
-public function getSingleShowTeacher($table,$value)
-    {
-        $query = "SELECT * FROM $table WHERE id_teacher = :id_teacher AND state = 1";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_teacher', $value, PDO::PARAM_INT);
-        $statement->execute();
-        
-        return $statement->fetch(PDO::FETCH_ASSOC);
-    }
-   public function eliminated_Teacher($table, $id_user)
-{
-    try {
-        // Luego, actualiza el estado del registro a 0
-        $query = "UPDATE $table SET state = 0 WHERE id_teacher = :id_teacher";
-        $updateStatement = $this->pdo->prepare($query);
-        $updateStatement->bindParam(':id_teacher', $id_user, PDO::PARAM_INT);
-
-        // Ejecuta la actualización
-        $updateStatement->execute();
-
-        // Verifica si se actualizó al menos una fila
-        $rowCount = $updateStatement->rowCount();
-
-        if ($rowCount > 0) {
-            // La eliminación se realizó con éxito
-            return true;
-        } 
-    } catch (PDOException $e) {
-        echo "Error al actualizar: " . $e->getMessage();
-        return false;
-    }
-}
-
-//parte para poder habilitar y desabilitar las preinscripciones
-public function get_state($table,$value)
-    {
-        $query = "SELECT state FROM $table WHERE id_control = :id_control";
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_control', $value, PDO::PARAM_INT);
-        $statement->execute();
-        
-        return $statement->fetch(PDO::FETCH_ASSOC);
-    }
-
-public function disable_preinscription($table, $value2)
-{
-    try {
-        // Create the SQL query
-        $query = "UPDATE $table SET state = 0 WHERE id_control = :id_control";
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_control', $value2, PDO::PARAM_INT);
-      
-       
-       
-        
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
-
-
-public function enable_preinscription($table, $value2)
-{
-    try {
-        // Create the SQL query
-        $query = "UPDATE $table SET state = 1 WHERE id_control = :id_control";
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_control', $value2, PDO::PARAM_INT);
-      
-       
-       
-        
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
-
-
-
-
-//mostrando los datos de materia y el profesor donde los id coinciden
-public function show_date_id_teacher($teacherId) {
-    try {
-        $query = "SELECT
-            teachers.name AS teacher_name,
-            teachers.surname AS teacher_surname,
-            subjects.subject_name AS subject_name,
-            subjects.state AS 'state',
-            teachers_subjects.id_teacher_subject AS 'id_teacher_subject'
-        FROM
-            teachers_subjects
-        JOIN
-            teachers ON teachers_subjects.fk_teacher_id = teachers.id_teacher
-        JOIN
-            subjects ON teachers_subjects.fk_subject_id = subjects.id_subjects
-        WHERE
-            teachers.id_teacher = :teacher_id
-            AND teachers.state = 1
-            AND subjects.state = 1;";
-
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':teacher_id', $teacherId, PDO::PARAM_INT);
-        $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        echo 'Error al obtener los datos del maestro y las materias: ' . $e->getMessage();
-        return false;
-    }
-}
-
-public function insert_subject_teacher($value1,$value2) {
-    $query = "INSERT INTO teachers_subjects (fk_subject_id,fk_teacher_id)
-              VALUES (:fk_subject_id,:fk_teacher_id)";
-
-    $statement = $this->pdo->prepare($query);
-
-    $statement->bindParam(':fk_subject_id', $value1, PDO::PARAM_INT);
-    $statement->bindParam(':fk_teacher_id', $value2, PDO::PARAM_INT);
-  
-    try {
-        if ($statement->execute()) {
-            return true; // Devuelve verdadero si la inserción fue exitosa
-        }
-    } catch (PDOException $e) {
-        echo "Error en la inserción: " . $e->getMessage();
-        return false;
-    }
-}
-
-// seleccionar donde los id acoincidan
-public function getSingle_subject_teacher($table,$value)
-{
-    $query = "SELECT * FROM $table WHERE id_teacher_subject = :id_teacher_subject";
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_teacher_subject', $value, PDO::PARAM_INT);
-    $statement->execute();
-    
-    return $statement->fetch(PDO::FETCH_ASSOC);
-}
-
-//borrar un usuario interno
-public function delete_teacher_subject($table, $value) {
-    $query = "DELETE FROM $table WHERE id_teacher_subject = :id_teacher_subject";
-    $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_teacher_subject', $value, PDO::PARAM_INT);
-    return $statement->execute();
-}
-
-
-public function update_subject_teacher($value1,$value2)
-{
-    try {
-        // Create the SQL query
-        // Create the SQL query
-        $query = "UPDATE teachers_subjects 
-        SET fk_subject_id = :fk_subject_id 
-        WHERE id_teacher_subject = :id_teacher_subject";
-
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_teacher_subject', $value1, PDO::PARAM_INT);
-        $statement->bindParam(':fk_subject_id', $value2, PDO::PARAM_INT);
-
-       
-        
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
-
-
-
-
-}
-
 ?>

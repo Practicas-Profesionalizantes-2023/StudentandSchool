@@ -41,9 +41,8 @@ session_start();
     <title>Institutec</title>
 </head>
 <body>
-
-     <!-- Start header -->
-	<header class="top-navbar">
+<!-- Start header -->
+<header class="top-navbar">
 		<div class="header-top">
 			<div class="container">
 				<div class="row">
@@ -55,8 +54,8 @@ session_start();
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="header-top-right text-right">
 							<ul>
-								<li><a href="../views/login.php">LOGIN</a></li>
-								<li><a href="../views/pre_register.php">PREINSCRIPCION</a></li>
+								<li><a href="views/login.php">LOGIN</a></li>
+								<li><a href="views/pre_register.php">PREINSCRIPCION</a></li>
 							</ul>
 						</div>
 					</div>
@@ -65,8 +64,8 @@ session_start();
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="index.html">
-					<img src="../images/favicon.ico" alt="" />
+				<a class="navbar-brand" href="index.php">
+					<img src="images/favicon.ico" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -76,28 +75,20 @@ session_start();
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 
-						<li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-						
-						<li class="nav-item dropdown active">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Carrera</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="../views/views_carrer.php">Ver Carreras</a>
-								
-							</div>
+						<li class="nav-item active"><a class="nav-link" href="index.php">Inicio</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="../StudentandSchool/views/views_carrer.php" id="dropdown-a" data-toggle="dropdown">Carreras</a>
 						</li>
 						
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="#">RESOLUCIONES</a>
-								<a class="dropdown-item" href="../views/reglament.php">REGLAMENTO</a>
 								<a class="dropdown-item" href="#">CONSTANCIA</a>
 								<a class="dropdown-item" href="#">CAI</a>
 								
 							</div>
 						</li>
-						
-
 					</ul>
 				</div>
 			</div>
@@ -238,26 +229,25 @@ session_start();
         </div><!-- end container -->
     </div><!-- end section -->
 	<!-- Footer -->
+
 	<footer>
         <div class="footer-logo">
-            <a href="#">INSTITUTEC 2023</a>
+            <a href="../index.php">INSTITUTEC 2023</a>
         </div>
 		<div class="footer-links">
-                <a href="index.php">Inicio</a>
-                <a href="#">Acerca de Nosotros</a>
+                <a href="../index.php">Inicio</a>
+                <a href="../views/about.php">Acerca de Nosotros</a>
                 <a href="#">Programas Académicos</a>
                 <a href="#">Admisiones</a>
                 <a href="contact.php">Contacto</a>
         </div>
-		<div class="social-icons">
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-</div>
-
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
-</body>
-</html>
+
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 

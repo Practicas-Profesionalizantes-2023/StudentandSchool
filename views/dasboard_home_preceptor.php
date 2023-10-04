@@ -1,7 +1,6 @@
 <?php
-session_start();
 require_once '../controllers/stop_session.php';
-require_once '../controllers/message_control.php';
+session_start();
 checkSession();
 
 ?>
@@ -44,11 +43,30 @@ checkSession();
 <body>
 
 <body class="host_version"> 
-	<!-- Start header -->
-	<header class="top-navbar">
+<!-- Start header -->
+<header class="top-navbar">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-8 col-xs-12">
+						<div class="header-top-left">
+							<p>CONTACTANOS:institutec16@gmail.com</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-12">
+						<div class="header-top-right text-right">
+							<ul>
+								<li><a href="views/login.php">LOGIN</a></li>
+								<li><a href="views/pre_register.php">PREINSCRIPCION</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="dashboard.html">
+				<a class="navbar-brand" href="index.html">
 					<img src="images/favicon.ico" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,55 +75,30 @@ checkSession();
                     <span class="icon-bar"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
-                <p class="welcome" style="color: white; font-size: 25px;">Bienvenido: <?php echo $_SESSION['name'] ?></p>
-				    <ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
+					<ul class="navbar-nav ml-auto">
+
+						<li class="nav-item active"><a class="nav-link" href="index.php">Inicio</a></li>
+						<li class="nav-item active"><a class="nav-link" href="about.php">Sobre Nosotros</a></li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
+							<a href="views/views_carrer.php" class="nav-link">Carreras</a>
+						</li>
+						
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="../views/views_crud_admin_careers.php">Carreras</a>
+								<a class="dropdown-item" href="#">RESOLUCIONES</a>
+								<a class="dropdown-item" href="views/reglament.php">REGLAMENTO</a>
+								<a class="dropdown-item" href="#">CONSTANCIA</a>
+								<a class="dropdown-item" href="#">CAI</a>
 								
 							</div>
 						</li>
-                        <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
-							</div>
-						</li>
-                        <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_crud_pre_registered.php">Preinscriptos</a>
-								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
-							</div>
-						</li>
-                        <li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Usuarios</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_internal_users.php">Ver Usuario</a>
-							
-							</div>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="../controllers/disable_preinscription.php">Desactivar Preinscripción</a>
-                                <a class="dropdown-item" href="../controllers/Enable_Preregistration.php">Habilitar Preinscripción</a>
-                                <a class="dropdown-item" href="../controllers/destroy_Session.php">Cerrar Session</a>
-							</div>
-                            
-                              
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</header>
 	<!-- End header -->
-   <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
-         show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
-         show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
-   ?>
     <main>
         <section>
             <h2>Gestionar Carreras</h2>
@@ -132,21 +125,19 @@ checkSession();
     <!-- Footer -->
     <footer>
         <div class="footer-logo">
-            <a href="#">INSTITUTEC 2023</a>
+            <a href="../index.php">INSTITUTEC 2023</a>
         </div>
-        <div class="footer-links">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Acerca de Nosotros</a></li>
-                <li><a href="#">Programas Académicos</a></li>
-                <li><a href="#">Admisiones</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
+		<div class="footer-links">
+                <a href="../index.php">Inicio</a>
+                <a href="../views/about.php">Acerca de Nosotros</a>
+                <a href="#">Programas Académicos</a>
+                <a href="#">Admisiones</a>
+                <a href="contact.php">Contacto</a>
         </div>
         <div class="social-icons">
-            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
     </footer>
 

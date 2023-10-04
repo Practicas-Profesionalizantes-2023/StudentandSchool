@@ -8,10 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Asegúrate de que se haya enviado un valor para 'search'
     if (isset($_POST['search'])) {
         // Obtiene el término de búsqueda ingresado por el usuario
-        $searchTerm = $_POST['search_name'];
-        $searchResults = $database->search_pre_register($searchTerm);
+        $searchTerm = $_POST['search'];
 
-       
+        // Realiza la búsqueda en la base de datos
+        $searchResults = $database->search_pre_register($searchTerm);
 
         // Incluye la vista HTML pasando los resultados de la búsqueda
         require_once '../views/views_crud_pre_registered.php';
