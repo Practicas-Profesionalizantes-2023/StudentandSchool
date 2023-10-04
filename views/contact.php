@@ -1,3 +1,4 @@
+<?php require_once '../controllers/message_control.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,10 +20,10 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
 <!--===============================================================================================-->
 </head>
 <body>
-
 	<div class="contact1">
 		<div class="container-contact1">
 			<div class="contact1-pic js-tilt" data-tilt>
@@ -64,6 +65,7 @@
 					<button class="back"><a href="../index.php" >volver</a></button>
 				</div>
 			</form>
+			<?php show_messages_verify('mensaje_enviado', "Se envio correctamente el mensaje"); ?>
 		</div>
 		<div class="mapouter"><div class="gmap_canvas"><iframe width="1000" height="670" id="gmap_canvas" src="https://maps.google.com/maps?q=merlo%2C+buenos+aires&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://alarmclock.cloud/">online alarm clock</a><br><a href="https://online.stopwatch-timer.net/"></a><br><style>.mapouter{position: relative;text-align: right;height: 670px;width: 1000px;}</style><a href="https://www.embedmaps.co">google maps embed</a><style>.gmap_canvas{overflow: hidden;background: none !important;height: 670px;width: 1000px;}</style></div></div>
 	</div>

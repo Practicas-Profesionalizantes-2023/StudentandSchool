@@ -25,6 +25,8 @@ session_start();
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/../js/bootstrap.min.js"></script>
     <!-- Site CSS -->
     <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="css/versions.css">
     <!-- Responsive CSS -->
@@ -54,7 +56,7 @@ session_start();
 						<div class="header-top-right text-right">
 							<ul>
 								<li><a href="views/login.php">LOGIN</a></li>
-								<li><a href="views/pre_register.php">PREINSCRIPCION</a></li>
+								<li><a href="controllers/control_state_page_pre.php">PREINCRIPCION</a></li>
 							</ul>
 						</div>
 					</div>
@@ -74,10 +76,14 @@ session_start();
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 
-						<li class="nav-item active"><a class="nav-link" href="index.php">Inicio</a></li>
-						<li class="nav-item active"><a class="nav-link" href="about.php">Sobre Nosotros</a></li>
+						<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+						
 						<li class="nav-item dropdown">
-							<a href="views/views_carrer.php" class="nav-link">Carreras</a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Carrera</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="views/views_carrer.php">Ver Carreras</a>
+								
+							</div>
 						</li>
 						
 						<li class="nav-item dropdown">
@@ -90,6 +96,8 @@ session_start();
 								
 							</div>
 						</li>
+						
+
 					</ul>
 				</div>
 			</div>
@@ -152,7 +160,7 @@ session_start();
 									<div class="big-tagline">
 										<h2 data-animation="animated zoomInRight"><strong>Institutec</strong> Forjando Trayectorias Brillantes </h2>
 										<p class="lead" data-animation="animated fadeInLeft">Potenciamos tu potencial con educación de calidad y un ambiente de apoyo. Únete a Institutec y marca la diferencia en tu futuro.</p>
-											<a href="/views/" class="hover-btn-new"><span>Contáctanos</span></a>
+											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
@@ -230,25 +238,26 @@ session_start();
         </div><!-- end container -->
     </div><!-- end section -->
 
-	<!-- Footer -->
-    <footer>
+	<footer>
         <div class="footer-logo">
-            <a href="../index.php">INSTITUTEC 2023</a>
+            <a href="#">INSTITUTEC 2023</a>
         </div>
 		<div class="footer-links">
-                <a href="../index.php">Inicio</a>
-                <a href="../views/about.php">Acerca de Nosotros</a>
+                <a href="index.php">Inicio</a>
+                <a href="#">Acerca de Nosotros</a>
                 <a href="#">Programas Académicos</a>
                 <a href="#">Admisiones</a>
                 <a href="contact.php">Contacto</a>
         </div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </footer>
+		<div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+</div>
 
+    </footer>
+</body>
+</html>
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 

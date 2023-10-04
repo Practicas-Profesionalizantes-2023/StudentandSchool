@@ -1,4 +1,4 @@
-?php
+<?php
 session_start();
 require_once '../controllers/stop_session.php';
 require_once '../controllers/message_control.php';
@@ -76,7 +76,7 @@ checkSession();
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_crud_pre_registered.php">Preinscriptos</a>
+								<a class="dropdown-item" href="../views_crud_pre_registered.php">Preinscriptos</a>
 								<a class="dropdown-item" href="../views/views_students.php">Inscribir Alumnos</a>
 							</div>
 						</li>

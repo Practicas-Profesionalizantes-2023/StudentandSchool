@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $eliminated = $database->deleteUserData("internal_users", $user_id);
         
         if ($eliminated) {
-            header("Location: ../views/views_internal_users.php");
+            //header("Location: ../views/views_internal_users.php");
+            
+            header("Location: ../views/views_internal_users.php?eliminado=correcto");
             exit();
         } 
     }

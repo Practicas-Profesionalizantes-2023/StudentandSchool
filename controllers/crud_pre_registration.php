@@ -3,7 +3,7 @@
 require_once "../model/query.php";
 
 $database = new model_sql();
-$carrerData = $database->show_table("careers"); // Obtener datos de carreras
+$carrerData = $database->show_state("careers"); // Obtener datos de carreras
 
 
 
@@ -22,7 +22,9 @@ if (isset($save_data)) {
     // Validar que los campos no estén vacíos
     if (empty($nam_pre) || empty($last_pre) || empty($phone_pre) || empty($email_pre) || empty($date_pre) || empty($dni_pre) || empty($carrer_pre) || empty($street_pre) || empty($gender_pre)) {
         // Al menos uno de los campos está vacío, muestra un mensaje de error.
-        echo "Todos los campos son obligatorios. Por favor, llene todos los campos.";
+        //echo "Todos los campos son obligatorios. Por favor, llene todos los campos.";
+        // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+        header("Location: ../views/pre_register.php?campo=error");
     } else {
         // Verifica duplicados antes de intentar la inserción
         $checkforduplicated = $database->checkForDuplicates("pre_registration",$dni_pre, $email_pre);
