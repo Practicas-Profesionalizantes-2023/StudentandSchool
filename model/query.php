@@ -1000,6 +1000,80 @@ function eliminated_Student($table, $id_user)
     }
 }
 
+//join entre alumno y materia 
+
+function union_Student_subject($value){
+    $query = "SELECT
+    students_subjects.student_subject_id AS 'id',
+    estudents.name AS 'name',
+    estudents.last_name AS 'last_name',
+    estudents.state AS 'state_student',
+    subjects.subject_name AS 'subject_name',
+    subjects.state AS 'state_subject',
+    careers.career_name AS 'name_career'
+    FROM students_subjects
+    JOIN estudents ON students_subjects.fk_student_id = estudents.id_estudents
+    JOIN subjects ON students_subjects.fk_subject_id = subjects.id_subjects
+    JOIN careers ON subjects.fk_career_id = careers.id_career
+    WHERE  subjects.id_subjects = :subject_id AND estudents.state=1 AND subjects.state=1";
+
+  
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':subject_id', $value, PDO::PARAM_INT); 
+
+    $statement->execute();
+    $union_Student = $statement->fetchAll();
+    return $union_Student;
+}
+
+
+
+public function insert_student_subject($value1,$value2) {
+    $query = "INSERT INTO students_subjects (fk_student_id,fk_subject_id)
+              VALUES (:fk_student_id,:fk_subject_id)";
+
+    $statement = $this->pdo->prepare($query);
+
+    $statement->bindParam(':fk_student_id', $value1, PDO::PARAM_INT);
+    $statement->bindParam(':fk_subject_id', $value2, PDO::PARAM_INT);
+  
+    try {
+        if ($statement->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+
+
+public function get_Student_subject($value)
+{
+    $query = "SELECT * FROM students_subjects WHERE id_subjects = :id_subjects and state=1";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_subjects', $value, PDO::PARAM_INT);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+public function getSingle_subject_students($value)
+{
+    $query = "SELECT * FROM students_subjects WHERE student_subject_id = :student_subject_id";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':student_subject_id', $value, PDO::PARAM_INT);
+    $statement->execute();
+    
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+
+public function delete_students_subject($value) {
+    $query = "DELETE FROM students_subjects WHERE student_subject_id = student_subject_id";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_teacher_subject', $value, PDO::PARAM_INT);
+    return $statement->execute();
+}
 
 
 

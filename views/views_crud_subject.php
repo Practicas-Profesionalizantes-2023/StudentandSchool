@@ -119,7 +119,7 @@ checkSession();
                 <td> <?php echo $row['subject_name'] ?></td>
                 <td><?php echo date('d/m/Y H:i:s', strtotime($row['create_date'])); ?></td>
                 <td> <?php echo $row['career_name'] ?></td>
-                <td><a href="form_edit_careers.php?id=<?php echo $row['id_subjects'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
+                <td><a href="../views/views_crud_student_subject.php?id=<?php echo $row['id_subjects'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
                 <td><a class="btn btn-warning float-right subject_edit_Btn  text-white" data-id="<?php echo $row['id_subjects']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
                 <td><a class="btn btn-danger float-right subject_delete_Btn text-white" data-id_subject="<?php echo $row['id_subjects']; ?>"><i class="fas fa-trash-alt"></i></a></td>
                
