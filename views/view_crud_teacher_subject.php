@@ -98,7 +98,7 @@ $careerData = $database->show_state("careers");
         ?>
         <div class="row">
             <div class="col">
-                <h4>Crud de de las Materias que da el Profesor
+                <h4>Crud de de las Materias que da el Profesor <?php echo $get_teacher['name']." ".$get_teacher['surname'] ?></h4>
                     <a href="#" class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i
                             class="fas fa-plus-circle fa-lg"></i></a>
                 </h4>
