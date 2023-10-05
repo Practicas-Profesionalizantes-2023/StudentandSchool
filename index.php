@@ -76,7 +76,7 @@ session_start();
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 
-						<li class="nav-item active"><a class="nav-link" href="index.html">Inicio</a></li>
+						<li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
 						
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Carrera</a>
@@ -244,7 +244,7 @@ session_start();
         </div>
 		<div class="footer-links">
                 <a href="index.php">Inicio</a>
-                <a href="#">Acerca de Nosotros</a>
+                <a href="views/about.php">Acerca de Nosotros</a>
                 <a href="#">Programas Académicos</a>
                 <a href="#">Admisiones</a>
                 <a href="contact.php">Contacto</a>

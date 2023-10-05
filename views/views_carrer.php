@@ -76,12 +76,12 @@ session_start();
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 
-						<li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
 						
 						<li class="nav-item dropdown active">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="../views/views_carrer.php">Ver Carreras</a>
+								<a class="dropdown-item" href="#">Ver Carreras</a>
 								
 							</div>
 						</li>

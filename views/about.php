@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,8 +53,8 @@ session_start();
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="header-top-right text-right">
 							<ul>
-								<li><a href="views/login.php">LOGIN</a></li>
-								<li><a href="views/pre_register.php">PREINSCRIPCION</a></li>
+								<li><a href="../views/login.php">LOGIN</a></li>
+								<li><a href="../views/pre_register.php">PREINSCRIPCION</a></li>
 							</ul>
 						</div>
 					</div>
@@ -76,17 +74,16 @@ session_start();
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
 
-						<li class="nav-item active"><a class="nav-link" href="index.php">Inicio</a></li>
-						<li class="nav-item active"><a class="nav-link" href="about.php">Sobre Nosotros</a></li>
+						<li class="nav-item active"><a class="nav-link" href="../index.php">Inicio</a></li>
 						<li class="nav-item dropdown">
-							<a href="views/views_carrer.php" class="nav-link">Carreras</a>
+							<a href="../views/views_carrer.php" class="nav-link">Carreras</a>
 						</li>
 						
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="#">RESOLUCIONES</a>
-								<a class="dropdown-item" href="views/reglament.php">REGLAMENTO</a>
+								<a class="dropdown-item" href="../views/reglament.php">REGLAMENTO</a>
 								<a class="dropdown-item" href="#">CONSTANCIA</a>
 								<a class="dropdown-item" href="#">CAI</a>
 								
