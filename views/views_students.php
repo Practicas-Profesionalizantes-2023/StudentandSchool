@@ -5,7 +5,7 @@ require_once '../controllers/message_control.php';
 require_once '../controllers/crud_insert_student.php';
 require_once '../controllers/crud_edit_student.php';
 require_once '../controllers/crud_eliminate_student.php';
-
+checkSession();
 ?>
 <!DOCTYPE html>
 <html lang="en">

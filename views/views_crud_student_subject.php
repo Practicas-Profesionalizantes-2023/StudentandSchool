@@ -7,6 +7,7 @@ require_once '../controllers/crud_create_student_subject.php';
 require_once '../controllers/crud_views_student_subject.php';
 require_once '../controllers/crud_create_student_subject.php';
 require_once '../controllers/crud_eliminate_subject_student.php';
+checkSession();
 ?>
 <!DOCTYPE html>
 <html lang="en">
