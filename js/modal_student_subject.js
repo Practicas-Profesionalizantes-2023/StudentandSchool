@@ -7,7 +7,7 @@ $(document).ready(function () {// modal para crear carreras
 
 
 $('.delete_Btn').click(function () {// modal para poder eliminar las Materias
-    var id_subject_students = $(this).data('id_subject_students'); 
+    var id_subject_students = $(this).data('id'); 
     
    
     

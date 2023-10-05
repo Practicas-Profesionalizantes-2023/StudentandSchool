@@ -60,7 +60,7 @@ checkSession();
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 				    <ul class="navbar-nav ml-auto">
-						<li class="nav-item "><a class="nav-link" href="dasboard_home_preceptor.php">Inicio</a></li>
+						<li class="nav-item "><a class="nav-link" href="../views/dasboard_home_preceptor.php">Inicio</a></li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Carrera</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
@@ -69,9 +69,9 @@ checkSession();
 							</div>
 						</li>
                         <li class="nav-item dropdown ">
-							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+								<a class="dropdown-item" href="../views/views_teacher.php">Ver Profesores</a>
 							</div>
 						</li>
                         
@@ -88,7 +88,7 @@ checkSession();
                             <li class="nav-item dropdown active">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Usuarios</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="#">Ver Usuarios</a>
+								<a class="dropdown-item" href="../views/views_internal_users.php">Ver Usuarios</a>
 							</div>
                             <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Configuracion</a>

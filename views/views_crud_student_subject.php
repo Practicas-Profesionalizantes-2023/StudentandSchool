@@ -6,6 +6,7 @@ require_once '../controllers/message_control.php';
 require_once '../controllers/crud_create_student_subject.php';
 require_once '../controllers/crud_views_student_subject.php';
 require_once '../controllers/crud_create_student_subject.php';
+require_once '../controllers/crud_eliminate_subject_student.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,16 +61,16 @@ require_once '../controllers/crud_create_student_subject.php';
                             </div>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+                                <a class="dropdown-item" href="../views/views_teacher.php">Ver Profesores</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="#">Preinscriptos</a>
-                                <a class="dropdown-item" href="#">Inscribir Alumnos</a>
+                                <a class="dropdown-item" href="../views/views_crud_pre_registered.php">Preinscriptos</a>
+                                <a class="dropdown-item" href="../views/views_students.php">Inscribir Alumnos</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -97,66 +98,52 @@ require_once '../controllers/crud_create_student_subject.php';
     <br>
     
     <main class="container">
-     <?php 
-      show_messages_verify('insertado', "se creo el registro correctamente");
-      show_messages_verify('editado', "se edito el registro correctamente");
-      show_messages_verify('borrado', "se borro registro correctamente");
-     ?>
+    <h1 class="text-center">Materia <?php echo $get_subject['subject_name'] ?></h1>
+
     <div class="row">
-     <div class="col">
-        <h4>Crud de Alumnos
-        
-    
-       <a href="#" class="btn btn-primary btn-lg create_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
-
-       </h4>
-        
-        
-        
-     </div>
-
+        <div class="col">
+            <h4>Ver la Materia que cursan los Alumnos
+                <a href="#" class="btn btn-primary btn-lg create_Btn float-right"><i class="fas fa-plus-circle fa-lg text-white"></i></a>
+            </h4>
+        </div>
     </div>
     <div class="row py-3">
         <div class="col">
-           <table class="table table-border">
-               <thead>
-              
-                    
-                <tr class="btn-primary">
-                    <th>id</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Materia</th>
-                    <th>Carrera</th>
-                    <th>Eliminar</th>
-                </tr>
-                    
-
-               </thead>
-               <tbody>
-                
-              <?php foreach ($union as $row) {
-                # code...
-               
-               ?>
-               <tr>
-                <td><?php echo $row['id'] ?></td>
-                <td><?php echo $row['name'] ?></td>
-                <td><?php echo $row['last_name'] ?></td>
-                <td><?php echo $row['subject_name'] ?></td>
-                <td><?php echo $row['name_career'] ?></td>
-                <td><a class="btn btn-danger float-right delete_Btn text-white" data-id_subject_students="<?php echo $row['student_subject_id']; ?>"><i class="fas fa-trash-alt"></i></a></td>
-               
-            </tr>
-               <?php }?>
-               </tbody>
-           </table>
+            <div class="table-responsive">
+                <table class="table table-border">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Materia</th>
+                            <th>Carrera</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($union as $row) { ?>
+                            <tr>
+                                <td><?php echo $row['id'] ?></td>
+                                <td><?php echo $row['name'] ?></td>
+                                <td><?php echo $row['last_name'] ?></td>
+                                <td><?php echo $row['subject_name'] ?></td>
+                                <td><?php echo $row['name_career'] ?></td>
+                                <td>
+                                    <a class="btn btn-danger delete_Btn text-white" data-id="<?php echo $row['id']; ?>"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    </main>
+</main>
 
 
-<!-- Modal para Crear Alumnos-->
+
+<!-- Modal para asignarle a un alumno las materias-->
 <div id="create_Modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-md modal-dialog-scrollable"> <!-- Cambia modal-md para un tamaño mediano y permite el scroll -->
         <div class="modal-content">
@@ -212,7 +199,7 @@ require_once '../controllers/crud_create_student_subject.php';
                     <h2>Advertencia</h2>
                     <p>¿Seguro que desea eliminar este elemento?</p>
                     <form action="../controllers/crud_eliminate_subject_student.php" method="post">
-                        <input type="hidden" name="id_student_subject" id="id_students_subject_eliminate" value="<?php echo $get['id_estudents']; ?>">
+                        <input type="hidden" name="id_student_subject" id="id_students_subject_eliminate" value="<?php echo $get['student_subject_id']; ?>">
                         <div class="btn-group" role="group" aria-label="Botones de acción">
                             <button type="submit" class="btn btn-outline-danger mr-2" name="delete">Eliminar</button>
                         </div>

@@ -62,13 +62,13 @@ require_once '../controllers/crud_eliminate_student.php';
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+                                <a class="dropdown-item" href="../views/views_teacher.php">Ver Profesores</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="#">Preinscriptos</a>
+                                <a class="dropdown-item" href="../views/views_crud_pre_registered.php">Preinscriptos</a>
                                 <a class="dropdown-item" href="#">Inscribir Alumnos</a>
                             </div>
                         </li>
@@ -92,76 +92,6 @@ require_once '../controllers/crud_eliminate_student.php';
         </nav>
     </header>
    
-
-
-<!---tabla con nuestros datos--->  
-   <!--<main class="container">
-    <div class="row">
-     <div class="col">
-     <a class="btn btn-secondary" href="dasboard_home_preceptor.php">Regresar</a>
-        <h4>Crud de Alumnos
-        
-        </h4>
-    </div>
-    <a href="form_insert_student.php" class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
-    </div>
-    <div class="row py-3">
-        <div class="col">
-           <table class="table table-border ">
-               <thead>
-               <tr class="btn-primary">
-                    
-                    <th>Id alumno</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Fecha de nacimiento</th>
-                    <th>Direccion</th>
-                    <th>Altura</th>
-                    <th>DNI</th>
-                    <th>Email</th>
-                    <th>Telefono</th>
-                    <th>Carrera</th>
-                    <th>Genero</th>
-                    <th>fecha de creacion</th>
-                    <th>ver detalle</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                    
-                </tr>
-               </thead>
-               <tbody>
-               <?php
-              
-               foreach ($union_Student as $row) {
-                # code...
-               
-               ?>
-               <tr>
-                <td> <?php echo $row['id_estudents'] ?></td>
-                <td> <?php echo $row['name'] ?></td>
-                <td> <?php echo $row['last_name'] ?></td>
-                <td><?php echo date('d/m/Y ', strtotime($row['birth_date'])); ?></td>
-                <td> <?php echo $row['direction'] ?></td>
-                <td> <?php echo $row['height'] ?></td>
-                <td> <?php echo $row['uk_dni'] ?></td>
-                <td> <?php echo $row['email'] ?></td>
-                <td> <?php echo $row['phone'] ?></td>
-                <td> <?php echo $row['career_name'] ?></td>
-                <td> <?php echo $row['details'] ?></td>
-                <td><?php echo date('d/m/Y ', strtotime($row['fech_creation'])); ?></td>
-                <td><a href="dasboard_home_preceptor?id=<?php echo $row['id_estudents'] ?>" class="btn btn-info float-right">ver detalle</a></td>
-                <td><a href="form_edit_student.php?id=<?php echo $row['id_estudents'] ?>" class="btn btn-warning float-right">Editar Alumnos</a></td>
-                <td><a href="../views/eliminate_student.php?id=<?php echo $row['id_estudents'] ?>" class="btn btn-danger float-right">Eliminar Alumnos</a></td>
-               </tr>
-               </tr>
-               <?php }?>
-               </tbody>
-           </table>
-        </div>
-    </div>
-
-    </main>-->
-
 
     <br>
     <br>
@@ -253,7 +183,7 @@ require_once '../controllers/crud_eliminate_student.php';
                 </button>
             </div>
             <div class="modal-body">
-                <form action="../controllers/crud_insert_teacher.php" method="post">
+                <form action="../controllers/crud_insert_student.php" method="post">
                     <div class="form-group">
                         <label for="name">Nombre</label>
                         <input type="text" name="name" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
@@ -278,13 +208,14 @@ require_once '../controllers/crud_eliminate_student.php';
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
                     </div>
-                    <div class="form-group">
-                        <label for="dni">DNI</label>
-                        <input type="text" name="dni" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
-                    </div>
+                   
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
                         <input type="text" name="phone" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Fecha de Nacimiento</label>
+                        <input type="date" name="birth_date" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
                     </div>
                     <div class="form-group">
                         <label for="fk_career_id">Carrera</label>

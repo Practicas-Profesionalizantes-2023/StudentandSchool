@@ -6,6 +6,7 @@ $id_subject = $_GET['id'];
 
 $union=$database->union_Student_subject($id_subject);
 
-$get_subject=$database->getUserCareer($id_subject);
+$get_subject=$database->getSingle_subject("subjects",$id_subject);
+
 
 ?>

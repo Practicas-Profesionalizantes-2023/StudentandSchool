@@ -68,16 +68,16 @@ checkSession();
                             </div>
                         </li>
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+                                <a class="dropdown-item" href="../views/views_teacher.php">Ver Profesores</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="#">Preinscriptos</a>
-                                <a class="dropdown-item" href="#">Inscribir Alumnos</a>
+                                <a class="dropdown-item" href="../views/views_students.php">Inscribir Alumnos</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

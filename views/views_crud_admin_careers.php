@@ -53,16 +53,16 @@ $careerData=$database->show_state("careers");
 							</div>
 						</li>
                         <li class="nav-item dropdown ">
-							<a class="nav-link dropdown-toggle" href="../views/views_teacher.php" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Profesores</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="views_teacher.php">Ver Profesores</a>
+								<a class="dropdown-item" href="../views/views_teacher.php">Ver Profesores</a>
 							</div>
 						</li>
                         <li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="../views/views_crud_pre_registered.php">Preinscriptos</a>
-								<a class="dropdown-item" href="#">Inscribir Alumnos</a>
+								<a class="dropdown-item" href="../views/views_students.php">Inscribir Alumnos</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown">
@@ -91,6 +91,9 @@ $careerData=$database->show_state("careers");
            show_messages_verify('borrado', "se Elimino correctamente la Carrera");
            show_messages_verify('eliminar_materia', "se Elimino correctamente la Materia");
            show_messages_verify('creo', "La Materia se Creo Correctamente");
+           show_messages_verify('insertado', "se creo el registro correctamente");
+           show_messages_verify('editado', "se edito el registro correctamente");
+           show_messages_verify('eliminate_subject', "se borro registro correctamente");
            ?>
     <div class="row">
      <div class="col">

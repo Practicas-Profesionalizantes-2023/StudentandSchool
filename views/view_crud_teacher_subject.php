@@ -60,14 +60,14 @@ $careerData = $database->show_state("careers");
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a"
                                 data-toggle="dropdown"> Gestionar Profesores</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
-                                <a class="dropdown-item" href="#">Ver Profesores</a>
+                                <a class="dropdown-item" href="../views/views_teacher.php">Ver Profesores</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> Gestionar Alumnos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown-a">
                                 <a class="dropdown-item" href="../views/views_crud_pre_registered.php">Preinscriptos</a>
-                                <a class="dropdown-item" href="#">Inscribir Alumnos</a>
+                                <a class="dropdown-item" href="../views/views_students.php">Inscribir Alumnos</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -112,6 +112,7 @@ $careerData = $database->show_state("careers");
                             <th class="align-middle">Nombre del Profesor</th>
                             <th class="align-middle">Apellido del Profesor</th>
                             <th class="align-middle">Materia que da</th>
+                            <th class="align-middle">Carrera</th>
                             <th class="text-center">Editar</th>
                             <th class="text-center">Eliminar</th>
                         </tr>
@@ -123,6 +124,7 @@ $careerData = $database->show_state("careers");
                                 <td class="align-middle"><?php echo $row['teacher_name'] ?></td>
                                 <td class="align-middle"><?php echo $row['teacher_surname'] ?></td>
                                 <td class="align-middle"><?php echo $row['subject_name'] ?></td>
+                                <td class="align-middle"><?php echo $row['name_career'] ?></td>
                                 <td><a class="btn btn-warning float-right edit_Btn text-white" data-id="<?php echo $row['id_teacher_subject']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
                                 <td><a class="btn btn-danger float-right teacher_delete_Btn text-white"
                                         data-id_teacher_subject="<?php echo $row['id_teacher_subject']; ?>"><i

@@ -781,21 +781,25 @@ public function enable_preinscription($table, $value2)
 public function show_date_id_teacher($teacherId) {
     try {
         $query = "SELECT
-            teachers.name AS teacher_name,
-            teachers.surname AS teacher_surname,
-            subjects.subject_name AS subject_name,
-            subjects.state AS 'state',
-            teachers_subjects.id_teacher_subject AS 'id_teacher_subject'
-        FROM
-            teachers_subjects
-        JOIN
-            teachers ON teachers_subjects.fk_teacher_id = teachers.id_teacher
-        JOIN
-            subjects ON teachers_subjects.fk_subject_id = subjects.id_subjects
-        WHERE
-            teachers.id_teacher = :teacher_id
-            AND teachers.state = 1
-            AND subjects.state = 1;";
+    teachers.name AS teacher_name,
+    teachers.surname AS teacher_surname,
+    subjects.subject_name AS subject_name,
+    subjects.state AS 'state',
+    teachers_subjects.id_teacher_subject AS 'id_teacher_subject',
+    careers.career_name AS 'name_career'
+FROM
+    teachers_subjects
+JOIN
+    teachers ON teachers_subjects.fk_teacher_id = teachers.id_teacher
+JOIN
+    subjects ON teachers_subjects.fk_subject_id = subjects.id_subjects
+JOIN 
+    careers ON subjects.fk_career_id = careers.id_career
+WHERE
+    teachers.id_teacher = :teacher_id
+    AND teachers.state = 1
+    AND subjects.state = 1;";
+
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':teacher_id', $teacherId, PDO::PARAM_INT);
@@ -1069,12 +1073,11 @@ public function getSingle_subject_students($value)
 }
 
 public function delete_students_subject($value) {
-    $query = "DELETE FROM students_subjects WHERE student_subject_id = student_subject_id";
+    $query = "DELETE FROM students_subjects WHERE student_subject_id = :id_student_subject";
     $statement = $this->pdo->prepare($query);
-    $statement->bindParam(':id_teacher_subject', $value, PDO::PARAM_INT);
+    $statement->bindParam(':id_student_subject', $value, PDO::PARAM_INT);
     return $statement->execute();
 }
-
 
 
 }
