@@ -7,8 +7,8 @@ require_once '../controllers/crud_asignament_teacher.php';
 require_once '../controllers/crud_eliminate_asignament.php';
 require_once '../controllers/edit_teacher_subject.php';
 require_once '../controllers/message_control.php';
-//require_once '../controllers/stop_session.php';
-//checkSession();
+require_once '../controllers/stop_session.php';
+checkSession();
 
 $database = new model_sql();
 $careerData = $database->show_state("careers");
@@ -93,9 +93,7 @@ $careerData = $database->show_state("careers");
     <br>
 
     <main class="container">
-        <?php
-        // ...
-        ?>
+        
         <div class="row">
             <div class="col">
                 <h4>Crud de de las Materias que da el Profesor <?php echo $get_teacher['name']." ".$get_teacher['surname'] ?></h4>

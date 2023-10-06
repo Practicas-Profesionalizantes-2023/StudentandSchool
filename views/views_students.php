@@ -101,7 +101,7 @@ checkSession();
       show_messages_verify('insertado', "se creo el registro correctamente");
       show_messages_verify('editado', "se edito el registro correctamente");
       show_messages_verify('borrado', "se borro registro correctamente");
-      show_messages_verify('transferido', "se Tranfirio correctamente al alumno");
+      show_messages_verify('transferido', "se Tranfirio correctamente alumno");
      ?>
     <div class="row">
      <div class="col">
@@ -306,7 +306,7 @@ checkSession();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header btn-primary">
-                <h5 class="modal-title text-white">Eliminar Profesor</h5>
+                <h5 class="modal-title text-white">Eliminar al Alumno</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -325,7 +325,7 @@ checkSession();
             </div>
         </div>
     </div>
-
+</div>
 
 
 
