@@ -6,7 +6,6 @@ require_once '../controllers/crud_edit_controller.php';
 require_once '../controllers/crud_eliminate_register.php';
 require_once '../controllers/stop_session.php';
 require_once '../controllers/message_control.php';
-
 checkSession();
 ?>
 
@@ -124,7 +123,7 @@ checkSession();
                             </button>
                         </div>
                     </div>
-                
+                   
                     <table id="table-body" class="table table-border">
                         <thead class="btn-primary">
                             <tr>
@@ -137,6 +136,7 @@ checkSession();
                                 <th style="max-width: 170px; white-space: nowrap;">Carrera</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Calle y Altura</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Género</th>
+                                <th style="max-width: 170px; white-space: nowrap;">Convertir en Alumno</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Editar</th>
                                 <th style="max-width: 170px; white-space: nowrap;">Borrar</th>
                             </tr>
@@ -154,6 +154,12 @@ checkSession();
                                         <td><?php echo $row['carrer']?></td>
                                         <td><?php echo $row['heigth_street']?></td>
                                         <td><?php echo $row['gender']?></td>
+                                        <td>
+                                             <button class="btn btn-primary" name="copy" value="<?php echo $row['id_pre_user'] ?>">
+                                                <i class="fas fa-user"></i>
+                                            </a>
+                                        </td>
+
                                         <td>
                                             <a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a>
                                         </td>
@@ -177,6 +183,11 @@ checkSession();
                                         <td><?php echo $row['heigth_street']?></td>
                                         <td><?php echo $row['gender']?></td>
                                         <td>
+                                             <button class="btn btn-primary" name="copy" value="<?php echo $row['id_pre_user'] ?>">
+                                                <i class="fas fa-user"></i>
+                                            </a>
+                                        </td>
+                                        <td>
                                             <a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_pre_user']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-phone="<?php echo $row['phone']; ?>" data-mail="<?php echo $row['mail']; ?>" data-career="<?php echo $row['carrer']; ?>" data-street="<?php echo $row['heigth_street']; ?>"><i class="fas fa-edit"></i></a>
                                         </td>
                                         <td> <a class="btn btn-danger float-right delete_Btn text-white" data-id_id_pre="<?php echo $row['id_pre_user']; ?>"><i class="fas fa-trash-alt"></i></a></td>
@@ -186,10 +197,11 @@ checkSession();
                             <?php } ?>
                         </tbody>
                     </table>
-                </form>
+                    </form>
             </div>
         </div>
     </main>
+
 
     <!-- Modal de Editar preinscripto -->
     <div id="editModal" class="modal fade" tabindex="-1" role="dialog">

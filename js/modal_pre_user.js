@@ -1,3 +1,7 @@
+
+
+
+
 $('.editBtn').click(function () {// modal para poder editar las preinscriptos
     var id_pre = $(this).data('id');
     var name_pre = $(this).data('name');

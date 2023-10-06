@@ -101,6 +101,7 @@ checkSession();
       show_messages_verify('insertado', "se creo el registro correctamente");
       show_messages_verify('editado', "se edito el registro correctamente");
       show_messages_verify('borrado', "se borro registro correctamente");
+      show_messages_verify('transferido', "se Tranfirio correctamente al alumno");
      ?>
     <div class="row">
      <div class="col">

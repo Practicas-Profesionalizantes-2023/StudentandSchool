@@ -1079,6 +1079,34 @@ public function delete_students_subject($value) {
     return $statement->execute();
 }
 
+//preguntar sobre los nombres de preinscripcion y carrer para sacar el id
+
+public function getCareerIDByName($career_name) {
+    $query = "SELECT id_career FROM careers WHERE career_name = :career_name";
+    $stmt = $this->pdo->prepare($query);
+    $stmt->bindParam(':career_name', $career_name);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['id_career'];
+}
+
+// Obtener el ID de género por el nombre
+public function getGenderIDByName($gender_name) {
+    $query = "SELECT id_gender FROM genders WHERE details = :details";
+    $stmt = $this->pdo->prepare($query);
+    $stmt->bindParam(':details', $gender_name);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $row['id_gender'];
+}
+
+//borrar a un preinscripto ya transferido
+public function delete_preinscription($value) {
+    $query = "DELETE FROM pre_registration WHERE id_pre_user= :id_pre_user";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_pre_user', $value, PDO::PARAM_INT);
+    return $statement->execute();
+}
 
 }
 
