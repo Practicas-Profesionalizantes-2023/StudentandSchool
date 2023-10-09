@@ -27,6 +27,8 @@ session_start();
     <!-- Site CSS -->
     <link rel="stylesheet" href="../css/carrer.css">
     <link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="../css/versions.css">
     <!-- Responsive CSS -->
@@ -238,13 +240,14 @@ session_start();
         </div><!-- end container -->
     </div><!-- end section -->
 	<!-- Footer -->
+	
 	<footer>
         <div class="footer-logo">
             <a href="#">INSTITUTEC 2023</a>
         </div>
 		<div class="footer-links">
                 <a href="index.php">Inicio</a>
-                <a href="#">Acerca de Nosotros</a>
+                <a href="views/about.php">Acerca de Nosotros</a>
                 <a href="#">Programas Académicos</a>
                 <a href="#">Admisiones</a>
                 <a href="contact.php">Contacto</a>

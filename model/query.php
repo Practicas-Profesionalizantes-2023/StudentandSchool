@@ -503,13 +503,14 @@ public function forgot_password($table, $dni, $password) {
 }
 
 // Insertar una materia asociada a una carrera
-public function insert_subject($subject_name, $fk_career_id) {
-    $query = "INSERT INTO subjects (subject_name, create_date, state, fk_career_id)
-              VALUES (:subject_name, CURRENT_TIMESTAMP, '1', :fk_career_id)";
+public function insert_subject($subject_name,$details,$fk_career_id) {
+    $query = "INSERT INTO subjects (subject_name,details,create_date, state, fk_career_id)
+              VALUES (:subject_name,:details,CURRENT_TIMESTAMP, '1', :fk_career_id)";
 
     $statement = $this->pdo->prepare($query);
 
     $statement->bindParam(':subject_name', $subject_name, PDO::PARAM_STR);
+    $statement->bindParam(':details', $details, PDO::PARAM_STR);
     $statement->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
   
     try {
@@ -526,20 +527,22 @@ public function insert_subject($subject_name, $fk_career_id) {
 public function show_date_id_career($value) {
     try {
         $query = "SELECT
-        subjects.id_subjects AS id_subjects,
-        subjects.subject_name AS subject_name,
-        subjects.create_date AS create_date,
-        subjects.state AS state,
-        subjects.fk_career_id AS fk_career_id,
-        careers.id_career AS id_career,
-        careers.career_name AS career_name
-    FROM
-        subjects
-    JOIN
-        careers ON subjects.fk_career_id = careers.id_career
-    WHERE
-        subjects.fk_career_id = :fk_career_id
-        AND subjects.state = 1;";
+            subjects.id_subjects AS id_subjects,
+            subjects.subject_name AS subject_name,
+            subjects.details AS details,
+            subjects.create_date AS create_date,
+            subjects.state AS state,
+            subjects.fk_career_id AS fk_career_id,
+            careers.id_career AS id_career,
+            careers.career_name AS career_name
+        FROM
+            subjects
+        JOIN
+            careers ON subjects.fk_career_id = careers.id_career
+        WHERE
+            subjects.fk_career_id = :fk_career_id
+            AND subjects.state = 1
+            AND subjects.details = 'primer año'"; // Agrega esta condición
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':fk_career_id', $value, PDO::PARAM_INT);
@@ -550,6 +553,67 @@ public function show_date_id_career($value) {
         return false;
     }
 }
+public function show_date_id_career2($value) {
+    try {
+        $query = "SELECT
+            subjects.id_subjects AS id_subjects,
+            subjects.subject_name AS subject_name,
+            subjects.details AS details,
+            subjects.create_date AS create_date,
+            subjects.state AS state,
+            subjects.fk_career_id AS fk_career_id,
+            careers.id_career AS id_career,
+            careers.career_name AS career_name
+        FROM
+            subjects
+        JOIN
+            careers ON subjects.fk_career_id = careers.id_career
+        WHERE
+            subjects.fk_career_id = :fk_career_id
+            AND subjects.state = 1
+            AND subjects.details = 'Segundo año'"; // Agrega esta condición
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':fk_career_id', $value, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error al buscar la carrera: ' . $e->getMessage();
+        return false;
+    }
+}
+
+public function show_date_id_career3($value) {
+    try {
+        $query = "SELECT
+            subjects.id_subjects AS id_subjects,
+            subjects.subject_name AS subject_name,
+            subjects.details AS details,
+            subjects.create_date AS create_date,
+            subjects.state AS state,
+            subjects.fk_career_id AS fk_career_id,
+            careers.id_career AS id_career,
+            careers.career_name AS career_name
+        FROM
+            subjects
+        JOIN
+            careers ON subjects.fk_career_id = careers.id_career
+        WHERE
+            subjects.fk_career_id = :fk_career_id
+            AND subjects.state = 1
+            AND subjects.details = 'Tercer año'"; // Agrega esta condición
+
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':fk_career_id', $value, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo 'Error al buscar la carrera: ' . $e->getMessage();
+        return false;
+    }
+}
+
+
 
 // seleccionar donde los id acoincidan
 public function getSingle_subject($table,$value)

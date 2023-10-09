@@ -3,7 +3,7 @@
 require_once '../model/query.php';
 
 $database = new model_sql();
-$data_career =$database->show_table("careers");
+$data_career =$database->show_state("careers");
 $data_gender =$database->show_table("genders");
 $union_Student=$database->union_Student_gender_career("estudents");
 

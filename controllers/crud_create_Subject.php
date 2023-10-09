@@ -7,10 +7,11 @@ $show_state=$database->show_state("careers");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject_name = $_POST['Subject'];
     $carrer_id=$_POST['career'];
+    $details=$_POST['details'];
   
 if(!empty($subject_name)){
     // Inserta la nueva materia en la base de datos y asocia la carrera
-    $insert=$database->insert_subject($subject_name, $carrer_id);
+    $insert=$database->insert_subject($subject_name,$details,$carrer_id);
     
     if($insert){
         // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL

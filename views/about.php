@@ -33,6 +33,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/custom.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     <!-- Modernizer for Portfolio -->
     <script src="js/modernizer.js"></script>
 	
@@ -241,22 +243,24 @@
 
 
 	<!-- Footer -->
-    <footer>
+   
+	<footer>
         <div class="footer-logo">
-            <a href="../index.php">INSTITUTEC 2023</a>
+            <a href="#">INSTITUTEC 2023</a>
         </div>
 		<div class="footer-links">
-                <a href="../index.php">Inicio</a>
-                <a href="../views/about.php">Acerca de Nosotros</a>
+                <a href="index.php">Inicio</a>
+                <a href="views/about.php">Acerca de Nosotros</a>
                 <a href="#">Programas Académicos</a>
                 <a href="#">Admisiones</a>
                 <a href="contact.php">Contacto</a>
         </div>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
+		<div class="social-icons">
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+</div>
+
     </footer>
 
     <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>

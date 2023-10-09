@@ -1,0 +1,49 @@
+
+/* CSS para resaltar el enlace activo */
+.nav-item.active a {
+    font-weight: bold; /* Puedes ajustar los estilos según tus preferencias */
+    color: #007bff; /* Cambia el color del texto del enlace activo */
+  }
+  
+
+/*css primera parte para bajar las cartas y darles margin entre ambas dashborad*/
+.margin{
+    margin-top: 30px;
+  }
+  .target-top{
+    margin-top: 30px;
+  }
+  /*fin de la edicion css dashboard*/
+
+  /*parte para modificar las tablas*/
+
+  /*Estilo para alargar los campos de las tablas y se vean bien*/
+  .long_letter{
+    max-width: 170px;
+  white-space: nowrap;
+}
+  
+.small {
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+  }
+  
+  /* Si deseas reducir también el espacio entre las celdas, puedes agregar lo siguiente: */
+  .small table {
+    border-collapse: collapse;
+  }
+  
+  .small th,
+  .small td {
+    padding: 5px; /* Espaciado más pequeño entre celdas */
+  }
+
+/* CSS para centrar los enlaces individualmente */
+td.align-middle .text-center {
+    text-align: center;
+  }
+  
+ 
+
+  
+
+  /*fin de la tablas*/

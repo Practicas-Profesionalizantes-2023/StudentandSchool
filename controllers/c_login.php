@@ -28,13 +28,13 @@ if (isset($_POST['submit'])) {
             }
             switch ($rol) {
                 case 1:
-                    header("Location: ../views/dasboard_home_preceptor.php?mensaje=correcto");
+                    header("Location: ../views/dashboard_preceptor_home.php?mensaje=correcto");
                     exit();
                 case 2:
-                    header("Location: ../views/dasboard_home_rol.php?mensaje=correcto");
+                    header("Location: ../views/dashboard-teacher.php?mensaje=correcto");
                     exit();
                 case 3:
-                    header("Location: ../views/dasboard_home_rol.php?mensaje=correcto");
+                    header("Location: ../views/dashboard-student.php?mensaje=correcto");
                     exit();
                 default:
                     // Redirección predeterminada en caso de rol no reconocido

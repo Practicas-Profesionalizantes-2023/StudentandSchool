@@ -18,14 +18,13 @@ $street_pre = $_POST['street'];
 $gender_pre = $_POST['gender'];
 $save_data = $_POST['save_data'];
 
+
+
+
 if (isset($save_data)) {
-    if (!is_numeric($dni_pre)||!is_numeric($phone_pre)) {
-        // El DNI no es un número, muestra un mensaje de error o redirige a una página de error
-        header("Location: ../views/pre_register.php?number=error");
-        exit(); // Asegura que el script se detenga aquí
-    }
+    
     // Validar que los campos no estén vacíos
-   else if (empty($nam_pre) || empty($last_pre) || empty($phone_pre) || empty($email_pre) || empty($date_pre) || empty($dni_pre) || empty($carrer_pre) || empty($street_pre) || empty($gender_pre)) {
+    if (empty($nam_pre) || empty($last_pre) || empty($phone_pre) || empty($email_pre) || empty($date_pre) || empty($dni_pre) || empty($carrer_pre) || empty($street_pre) || empty($gender_pre)) {
         // Al menos uno de los campos está vacío, muestra un mensaje de error.
         //echo "Todos los campos son obligatorios. Por favor, llene todos los campos.";
         // Redirige a la página de inicio de sesión con un parámetro de error en la URL
