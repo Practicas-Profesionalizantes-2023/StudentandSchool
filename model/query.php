@@ -1171,6 +1171,60 @@ public function delete_preinscription($value) {
     $statement->bindParam(':id_pre_user', $value, PDO::PARAM_INT);
     return $statement->execute();
 }
+function union_correlative_subject(){
+    $query = "SELECT 
+    correlatives.id_correlative AS 'id',
+    correlatives.details AS 'details',
+    subjects.subject_name AS 'subject_name'
+    FROM correlatives
+    JOIN subjects ON correlatives.fk_id_subject=subjects.id_subjects";
+ 
+
+  
+    $statement = $this->pdo->prepare($query);
+
+
+    $statement->execute();
+    $union_correlative = $statement->fetchAll();
+    return $union_correlative;
+}
+
+
+
+
+public function insert_Correlatives($value1,$value2) {
+    $query = "INSERT INTO correlatives (details,fk_id_subject)
+              VALUES (:details,:fk_id_subject)";
+
+    $statement = $this->pdo->prepare($query);
+
+    $statement->bindParam(':details', $value1, PDO::PARAM_INT);
+    $statement->bindParam(':fk_id_subject', $value2, PDO::PARAM_INT);
+  
+    try {
+        if ($statement->execute()) {
+            return true; // Devuelve verdadero si la inserción fue exitosa
+        }
+    } catch (PDOException $e) {
+        echo "Error en la inserción: " . $e->getMessage();
+        return false;
+    }
+}
+public function getSingle_Correlative($value)
+{
+    $query = "SELECT * FROM correlatives WHERE id_correlative = :id_correlative";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_correlative', $value, PDO::PARAM_INT);
+    $statement->execute();
+    
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}
+public function delete_Correlative($value) {
+    $query = "DELETE FROM correlatives WHERE id_correlative = :id_correlative";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':id_correlative', $value, PDO::PARAM_INT);
+    return $statement->execute();
+}
 
 }
 
