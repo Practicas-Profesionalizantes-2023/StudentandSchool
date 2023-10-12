@@ -20,8 +20,7 @@ checkSession();
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../dist/css/desing.css">
-
- </head>
+  </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -195,7 +194,7 @@ checkSession();
     </div>
     <div class="row py-3">
         <div class="col">
-           <table class="table table-border small ">
+           <table class="table table-border small " id="myTable">
                <thead>
                 <tr class="bg-primary">
                     
@@ -520,9 +519,7 @@ checkSession();
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
-
-
+<scrip src="../dist/js/adminlte.min.js"></script>
 
 </body>
 </html>
