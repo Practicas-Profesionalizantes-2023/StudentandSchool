@@ -79,8 +79,8 @@ $careerData = $database->show_state("careers");
                     </a>
                 </li>
             </ul>
-         <?php show_messages_verify('desabilitado', "se deshabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  deshabilitada la preinscripcion");
+         <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
+         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
          show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
          show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
          ?>
@@ -190,7 +190,7 @@ $careerData = $database->show_state("careers");
                 ?>
                 <div class="row">
                     <div class="col">
-                        <h4>Carreras
+                        <h4>Crud de Carreras
                             <a href="#" class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
                         </h4>
                     </div>
@@ -249,9 +249,10 @@ $careerData = $database->show_state("careers");
                                     <label for="subject">Ingrese el titulo de la Carrera</label>
                                     <input type="text" placeholder="Ingrese el titulo" name="title" class="form-control" required>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label for="subject">Ingrese La cantidad de materias</label>
-                                    <input type="number" placeholder="Ingrese la cantidad de la materia" name="amoun_subjects" class="form-control" required>
+                                   <label for="subject">Ingrese La cantidad de materias </label>
+                                   <input type="number" placeholder="Ingrese la cantidad de la materia" name="amoun_subjects" class="form-control" required min="1" max="26">
                                 </div>
                                 <div class="text-center">
                                     <a href="../views/views_crud_admin_careers.php" class="btn btn-outline-secondary mr-2">Cerrar</a>
@@ -288,7 +289,7 @@ $careerData = $database->show_state("careers");
                     </div>
                     <div class="form-group">
                         <label for="subjects_edit">Cantidad de Materias</label>
-                        <input type="number" class="form-control" id="subjects_edit" name="subjects" required>
+                        <input type="number" class="form-control" id="subjects_edit" name="subjects" required min="1" max="26">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
