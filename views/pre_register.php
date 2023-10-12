@@ -21,6 +21,7 @@
                 <div class="contact">
                     <form action="../controllers/crud_pre_registration.php" method="post">
                         <?php show_messages_error('campo', "Reduerde que debe llenar todos los campos"); 
+                              show_messages_error('edad', "Debes ser mayor de 17 años para ingresar la fecha de nacimiento.");
                         ?>
                         <h3>Pre Inscribirse</h3>
                         <input type="text" placeholder="Ingrese su Nombre Completo" name="name">

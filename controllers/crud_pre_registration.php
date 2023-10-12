@@ -47,7 +47,8 @@ if (isset($save_data)) {
                     echo "Hubo un error al guardar los datos en la base de datos.";
                 }
             } else {
-                echo "Debes ser mayor de 17 años para ingresar la fecha de nacimiento.";
+                // Redirige a la página de inicio de sesión con un parámetro de error en la URL
+                header("Location: ../views/pre_register.php?edad=error");
             }
         }
     }
