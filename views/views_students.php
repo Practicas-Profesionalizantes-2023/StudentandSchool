@@ -295,7 +295,7 @@ checkSession();
                    
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
-                        <input type="text" name="phone" class="form-control form-control-sm" required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos"> <!-- Cambia a form-control-sm para un input más pequeño -->
+                        <input type="text" name="phone" class="form-control form-control-sm" required pattern="^\d{10}$" title="Debe contener exactamente 11 dígitos"> <!-- Cambia a form-control-sm para un input más pequeño -->
                     </div>
                     <div class="form-group">
                         <label for="date">Fecha de Nacimiento</label>
@@ -368,7 +368,7 @@ checkSession();
                         </div>
                         <div class="form-group">
                             <label for="edit_phone">editar Telefono</label>
-                            <input type="text" class="form-control" id="phone_students" name="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos" value="<?php echo $get_student['phone']; ?>">
+                            <input type="text" class="form-control" id="phone_students" name="phone"  required pattern="^\d{10}$" title="Debe contener exactamente 11 dígitos" value="<?php echo $get_student['phone']; ?>">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>

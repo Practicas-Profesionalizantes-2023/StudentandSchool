@@ -263,35 +263,35 @@ checkSession();
                 <form action="../controllers/crud_insert_teacher.php" method="post">
                     <div class="form-group">
                         <label for="name">Nombre del Profesor</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+                        <input type="text"  name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="surname">Apellido</label>
-                        <input type="text" id="surname" name="surname" class="form-control" required>
+                        <input type="text"  name="surname" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos">Teléfono</label>
-                        <input type="number" id="phone" name="phone" class="form-control" required>
+                        <label for="phone">Teléfono</label>
+                        <input type="text"  name="phone" class="form-control"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos" >
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" id="email" name="email" class="form-control" required>
+                        <input type="text"  name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="direction">Dirección</label>
-                        <input type="text" id="direction" name="direction" class="form-control" required>
+                        <input type="text"  name="direction" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="height">Altura</label>
-                        <input type="number" id="height" name="height" class="form-control" required>
+                        <input type="number"  name="height" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="dni">DNI</label>
-                        <input type="number" id="dni" name="dni" class="form-control"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
+                        <input type="text"  name="dni"  class="form-control"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
                     </div>
                     <div class="form-group">
                         <label for="fk_gender_id">Sexo</label>
-                        <select id="fk_gender_id" name="fk_gender_id" class="form-control" required>
+                        <select  name="fk_gender_id" class="form-control" required>
                             <?php foreach ($gender_data as $show) { ?>
                                 <option value="<?php echo $show['id_gender']; ?>"><?php echo $show['details']; ?></option>
                             <?php } ?>
@@ -332,7 +332,7 @@ checkSession();
                         </div>
                         <div class="form-group">
                             <label for="edit_phone">editar Telefono</label>
-                            <input type="number" class="form-control" id="phone_teacher" name="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos" value="<?php echo $get_teacher['phone']; ?>">
+                            <input type="text" class="form-control" id="phone_teacher" name="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos" value="<?php echo $get_teacher['phone']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edit_mail">editar Email</label>
