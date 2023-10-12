@@ -2,6 +2,7 @@
 require_once '../model/query.php';
 $database = new model_Sql();
 $credential=$database->getFirstValidCredential(); 
+$pdfFilePath = '../documents/preregistration.pdf';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -25,7 +26,7 @@ try {
     $mail->CharSet = 'UTF-8';
     $mail->Subject = '"¡Bienvenido a INSTITUTEC!"';
     $mail->Body = '<p>¡Nos complace informarte que tu preinscripción en INSTITUTEC ha sido exitosa!</p>' .
-         '<p>Para que tu inscripcion sea completada deberas acercarte a la institucion y presentar los siguientes documentos:   </p>' .
+         '<p>Para que tu inscripción sea completada, deberás acercarte a la institución de lunes a viernes de 18:00hs a 22:00hs y presentar los siguientes documentos:</p>' .
         
         '<p>Original y copia:</p>'.
         '<p>1. Fotocopia del DNI (Documento Nacional de Identidad)</p>' .
@@ -34,10 +35,11 @@ try {
 
         '<p>Original solo:</p>'.
         '<p>4. Libreta sanitaria actualizada. La cual podrás pedirla llevando tu libreta de vacunas a alguna salita médica</p>' .
-        
+        $mail->addAttachment($pdfFilePath);
         '<p>¡Esperamos verte pronto en nuestra escuela!</p>' .
         '<p>No dudes en ponerte en contacto con nosotros si tienes alguna pregunta o necesitas ayuda.</p>' .
         '<p>Atentamente, INSTITUTEC!</p>';
+        
     if (!$mail->send()) {
         echo 'Error al enviar el mensaje: ' . $mail->ErrorInfo;
     } else {
