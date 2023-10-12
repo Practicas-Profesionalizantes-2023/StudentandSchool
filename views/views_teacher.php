@@ -270,7 +270,7 @@ checkSession();
                         <input type="text" id="surname" name="surname" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Teléfono</label>
+                        <label for="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos">Teléfono</label>
                         <input type="number" id="phone" name="phone" class="form-control" required>
                     </div>
                     <div class="form-group">
@@ -287,7 +287,7 @@ checkSession();
                     </div>
                     <div class="form-group">
                         <label for="dni">DNI</label>
-                        <input type="number" id="dni" name="dni" class="form-control" required>
+                        <input type="number" id="dni" name="dni" class="form-control"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
                     </div>
                     <div class="form-group">
                         <label for="fk_gender_id">Sexo</label>
@@ -332,7 +332,7 @@ checkSession();
                         </div>
                         <div class="form-group">
                             <label for="edit_phone">editar Telefono</label>
-                            <input type="number" class="form-control" id="phone_teacher" name="phone" required value="<?php echo $get_teacher['phone']; ?>">
+                            <input type="number" class="form-control" id="phone_teacher" name="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos" value="<?php echo $get_teacher['phone']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edit_mail">editar Email</label>

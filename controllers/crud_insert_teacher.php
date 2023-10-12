@@ -17,6 +17,8 @@ $teacherData=$database->show_state("teachers");
     $keep=$_POST['keep'];
    
     if(isset($keep)){
+    
+
     $checkforduplicated = $database->checkForDuplicates("teachers",$dni, $email);
     if($checkforduplicated !== false){
         echo $checkforduplicated;
@@ -31,4 +33,6 @@ $teacherData=$database->show_state("teachers");
     
     }
     }
+
+
     ?>

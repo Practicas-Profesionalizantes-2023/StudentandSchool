@@ -180,6 +180,8 @@ checkSession();
       show_messages_verify('editado', "se edito el registro correctamente");
       show_messages_verify('borrado', "se borro registro correctamente");
     
+    
+    
      ?>
     <div class="row">
      <div class="col">
@@ -258,6 +260,7 @@ checkSession();
     <div class="modal-dialog modal-md modal-dialog-scrollable"> <!-- Cambia modal-md para un tamaño mediano y permite el scroll -->
         <div class="modal-content">
             <div class="modal-header bg-primary">
+               
                 <h5 class="modal-title text-white">Dar de Alta Un Alumno</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -283,7 +286,7 @@ checkSession();
                     </div>
                     <div class="form-group">
                         <label for="uk_dni">DNI</label>
-                        <input type="text" name="uk_dni" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
+                        <input type="text" name="uk_dni" class="form-control form-control-sm" required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -292,7 +295,7 @@ checkSession();
                    
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
-                        <input type="text" name="phone" class="form-control form-control-sm" required> <!-- Cambia a form-control-sm para un input más pequeño -->
+                        <input type="text" name="phone" class="form-control form-control-sm" required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos"> <!-- Cambia a form-control-sm para un input más pequeño -->
                     </div>
                     <div class="form-group">
                         <label for="date">Fecha de Nacimiento</label>
@@ -357,7 +360,7 @@ checkSession();
                         </div>
                         <div class="form-group">
                             <label for="edit_heigth">editar Dni</label>
-                            <input type="text" class="form-control" id="dni_students" name="uk_dni" required value="<?php echo $get_student['uk_dni']; ?>">
+                            <input type="text" class="form-control" id="dni_students" name="uk_dni"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos" value="<?php echo $get_student['uk_dni']; ?>">
                         </div>
                         <div class="form-group">
                             <label for="edit_mail">editar Mail</label>
@@ -365,7 +368,7 @@ checkSession();
                         </div>
                         <div class="form-group">
                             <label for="edit_phone">editar Telefono</label>
-                            <input type="text" class="form-control" id="phone_students" name="phone" required value="<?php echo $get_student['phone']; ?>">
+                            <input type="text" class="form-control" id="phone_students" name="phone"  required pattern="^\d{11}$" title="Debe contener exactamente 11 dígitos" value="<?php echo $get_student['phone']; ?>">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>

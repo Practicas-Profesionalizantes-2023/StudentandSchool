@@ -283,7 +283,7 @@ checkSession();
               </div>
               <div class="form-group">
                 <label for="subject">Ingrese el Documento de Identidad</label>
-                <input type="number" placeholder="Ingrese el dni" name="dni" class="form-control" required>
+                <input type="number" placeholder="Ingrese el dni" name="dni" class="form-control"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
               </div>
               <div class="form-group">
                 <label for="subject">Ingrese un Correo Electrónico</label>

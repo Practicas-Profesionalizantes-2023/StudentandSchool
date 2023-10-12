@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $keep=$_POST['keep'];
     
     if (isset($keep)) {
+       
         $insert=$database->insertStudent($name,$last_name,$direction,$height,$uk_dni,$email,$phone, $academicYearStart,$fk_career_id,$birth_date,$fk_id_gender);
         if($insert){
             // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
@@ -40,4 +41,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 }
 }
+
     ?>
