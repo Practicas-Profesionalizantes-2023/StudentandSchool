@@ -39,6 +39,11 @@ checkSession();
       <li class="nav-item d-none d-sm-inline-block active">
         <a href="#" class="nav-link">Materias</a>
       </li>
+
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../views/views_crud_correlatives.php" class="nav-link">Correlativas</a>
+      </li>
+
     </ul>
 
     <!-- Right navbar links -->
@@ -197,7 +202,6 @@ checkSession();
                     <th class="text-center">Materia</th>
                     <th class="text-center">Año</th>
                     <th class="text-center">Fecha de Alta</th>
-                    <th class="text-center">Carrera</th>
                     <th class="text-center">Detalles</th>
                     <th class="text-center">editar</th>
                     <th class="text-center">eliminar</th>
@@ -216,7 +220,6 @@ checkSession();
                 <td class="align-middle text-center"><?php echo $row['subject_name'] ?></td>
                 <td class="align-middle text-center"><?php echo $row['details'] ?></td>
                 <td class="align-middle text-center"><?php echo date('d/m/Y', strtotime($row['create_date'])); ?></td>
-                <td class="align-middle text-center"><?php echo $row['career_name'] ?></td>
                 <td class="align-middle">
                  <div class="text-center">
                   <a href="../views/views_crud_student_subject.php?id=<?php echo $row['id_subjects']; ?>" class="btn btn-info"><i class="fas fa-info-circle"></i></a>

@@ -50,12 +50,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </li>
 
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../views/views_students.php" class="nav-link">Estudiantes</a>
+        <a href="../views/views_students.php" class="nav-link">Alumno</a>
       </li>
 
       <li class="nav-item d-none d-sm-inline-block">
         <a href="../views/views_internal_users.php" class="nav-link">Usuarios</a>
       </li>
+
+     
 
     </ul>
 
@@ -161,8 +163,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
         </ul>
-        <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
+        <?php show_messages_verify('desabilitado', "se deshabilito correctamente la preinscripcion");
+         show_messages_error('ya_desabilitado', "ya esta  deshabilitada la preinscripcion");
          show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
          show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
         ?>
@@ -232,7 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Tarjeta 3 -->
           <div class="card">
             <div class="card-header bg-primary text-white">
-              <h5 class="m-0">Gestionar Preinscriptos y Alumnos</h5>
+              <h5 class="m-0">Gestionar Preinscriptos</h5>
             </div>
             <div class="card-body">
               <h6 class="card-title">Oberve las preinscripciones que llegan y los nuevos alumnos que pertenecen a institutec</h6>

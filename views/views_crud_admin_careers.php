@@ -79,8 +79,8 @@ $careerData = $database->show_state("careers");
                     </a>
                 </li>
             </ul>
-         <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
+         <?php show_messages_verify('desabilitado', "se deshabilito correctamente la preinscripcion");
+         show_messages_error('ya_desabilitado', "ya esta  deshabilitada la preinscripcion");
          show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
          show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
          ?>
@@ -190,7 +190,7 @@ $careerData = $database->show_state("careers");
                 ?>
                 <div class="row">
                     <div class="col">
-                        <h4>Crud de Carreras
+                        <h4>Carreras
                             <a href="#" class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
                         </h4>
                     </div>

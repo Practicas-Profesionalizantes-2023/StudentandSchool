@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if($insert){
             // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
             $delete_transfer=$database->delete_preinscription($id);
-           header("Location: ../views/views_students.php?transferido=correcto");
+           header("Location: ../views/views_crud_pre_registered.php?transferido=correcto");
 
             
         }

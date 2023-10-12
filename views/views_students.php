@@ -76,8 +76,8 @@ checkSession();
                     </a>
                 </li>
             </ul>
-         <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
+         <?php show_messages_verify('desabilitado', "se deshabilito correctamente la preinscripcion");
+         show_messages_error('ya_desabilitado', "ya esta  deshabilitada la preinscripcion");
          show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
          show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
          ?>
@@ -179,11 +179,11 @@ checkSession();
       show_messages_verify('insertado', "se creo el registro correctamente");
       show_messages_verify('editado', "se edito el registro correctamente");
       show_messages_verify('borrado', "se borro registro correctamente");
-      show_messages_verify('transferido', "se Tranfirio correctamente alumno");
+    
      ?>
     <div class="row">
      <div class="col">
-        <h4>Crud de Alumnos
+        <h4>Alumnos
         
     
        <a href="#" class="btn btn-primary btn-lg create_students_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
@@ -195,7 +195,7 @@ checkSession();
      </div>
 
     </div>
-    <div class="row py-3">
+    <div class="row py-5">
         <div class="col">
            <table class="table table-border small">
                <thead>
@@ -233,7 +233,7 @@ checkSession();
                 <td class="text-center long_letter align-middle"><?php echo $row['direction'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['height'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['uk_dni'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['email'] ?></td>
+                <td class=" long_letter align-middle"><?php echo $row['email'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['phone'] ?></td>
                 <td class="text-center long_letter align-middle"> <?php echo $row['career_name'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>

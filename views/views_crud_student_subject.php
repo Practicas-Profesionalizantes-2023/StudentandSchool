@@ -145,8 +145,8 @@ checkSession();
             </ul>
           </li>
         </ul>
-        <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
+        <?php show_messages_verify('desabilitado', "se deshabilito correctamente la preinscripcion");
+         show_messages_error('ya_desabilitado', "ya esta  deshabilitada la preinscripcion");
          show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
          show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
         ?>

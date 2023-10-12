@@ -152,8 +152,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
         </ul>
-        <?php show_messages_verify('desabilitado', "se desabilito correctamente la preinscripcion");
-         show_messages_error('ya_desabilitado', "ya esta  desabilitada la preinscripcion");
+        <?php show_messages_verify('desabilitado', "se deshabilito correctamente la preinscripcion");
+         show_messages_error('ya_desabilitado', "ya esta  deshabilitada la preinscripcion");
          show_messages_verify('habilitado', "se habilito correctamente la preinscripcion");
          show_messages_error('ya_habilitado', "ya esta habilitada  la preinscripcion");
         ?>
@@ -194,6 +194,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <?php
             show_messages_verify('eliminado', "se eliminó el registro correctamente");
             show_messages_verify('editado', "se editó el registro correctamente");
+            show_messages_verify('transferido', "La inscripción del alumno se ha realizado con éxito");
             ?>
         </div>
     </div>
@@ -222,7 +223,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <th class="text-center long_letter">Carrera</th>
                             <th class="text-center long_letter">Calle y Altura</th>
                             <th class="text-center long_letter">Género</th>
-                            <th>Tranferir</th>
+                            <th>Aceptar Inscripcion</th>
                             <th>Editar</th>
                             <th>Borrar</th>
                         </tr>

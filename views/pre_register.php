@@ -13,7 +13,7 @@
     <title>institutec</title>
 </head>
 <body>
-    <?php show_messages_verify('mail_correcto', "registro exitoso,revise su casilla de correo");  ?>
+    <?php show_messages_verify('mail_correcto', "Registro exitoso. Por favor, revise su bandeja de entrada para verificar su preinscripción.");  ?>
     <section class="login">
         <div class="login_box">
             <div class="left">
