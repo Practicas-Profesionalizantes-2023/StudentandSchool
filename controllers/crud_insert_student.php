@@ -19,11 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $birth_date=$_POST['birth_date'];
     $fk_career_id=$_POST['fk_career_id'];
     $fk_id_gender=$_POST['id_gender'];
-   
-    $keep=$_POST['keep'];
+    $currentYear = date('Y');
+    $currentMonth = date('m');
 
+        if ($currentMonth >= 10) {  
+            $academicYearStart = $currentYear + 1;
+        } else {
+            $academicYearStart = $currentYear;
+        }
+        // Busca el último espacio en blanco en la cadena
+    $keep=$_POST['keep'];
+    
     if (isset($keep)) {
-        $insert=$database->insertStudent($name,$last_name,$direction,$height,$uk_dni,$email,$phone,$fk_career_id,$birth_date,$fk_id_gender);
+        $insert=$database->insertStudent($name,$last_name,$direction,$height,$uk_dni,$email,$phone, $academicYearStart,$fk_career_id,$birth_date,$fk_id_gender);
         if($insert){
             // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
             header("Location: ../views/views_students.php?insertado=correcto");

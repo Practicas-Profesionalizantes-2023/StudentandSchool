@@ -197,8 +197,8 @@ checkSession();
                         <tr>
                             <th class="text-center">Nombre</th>
                             <th class="text-center">Apellido</th>
-                            <th class="text-center">Materia</th>
                             <th class="text-center">Carrera</th>
+                            <th class="text-center">Ciclo Lectivo</th>
                             <th>Eliminar</th>
                         </tr>
                     </thead>
@@ -208,8 +208,8 @@ checkSession();
                                 
                                 <td class="text-center align-middle"><?php echo $row['name'] ?></td>
                                 <td class="text-center align-middle"><?php echo $row['last_name'] ?></td>
-                                <td class="text-center align-middle"><?php echo $row['subject_name'] ?></td>
                                 <td class="text-center align-middle"><?php echo $row['name_career'] ?></td>
+                                <td class="text-center align-middle"><?php echo $row['school_year'] ?></td>
                                 <td>
                                     <a class="btn btn-danger delete_Btn text-white" data-id="<?php echo $row['id']; ?>"><i class="fas fa-trash-alt"></i></a>
                                 </td>

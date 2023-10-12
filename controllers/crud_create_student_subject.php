@@ -4,7 +4,14 @@ $database= new model_sql();
 $student_data=$database->show_state("estudents");
 $subject_data=$database->show_state("subjects");
 
+$currentYear = date('Y');
+$currentMonth = date('m');
 
+    if ($currentMonth >= 10) {  
+        $academicYearStart = $currentYear + 1;
+    } else {
+        $academicYearStart = $currentYear;
+    }
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["keep"])) {
@@ -16,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["keep"])) {
         $student_id = $_POST["student"];
         
         foreach ($selectedSubjects as $subject) {
-            $insert = $database->insert_student_subject($student_id,$subject);
+            $insert = $database->insert_student_subject($student_id,$subject, $academicYearStart);
         }
     
         if ($insert) {

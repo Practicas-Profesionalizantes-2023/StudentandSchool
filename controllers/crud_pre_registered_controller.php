@@ -30,7 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $career=$get_user['carrer'];
         $heigth_street=$get_user['heigth_street'];
         $gender=$get_user['gender'];
-        // Busca el último espacio en blanco en la cadena
+
+
+// Get the start year of the academic year
+       
        
         $space_position = strrpos($heigth_street, ' ');
 
@@ -43,10 +46,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $direccion = $heigth_street;
             $altura = ''; // Deja la altura vacía
         }
+
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+
+        if ($currentMonth >= 11) {  
+            $academicYearStart = $currentYear + 1;
+        } else {
+            $academicYearStart = $currentYear;
+        }
+        // Busca el último espacio en blanco en la cadena
         
         $steal_id_career=$database->getCareerIDByName($career);
         $steal_id_gender=$database-> getGenderIDByName($gender);
-        $insert=$database->insertStudent($name,$last_name,$direction,$height,$dni,$mail,$phone,$steal_id_career,$date,$steal_id_gender);
+        $insert=$database->insertStudent($name,$last_name,$direction,$height,$dni,$mail,$phone,$academicYearStart ,$steal_id_career,$date,$steal_id_gender);
         if($insert){
             // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
             $delete_transfer=$database->delete_preinscription($id);

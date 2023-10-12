@@ -503,15 +503,17 @@ public function forgot_password($table, $dni, $password) {
 }
 
 // Insertar una materia asociada a una carrera
-public function insert_subject($subject_name,$details,$fk_career_id) {
-    $query = "INSERT INTO subjects (subject_name,details,create_date, state, fk_career_id)
-              VALUES (:subject_name,:details,CURRENT_TIMESTAMP, '1', :fk_career_id)";
+public function insert_subject($subject_name,$details,$school_year,$fk_career_id) {
+    $query = "INSERT INTO subjects (subject_name,details,create_date,school_year,state, fk_career_id)
+              VALUES (:subject_name,:details,CURRENT_TIMESTAMP,:school_year, '1', :fk_career_id)";
 
     $statement = $this->pdo->prepare($query);
 
     $statement->bindParam(':subject_name', $subject_name, PDO::PARAM_STR);
     $statement->bindParam(':details', $details, PDO::PARAM_STR);
+    $statement->bindParam(':school_year', $school_year, PDO::PARAM_STR);
     $statement->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
+   
   
     try {
         if ($statement->execute()) {
@@ -531,6 +533,7 @@ public function show_date_id_career($value) {
             subjects.subject_name AS subject_name,
             subjects.details AS details,
             subjects.create_date AS create_date,
+            subjects.school_year AS school_year,
             subjects.state AS state,
             subjects.fk_career_id AS fk_career_id,
             careers.id_career AS id_career,
@@ -560,6 +563,7 @@ public function show_date_id_career2($value) {
             subjects.subject_name AS subject_name,
             subjects.details AS details,
             subjects.create_date AS create_date,
+            subjects.school_year AS school_year,
             subjects.state AS state,
             subjects.fk_career_id AS fk_career_id,
             careers.id_career AS id_career,
@@ -590,6 +594,7 @@ public function show_date_id_career3($value) {
             subjects.subject_name AS subject_name,
             subjects.details AS details,
             subjects.create_date AS create_date,
+            subjects.school_year AS school_year,
             subjects.state AS state,
             subjects.fk_career_id AS fk_career_id,
             careers.id_career AS id_career,
@@ -940,9 +945,9 @@ public function update_subject_teacher($value1,$value2)
         return false;
     }
 }
-function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $fk_career_id,$birth_date,$fk_id_gender) {
-    $query = "INSERT INTO estudents (name, last_name, direction, height, uk_dni, email, state, phone, fk_career_id, birth_date,fech_creation,fk_id_gender)
-              VALUES (:name, :last_name, :direction, :height, :uk_dni, :email, 1, :phone, :fk_career_id,:birth_date , NOW(),:fk_id_gender)";
+function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $school_year,$fk_career_id,$birth_date,$fk_id_gender) {
+    $query = "INSERT INTO estudents (name, last_name, direction, height, uk_dni, email, state, phone,school_year, fk_career_id, birth_date,fech_creation,fk_id_gender)
+              VALUES (:name, :last_name, :direction, :height, :uk_dni, :email, 1, :phone,:school_year,:fk_career_id,:birth_date , NOW(),:fk_id_gender)";
 
 
         
@@ -955,6 +960,7 @@ function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, 
     $consulta->bindParam(':uk_dni', $uk_dni, PDO::PARAM_STR);
     $consulta->bindParam(':email', $email, PDO::PARAM_STR);
     $consulta->bindParam(':phone', $phone, PDO::PARAM_INT);
+    $consulta->bindParam(':school_year', $school_year, PDO::PARAM_STR);
     $consulta->bindParam(':fk_id_gender', $fk_id_gender, PDO::PARAM_INT);
     $consulta->bindParam(':birth_date', $birth_date, PDO::PARAM_STR);
     $consulta->bindParam(':fk_career_id', $fk_career_id, PDO::PARAM_INT);
@@ -979,6 +985,7 @@ function union_Student_gender_career(){
     estudents.uk_dni AS 'uk_dni',
     estudents.email AS 'email',
     estudents.phone AS 'phone',
+    estudents.school_year AS 'school_year',
     estudents.state AS 'state',
     estudents.fech_creation AS 'fech_creation',
     careers.career_name AS 'career_name',
@@ -1078,6 +1085,7 @@ function union_Student_subject($value){
     estudents.state AS 'state_student',
     subjects.subject_name AS 'subject_name',
     subjects.state AS 'state_subject',
+    students_subjects.school_year AS  'school_year',
     careers.career_name AS 'name_career'
     FROM students_subjects
     JOIN estudents ON students_subjects.fk_student_id = estudents.id_estudents
@@ -1096,14 +1104,15 @@ function union_Student_subject($value){
 
 
 
-public function insert_student_subject($value1,$value2) {
-    $query = "INSERT INTO students_subjects (fk_student_id,fk_subject_id)
-              VALUES (:fk_student_id,:fk_subject_id)";
+public function insert_student_subject($value1,$value2,$value3) {
+    $query = "INSERT INTO students_subjects (fk_student_id,fk_subject_id,school_year)
+              VALUES (:fk_student_id,:fk_subject_id,:school_year)";
 
     $statement = $this->pdo->prepare($query);
 
     $statement->bindParam(':fk_student_id', $value1, PDO::PARAM_INT);
     $statement->bindParam(':fk_subject_id', $value2, PDO::PARAM_INT);
+    $statement->bindParam(':school_year', $value3, PDO::PARAM_STR);
   
     try {
         if ($statement->execute()) {

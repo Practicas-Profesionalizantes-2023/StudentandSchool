@@ -201,6 +201,7 @@ checkSession();
                     
                     <th class="text-center">Materia</th>
                     <th class="text-center">Año</th>
+                    <th class="text-center">Ciclo Lectivo</th>
                     <th class="text-center">Fecha de Alta</th>
                     <th class="text-center">Detalles</th>
                     <th class="text-center">editar</th>
@@ -219,6 +220,7 @@ checkSession();
                 
                 <td class="align-middle text-center"><?php echo $row['subject_name'] ?></td>
                 <td class="align-middle text-center"><?php echo $row['details'] ?></td>
+                <td class="align-middle text-center"><?php echo $row['school_year'] ?></td>
                 <td class="align-middle text-center"><?php echo date('d/m/Y', strtotime($row['create_date'])); ?></td>
                 <td class="align-middle">
                  <div class="text-center">

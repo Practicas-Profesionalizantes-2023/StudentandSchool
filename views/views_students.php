@@ -210,6 +210,7 @@ checkSession();
                     <th class="text-center long_letter">DNI</th>
                     <th class="text-center long_letter">Email</th>
                     <th class="text-center long_letter">Telefono</th>
+                    <th class="text-center long_letter">Ciclo Lectivo</th>
                     <th class="text-center long_letter">Carrera</th>
                     <th class="text-center long_letter">Genero</th>
                     <th class="text-center long_letter">Fecha de Alta</th>
@@ -235,6 +236,7 @@ checkSession();
                 <td class="text-center long_letter align-middle"><?php echo $row['uk_dni'] ?></td>
                 <td class=" long_letter align-middle"><?php echo $row['email'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['phone'] ?></td>
+                <td class="text-center long_letter align-middle"><?php echo $row['school_year'] ?></td>
                 <td class="text-center long_letter align-middle"> <?php echo $row['career_name'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['fech_creation'])); ?></td>
