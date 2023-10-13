@@ -543,7 +543,7 @@ public function show_date_id_career($value) {
         WHERE
             subjects.fk_career_id = :fk_career_id
             AND subjects.state = 1
-            AND subjects.details = 'primer año'"; // Agrega esta condición
+           "; // Agrega esta condición
 
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':fk_career_id', $value, PDO::PARAM_INT);
@@ -791,6 +791,7 @@ public function show_date_id_teacher($teacherId) {
     teachers.surname AS teacher_surname,
     subjects.subject_name AS subject_name,
     subjects.state AS 'state',
+    subjects.details AS 'details',
     teachers_subjects.id_teacher_subject AS 'id_teacher_subject',
     careers.career_name AS 'name_career'
 FROM

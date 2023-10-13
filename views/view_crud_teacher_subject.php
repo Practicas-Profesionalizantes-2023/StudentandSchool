@@ -187,7 +187,7 @@ $careerData = $database->show_state("careers");
         
         <div class="row">
             <div class="col-10">
-                <h4>Crud de de las Materias que da el Profesor <?php echo $get_teacher['name']." ".$get_teacher['surname'] ?></h4>
+                <h4>Materias que da el Profesor <?php echo $get_teacher['name']." ".$get_teacher['surname'] ?></h4>
                     <a href="#" class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i
                             class="fas fa-plus-circle fa-lg"></i></a>
                 </h4>
@@ -201,6 +201,7 @@ $careerData = $database->show_state("careers");
                             <th class="align-middle text-center">Nombre del Profesor</th>
                             <th class="align-middle text-center">Apellido del Profesor</th>
                             <th class="align-middle text-center">Materia que da</th>
+                            <th class="align-middle text-center">Año</th>
                             <th class="align-middle text-center">Carrera</th>
                             <th class="text-center">Editar</th>
                             <th class="text-center">Eliminar</th>
@@ -213,6 +214,7 @@ $careerData = $database->show_state("careers");
                                 <td class="align-middle text-center"><?php echo $row['teacher_name'] ?></td>
                                 <td class="align-middle text-center"><?php echo $row['teacher_surname'] ?></td>
                                 <td class="align-middle text-center"><?php echo $row['subject_name'] ?></td>
+                                <td class="align-middle text-center"><?php echo $row['details'] ?></td>
                                 <td class="align-middle text-center"><?php echo $row['name_career'] ?></td>
                                 <td><a class="btn btn-warning float-right edit_Btn text-white" data-id="<?php echo $row['id_teacher_subject']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
                                 <td><a class="btn btn-danger float-right teacher_delete_Btn text-white"
@@ -244,12 +246,9 @@ $careerData = $database->show_state("careers");
                 <div class="modal-body">
                     <form action="../controllers/crud_asignament_teacher.php" method="post">
                         <div class="form-group">
-                            <label for="teacher" class="text-white">Seleccione un Profesor</label>
-                            <select name="teacher" id="select_teacher" class="form-control" required>
-                                <?php foreach ($show_teacher as $row) { ?>
-                                    <option value="<?php echo $row['id_teacher']; ?>"><?php echo $row['name']; ?></option>
-                                <?php } ?>
-                            </select>
+                        <h5 class="text-center">Asignar Materias a <?php echo $get_teacher['name']; ?></h5>
+                        <input type="hidden" name="teacher" value="<?php echo $get_teacher['id_teacher']; ?>">
+                           
                         </div>
                         <div class="form-group">
                             <label for="subjects" class="text-white">Seleccione las Materias (Mantén presionada la tecla Ctrl para seleccionar varias)</label>

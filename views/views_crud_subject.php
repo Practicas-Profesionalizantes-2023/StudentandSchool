@@ -187,12 +187,9 @@ checkSession();
                 <div class="modal-body">
                     <form action="../controllers/crud_create_Subject.php" method="post">
                         <div class="form-group">
-                            <label for="career">Seleccione la carrera</label>
-                            <select name="career" id="career" class="form-control">
-                                <?php foreach ($show_state as $show) { ?>
-                                    <option value="<?php echo $show['id_career']; ?>"><?php echo $show['career_name']; ?></option>
-                                <?php } ?>
-                            </select>
+                           
+                            <input type="hidden" name="career" value="<?php echo $get_career['id_career'];?>">
+                           
                         </div>
                         <div class="form-group">
                             <label for="subject">Ingrese La Materia</label>
