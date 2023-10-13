@@ -5,7 +5,6 @@ require_once '../model/query.php';
 require_once '../controllers/crud_teacher_subject.php';
 require_once '../controllers/crud_asignament_teacher.php';
 require_once '../controllers/crud_eliminate_asignament.php';
-require_once '../controllers/edit_teacher_subject.php';
 require_once '../controllers/message_control.php';
 require_once '../controllers/stop_session.php';
 checkSession();
@@ -187,10 +186,10 @@ $careerData = $database->show_state("careers");
         
         <div class="row">
             <div class="col-10">
-                <h4>Materias que da el Profesor <?php echo $get_teacher['name']." ".$get_teacher['surname'] ?></h4>
+                <h4> <?php echo $get_teacher['name']." ".$get_teacher['surname'] ?></h4>
                     <a href="#" class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i
                             class="fas fa-plus-circle fa-lg"></i></a>
-                </h4>
+                
             </div>
         </div>
         <div class="row py-5">
@@ -201,9 +200,7 @@ $careerData = $database->show_state("careers");
                             <th class="align-middle text-center">Nombre del Profesor</th>
                             <th class="align-middle text-center">Apellido del Profesor</th>
                             <th class="align-middle text-center">Materia que da</th>
-                            <th class="align-middle text-center">Año</th>
                             <th class="align-middle text-center">Carrera</th>
-                            <th class="text-center">Editar</th>
                             <th class="text-center">Eliminar</th>
                         </tr>
                     </thead>
@@ -214,9 +211,7 @@ $careerData = $database->show_state("careers");
                                 <td class="align-middle text-center"><?php echo $row['teacher_name'] ?></td>
                                 <td class="align-middle text-center"><?php echo $row['teacher_surname'] ?></td>
                                 <td class="align-middle text-center"><?php echo $row['subject_name'] ?></td>
-                                <td class="align-middle text-center"><?php echo $row['details'] ?></td>
                                 <td class="align-middle text-center"><?php echo $row['name_career'] ?></td>
-                                <td><a class="btn btn-warning float-right edit_Btn text-white" data-id="<?php echo $row['id_teacher_subject']; ?>" data-subject="<?php echo $row['subject_name']; ?>"><i class="fas fa-edit"></i></a></td>
                                 <td><a class="btn btn-danger float-right teacher_delete_Btn text-white"
                                         data-id_teacher_subject="<?php echo $row['id_teacher_subject']; ?>"><i
                                             class="fas fa-trash-alt"></i></a></td>
@@ -246,9 +241,12 @@ $careerData = $database->show_state("careers");
                 <div class="modal-body">
                     <form action="../controllers/crud_asignament_teacher.php" method="post">
                         <div class="form-group">
-                        <h5 class="text-center">Asignar Materias a <?php echo $get_teacher['name']; ?></h5>
-                        <input type="hidden" name="teacher" value="<?php echo $get_teacher['id_teacher']; ?>">
-                           
+                            <label for="teacher" class="text-white">Seleccione un Profesor</label>
+                            <select name="teacher" id="select_teacher" class="form-control" required>
+                                <?php foreach ($show_teacher as $row) { ?>
+                                    <option value="<?php echo $row['id_teacher']; ?>"><?php echo $row['name']; ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="subjects" class="text-white">Seleccione las Materias (Mantén presionada la tecla Ctrl para seleccionar varias)</label>
@@ -270,38 +268,6 @@ $careerData = $database->show_state("careers");
 
     <!-- Fin Modal para Crear asignacion -->
 
-    <!-- Modal para Editar las materias que da el profe -->
-    <div id="editModal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white">Actualizar datos del Profesor y la Materia</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-           
-            <div class="modal-body">
-                <form action="../controllers/edit_teacher_subject.php" method="post">
-                    <input type="hidden" name="id_teacher_subject" id="id_teacher_subject" class="form-control" value="<?php $get['id_teacher_subject'] ?>">
-                    <div class="form-group">
-                        <label for="title_edit">Modifique la Materia del profesor</label>
-                        <select name="subjects" id="id_subject"  class="form-control"  required>
-                         <?php foreach ($show_subject as $row) { ?>
-                                    <option value="<?php echo $row['id_subjects']; ?>"><?php echo $row['subject_name']; ?></option>
-                                <?php } ?>
-                            </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-outline-primary" name="keep">Actualizar Datos</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-    <!-- Fin Modal para eliminar al profe de la materia -->
 
  <!-- Modal para Eliminar alumnos -->
  <div id="delete_career_modal" class="modal fade" tabindex="-1" role="dialog">

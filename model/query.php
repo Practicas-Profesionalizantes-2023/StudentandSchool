@@ -858,32 +858,7 @@ public function delete_teacher_subject($table, $value) {
 }
 
 
-public function update_subject_teacher($value1,$value2)
-{
-    try {
-        // Create the SQL query
-        // Create the SQL query
-        $query = "UPDATE teachers_subjects 
-        SET fk_subject_id = :fk_subject_id 
-        WHERE id_teacher_subject = :id_teacher_subject";
 
-
-        // Prepare and execute the SQL statement
-        $statement = $this->pdo->prepare($query);
-        $statement->bindParam(':id_teacher_subject', $value1, PDO::PARAM_INT);
-        $statement->bindParam(':fk_subject_id', $value2, PDO::PARAM_INT);
-
-       
-        
-
-        $result = $statement->execute();
-
-        return $result; 
-    } catch (PDOException $e) {
-        echo "Error in update: " . $e->getMessage();
-        return false;
-    }
-}
 function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $school_year,$fk_career_id,$birth_date,$fk_id_gender) {
     $query = "INSERT INTO estudents (name, last_name, direction, height, uk_dni, email, state, phone,school_year, fk_career_id, birth_date,fech_creation,fk_id_gender)
               VALUES (:name, :last_name, :direction, :height, :uk_dni, :email, 1, :phone,:school_year,:fk_career_id,:birth_date , NOW(),:fk_id_gender)";
