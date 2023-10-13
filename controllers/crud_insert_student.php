@@ -24,12 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $currentMonth = date('m');
     $minimumAge = strtotime('-17 years'); // Fecha mínima para ser mayor o igual a 17 años
 
-    if (strlen($phone) > $phone_max_length) {
-        echo "El número de teléfono no puede tener más de $phone_max_length dígitos.";
+    if (strlen($phone) > $phone_max_length  ||strlen($phone) <$phone_max_length) {
+        header("Location: ../views/views_students.php?telefono_digito=error");
+        exit();
     }
-
-    if (strlen($uk_dni) > $dni_max_length) {
-        echo "El DNI no puede tener más de $dni_max_length dígitos.";
+    // Valida la longitud del DNI
+    if (strlen($uk_dni) > $dni_max_length ||strlen($uk_dni) <$dni_max_length) {
+        header("Location: ../views/views_students.php?dni_digito=error");
+        exit();
     }
 
     if ($currentMonth >= 10) {  
@@ -41,20 +43,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $keep = $_POST['keep'];
     $birth_date = strtotime($date_pre);
 
-    if (isset($keep)) {
-        if ($birth_date <= $minimumAge) {
-            // La persona es mayor o igual a 17 años, procede con la inserción
-            $insert = $database->insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $academicYearStart, $fk_career_id, $birth_date, $fk_id_gender);
-            if ($insert) {
-                // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
-                header("Location: ../views/views_students.php?insertado=correcto");
-                exit(); // Termina el script después de la redirección
-            } else {
-                echo "Hubo un error al guardar los datos en la base de datos.";
-            }
+  // ... (código existente)
+
+if (isset($keep)) {
+    // Verificar duplicados
+   
+
+    if ($birth_date <= $minimumAge) {
+        // Formatea la fecha en el formato correcto 'Y-m-d H:i:s'
+        $formatted_birth_date = date('Y-m-d H:i:s', $birth_date);
+        
+        // La persona es mayor o igual a 17 años, procede con la inserción
+        $insert = $database->insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $academicYearStart, $fk_career_id, $formatted_birth_date, $fk_id_gender);
+        if ($insert) {
+            // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+            header("Location: ../views/views_students.php?insertado=correcto");
+            exit(); // Termina el script después de la redirección
         } else {
-            echo "Debes ser mayor o igual a 17 años para ingresar la fecha de nacimiento.";
+            echo "Hubo un error al guardar los datos en la base de datos.";
         }
+    } else {
+        header("Location: ../views/views_students.php?edad=error");
+        exit();
     }
 }
+
+}    
 ?>

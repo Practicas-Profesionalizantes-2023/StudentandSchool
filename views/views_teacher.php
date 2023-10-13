@@ -185,6 +185,9 @@ checkSession();
      show_messages_verify('asignado', "se asigno al maestro materias  correctamente");
      show_messages_verify('asignacion', "se elimino correctamente la asignacion del profesor a la materia");
      show_messages_verify('actualizar', "se Actualizo  correctamente la Materia");
+     show_messages_error('telefono_digito', "recuerde que el telefono debe ser de 10 digitos");
+     show_messages_error('dni_digito', "recuerde ingresar un dni valido de 8 digitos");
+     show_messages_error('dni_email', "Ya existe el dni o el email");
      ?>
     <div class="row">
      <div class="col-10">

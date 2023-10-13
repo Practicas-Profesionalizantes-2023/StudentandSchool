@@ -28,13 +28,13 @@ require_once '../controllers/message_control.php';
 						  show_messages_verify('cambio_exito', "la contraseña olvidada se cambio correctamente");
    					?>
 						<h3>Login</h3>
-						<input type="text" placeholder="Ingrese su Usuario" name="user">
+						<input type="text" placeholder="Ingrese su Dni" name="user">
 						<div class="password-toggle">
 							<input class="controls" type="password" name="password" placeholder="Contraseña" id="password">
 							<label class="show-password-button" for="showPasswordCheckbox">&#x1f441;</label>
 							<input type="checkbox" id="showPasswordCheckbox" style="display: none;">
 						</div>
-						<button class="submit" name="submit">Inicia Session</button>
+						<button class="submit" name="submit">Inicia Sesiòn</button>
 						<div class="link">
 							<a href="../views/view_i_forgot_password.php" class="control_link">¿te olvidaste la contraseña?</a>
 						</div>

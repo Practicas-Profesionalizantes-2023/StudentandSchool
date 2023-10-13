@@ -13,7 +13,7 @@ if(isset($_GET['id'])){
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
        
         // Verifica si se ha enviado el formulario
-        
+        $phone_max_length = 10;
         $id_teacher = $_POST["id_teacher"];
         $name = isset($_POST["name"]) ? $_POST["name"] : null;
         $surname = isset($_POST["surname"]) ? $_POST["surname"] : null;
@@ -23,8 +23,13 @@ if(isset($_GET['id'])){
         $height = isset($_POST["height"]) ? $_POST["height"]: null;
         $keep=$_POST['save_data'];
       
+
         if(isset($keep)){
 
+            if (strlen($phone) > $phone_max_length  ||strlen($phone) <$phone_max_length) {
+                header("Location: ../views/views_teacher.php?telefono_digito=error");
+                exit();
+            }
         // Llama a la función de actualización de la base de datos
         $updated = $database->updateUserTeacher($id_teacher, $name,$surname,$phone,$mail,$direction, $height);
     

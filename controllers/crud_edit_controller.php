@@ -28,17 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $career = isset($_POST["carrer"]) ? $_POST["carrer"] : null;
     $heigth_street = isset($_POST["heigth_street"]) ? $_POST["heigth_street"] : null;// La siguiente línea asigna el valor de $_POST["heigth_street"] a $heigth_street si está definido, de lo contrario, asigna null.
 
+    if (strlen($phone) > $phone_max_length  ||strlen($phone) <$phone_max_length) {
+        header("Location: ../views/views_crud_pre_registered.php?telefono_digito=error");
+        exit();
+    }
     // Llama a la función de actualización de la base de datos
     $updated = $database->updateUserData($user_id, $name, $last_name, $phone, $mail, $career, $heigth_street);
 
     if ($updated) {
-        // La actualización fue exitosa, redirige a una página de éxito o muestra un mensaje de éxito
-        //header("Location: ../views/views_crud_pre_registered.php");
-        // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+        
         header("Location: ../views/views_crud_pre_registered.php?editado=correcto");
         exit;
     } else {
-        // Hubo un error en la actualización, muestra un mensaje de error
         echo "Error al actualizar los datos.";
     }
     }

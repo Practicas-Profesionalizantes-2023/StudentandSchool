@@ -20,16 +20,19 @@ $dni_max_length = 8;
    
     if(isset($keep)){
     
-        if (strlen($phone) > $phone_max_length) {
-            echo "El número de teléfono no puede tener más de $phone_max_length dígitos.";
+        if (strlen($phone) > $phone_max_length  ||strlen($phone) <$phone_max_length) {
+            header("Location: ../views/views_students.php?telefono_digito=error");
+            exit();
         }
         // Valida la longitud del DNI
-        if (strlen($dni) > $dni_max_length) {
-            echo "El DNI no puede tener más de $dni_max_length dígitos.";
+        if (strlen($dni) > $dni_max_length ||strlen($dni) <$dni_max_length) {
+            header("Location: ../views/views_students.php?dni_digito=error");
+            exit();
         }
     $checkforduplicated = $database->checkForDuplicates("teachers",$dni, $email);
     if($checkforduplicated !== false){
-        echo $checkforduplicated;
+        header("Location: ../views/views_teacher.php?dni_email=error");
+        exit();
     }else{
       
         $insert=$database->insertTeacher($name, $surname, $phone, $email,$direction,$height,$dni,$fk_gender_id);

@@ -12,7 +12,7 @@ class model_sql
     {
         $hostname = "db";
         $database = getenv("DB_NAME");
-        $username = getenv("MYSQL_USER");
+        $username = "root";
         $password = getenv("MYSQL_ROOT_PASSWORD");
         $charset = "utf8";
 
@@ -123,13 +123,9 @@ public function checkForDuplicates($table,$value1, $value2)
         $count = $checkStatement->fetchColumn();
 
         if ($count > 0) {
-            // Ya existe un registro con el mismo DNI o correo electrónico
-               // Ya existe un registro con el mismo DNI o correo electrónico
-               echo '<div style="border: 1px solid #ccc; padding: 10px; background-color: #ffcccc; text-align: center;">';
-               echo 'El DNI o el correo electrónico ya han sido registrados anteriormente.<br>';
-               echo '<a href="volver.php" style="text-decoration: none; padding: 5px 10px; background-color: #4CAF50; color: white; border-radius: 5px;">Volver</a>';
-               echo '</div>';
-               return true;
+            
+              
+         return true;
         }
 
         return false;

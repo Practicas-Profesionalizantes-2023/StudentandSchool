@@ -179,9 +179,10 @@ checkSession();
       show_messages_verify('insertado', "se creo el registro correctamente");
       show_messages_verify('editado', "se edito el registro correctamente");
       show_messages_verify('borrado', "se borro registro correctamente");
-    
-    
-    
+      show_messages_error('edad', "Debes ser mayor de 17 años para ingresar la fecha de nacimiento.");
+      show_messages_error('telefono_digito', "recuerde que el telefono debe ser de 10 digitos");
+      show_messages_error('dni_digito', "recuerde ingresar un dni valido de 8 digitos");
+      show_messages_error('dni_email', "Ya existe el dni o el email");
      ?>
     <div class="row">
      <div class="col">
@@ -294,7 +295,7 @@ checkSession();
                    
                     <div class="form-group">
                         <label for="phone">Teléfono</label>
-                        <input type="text" name="phone" class="form-control form-control-sm" required pattern="^\d{10}$" title="Debe contener exactamente 11 dígitos"> <!-- Cambia a form-control-sm para un input más pequeño -->
+                        <input type="text" name="phone" class="form-control form-control-sm" required pattern="^\d{10}$" title="Debe contener exactamente 10 dígitos"> <!-- Cambia a form-control-sm para un input más pequeño -->
                     </div>
                     <div class="form-group">
                         <label for="date">Fecha de Nacimiento</label>

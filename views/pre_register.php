@@ -22,6 +22,9 @@
                     <form action="../controllers/crud_pre_registration.php" method="post">
                         <?php show_messages_error('campo', "Reduerde que debe llenar todos los campos"); 
                               show_messages_error('edad', "Debes ser mayor de 17 años para ingresar la fecha de nacimiento.");
+                              show_messages_error('telefono_digito', "recuerde que el telefono debe ser de 10 digitos");
+                              show_messages_error('dni_digito', "recuerde ingresar un dni valido de 8 digitos");
+                              show_messages_error('dni_email', "Ya existe el dni o el email");
                         ?>
                         <h3>Pre Inscribirse</h3>
                         <input type="text" placeholder="Ingrese su Nombre Completo" name="name">
@@ -31,7 +34,7 @@
                         <input type="text" placeholder="Ingrese su Email" name="email">
                         <label for="gender">Fecha de Nacimiento:</label>
                         <input type="date" placeholder="Ingrese su Fecha de Nacimiento" name="date">
-                        <input type="text" placeholder="Ingrese su Dni" name="dni"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
+                        <input type="text" placeholder="Ingrese su Dni" name="dni"  required>
                         <label for="carrer">Carrera:</label>
                         <select name="carrer" id="carrer">
                             <?php foreach ($carrerData as $carrer) { ?>
