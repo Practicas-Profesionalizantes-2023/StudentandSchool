@@ -204,18 +204,15 @@ checkSession();
               
                     
                 <tr class="bg-primary">
-                    <th class="text-center long_letter">Nombre</th>
-                    <th class="text-center long_letter">Apellido</th>
-                    <th class="text-center long_letter">Fecha de nacimiento</th>
-                    <th class="text-center long_letter">Direccion</th>
-                    <th class="text-center long_letter">Altura</th>
+                    <th class="text-center long_letter">Nombre y apellido</th>
+                    <th class="text-center long_letter">Direccion y Altura</th>
                     <th class="text-center long_letter">DNI</th>
                     <th class="text-center long_letter">Email</th>
                     <th class="text-center long_letter">Telefono</th>
+                    <th class="text-center long_letter">Fecha de nacimiento</th>
+                    <th class="text-center long_letter">Genero</th>
                     <th class="text-center long_letter">Ciclo Lectivo</th>
                     <th class="text-center long_letter">Carrera</th>
-                    <th class="text-center long_letter">Genero</th>
-                    <th class="text-center long_letter">Fecha de Alta</th>
                     <th class="text-center">Editar</th>
                     <th class="text-center">Eliminar</th>
                 </tr>
@@ -230,18 +227,15 @@ checkSession();
                ?>
                <tr>
                
-                <td class="text-center long_letter align-middle"> <?php echo $row['name'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['last_name'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['birth_date'])); ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['direction'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['height'] ?></td>
+                <td class="text-center long_letter align-middle"><?php echo trim($row['name'] . ' ' . $row['last_name']); ?></td>
+                <td class="text-center long_letter align-middle"><?php echo trim($row['direction'] . ' ' . $row['height']); ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['uk_dni'] ?></td>
-                <td class=" long_letter align-middle"><?php echo $row['email'] ?></td>
+                <td class=" align-middle"><?php echo $row['email'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['phone'] ?></td>
+                <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['birth_date'])); ?></td>
+                <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>
                 <td class="text-center long_letter align-middle"><?php echo $row['school_year'] ?></td>
                 <td class="text-center long_letter align-middle"> <?php echo $row['career_name'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['fech_creation'])); ?></td>
                 <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_estudents']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-direction="<?php echo $row['direction']; ?>" data-height="<?php echo $row['height']; ?>" data-dni="<?php echo $row['uk_dni']; ?>" data-mail="<?php echo $row['email']; ?>" data-phone="<?php echo $row['phone']; ?>"><i class="fas fa-edit"></i></a></td>
                 <td><a class="btn btn-danger float-right delete_Btn text-white" data-id_students="<?php echo $row['id_estudents']; ?>"><i class="fas fa-trash-alt"></i></a></td>
                
@@ -249,6 +243,11 @@ checkSession();
                <?php }?>
                </tbody>
            </table>
+           <div id="pagination" class="text-center">
+            <button id="previous" class="btn-outline-primary">Siguiente</button>
+            <span id="page">Page 1</span>
+            <button id="next" class="btn-outline-primary">Anterior</button>
+          </div>
         </div>
     </div>
     </main>
@@ -434,6 +433,7 @@ checkSession();
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/modal_studens.js"></script>
+    <script src="../js/page_table.js"></script>
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

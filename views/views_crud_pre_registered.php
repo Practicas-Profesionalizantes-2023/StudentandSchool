@@ -46,7 +46,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="#" class="nav-link">Preinscriptos</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../views/views_students.php" class="nav-link">Ver Estudiantes</a>
+        <a href="../views/views_students.php" class="nav-link">Ver Alumnos</a>
       </li>
     </ul>
 

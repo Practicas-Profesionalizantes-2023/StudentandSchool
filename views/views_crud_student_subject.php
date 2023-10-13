@@ -217,6 +217,11 @@ checkSession();
                         <?php } ?>
                     </tbody>
                 </table>
+                <div id="pagination" class="text-center">
+            <button id="previous" class="btn-outline-primary">Siguiente</button>
+            <span id="page">Page 1</span>
+            <button id="next" class="btn-outline-primary">Anterior</button>
+          </div>
             </div>
         </div>
     </div>
@@ -319,6 +324,7 @@ checkSession();
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/modal_student_subject.js"></script>
+<script src="../js/page_table.js"></script>
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
