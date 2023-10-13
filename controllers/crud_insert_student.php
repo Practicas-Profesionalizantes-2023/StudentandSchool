@@ -3,43 +3,58 @@
 require_once '../model/query.php';
 
 $database = new model_sql();
-$data_career =$database->show_state("careers");
-$data_gender =$database->show_table("genders");
-$union_Student=$database->union_Student_gender_career("estudents");
+$data_career = $database->show_state("careers");
+$data_gender = $database->show_table("genders");
+$union_Student = $database->union_Student_gender_career("estudents");
+$phone_max_length = 10;
+$dni_max_length = 8;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $name = $_POST['name'];
     $last_name = $_POST['last_name'];
-    $direction=$_POST['direction'];
-    $height=$_POST['height'];
-    $uk_dni=$_POST['uk_dni'];
-    $email=$_POST['email'];
-    $phone=$_POST['phone'];
-    $birth_date=$_POST['birth_date'];
-    $fk_career_id=$_POST['fk_career_id'];
-    $fk_id_gender=$_POST['id_gender'];
+    $direction = $_POST['direction'];
+    $height = $_POST['height'];
+    $uk_dni = $_POST['uk_dni'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $date_pre = $_POST['birth_date'];
+    $fk_career_id = $_POST['fk_career_id'];
+    $fk_id_gender = $_POST['id_gender'];
     $currentYear = date('Y');
     $currentMonth = date('m');
+    $minimumAge = strtotime('-17 years'); // Fecha mínima para ser mayor o igual a 17 años
 
-        if ($currentMonth >= 10) {  
-            $academicYearStart = $currentYear + 1;
-        } else {
-            $academicYearStart = $currentYear;
-        }
-        // Busca el último espacio en blanco en la cadena
-    $keep=$_POST['keep'];
-    
+    if (strlen($phone) > $phone_max_length) {
+        echo "El número de teléfono no puede tener más de $phone_max_length dígitos.";
+    }
+
+    if (strlen($uk_dni) > $dni_max_length) {
+        echo "El DNI no puede tener más de $dni_max_length dígitos.";
+    }
+
+    if ($currentMonth >= 10) {  
+        $academicYearStart = $currentYear + 1;
+    } else {
+        $academicYearStart = $currentYear;
+    }
+
+    $keep = $_POST['keep'];
+    $birth_date = strtotime($date_pre);
+
     if (isset($keep)) {
-       
-        $insert=$database->insertStudent($name,$last_name,$direction,$height,$uk_dni,$email,$phone, $academicYearStart,$fk_career_id,$birth_date,$fk_id_gender);
-        if($insert){
-            // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
-            header("Location: ../views/views_students.php?insertado=correcto");
-            
+        if ($birth_date <= $minimumAge) {
+            // La persona es mayor o igual a 17 años, procede con la inserción
+            $insert = $database->insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, $phone, $academicYearStart, $fk_career_id, $birth_date, $fk_id_gender);
+            if ($insert) {
+                // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+                header("Location: ../views/views_students.php?insertado=correcto");
+                exit(); // Termina el script después de la redirección
+            } else {
+                echo "Hubo un error al guardar los datos en la base de datos.";
+            }
+        } else {
+            echo "Debes ser mayor o igual a 17 años para ingresar la fecha de nacimiento.";
         }
-
+    }
 }
-}
-
-    ?>
+?>

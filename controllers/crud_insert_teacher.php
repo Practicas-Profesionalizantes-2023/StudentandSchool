@@ -5,6 +5,8 @@ require_once '../model/query.php';
 $database = new model_sql();
 $gender_data=$database->show_table("genders");
 $teacherData=$database->show_state("teachers");
+$phone_max_length = 10;
+$dni_max_length = 8;
 
     $name = $_POST['name'];
     $surname = $_POST['surname'];
@@ -18,7 +20,13 @@ $teacherData=$database->show_state("teachers");
    
     if(isset($keep)){
     
-
+        if (strlen($phone) > $phone_max_length) {
+            echo "El número de teléfono no puede tener más de $phone_max_length dígitos.";
+        }
+        // Valida la longitud del DNI
+        if (strlen($dni) > $dni_max_length) {
+            echo "El DNI no puede tener más de $dni_max_length dígitos.";
+        }
     $checkforduplicated = $database->checkForDuplicates("teachers",$dni, $email);
     if($checkforduplicated !== false){
         echo $checkforduplicated;
@@ -34,5 +42,5 @@ $teacherData=$database->show_state("teachers");
     }
     }
 
-
+    
     ?>
