@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject_name = $_POST['Subject'];
     $carrer_id=$_POST['career'];
     $details=$_POST['details'];
-    $year=date('Y');
   
 if(!empty($subject_name)){
     // Inserta la nueva materia en la base de datos y asocia la carrera

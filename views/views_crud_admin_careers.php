@@ -203,7 +203,6 @@ $careerData = $database->show_state("careers");
                                     <th class="text-center long-letter">Nombre de la Carrera</th>
                                     <th class="text-center long-letter">Título</th>
                                     <th class="text-center long-letter">Cantidad de Materias</th>
-                                    <th class="text-center long-letter">Fecha de Alta</th>
                                     <th class="text-center">Detalles</th>
                                     <th class="text-center">Editar</th>
                                     <th class="text-center">Eliminar</th>
@@ -216,7 +215,6 @@ $careerData = $database->show_state("careers");
                                         <td class="text-center align-middle"><?php echo $row['career_name'] ?></td>
                                         <td class="text-center align-middle"><?php echo $row['title'] ?></td>
                                         <td class="text-center  align-middle"><?php echo $row['amount_subjects'] ?></td>
-                                        <td class="text-center align-middle"><?php echo date('d/m/Y', strtotime($row['date_high'])); ?></td>
                                         <td><a href="../views/views_crud_subject.php?id=<?php echo $row['id_career'] ?>" class="btn btn-info float-right"><i class="fas fa-info-circle"></i></a></td>
                                         <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_career']; ?>" data-career="<?php echo $row['career_name']; ?>" data-title="<?php echo $row['title']; ?>" data-subjects="<?php echo $row['amount_subjects']; ?>"><i class="fas fa-edit"></i></a></td>
                                         <td> <a class="btn btn-danger float-right career_delete_Btn text-white" data-id_career="<?php echo $row['id_career']; ?>"><i class="fas fa-trash-alt"></i></a></td>
@@ -233,7 +231,7 @@ $careerData = $database->show_state("careers");
             <div id="create_Modal" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header btn-primary">
+                        <div class="modal-header bg-primary">
                             <h5 class="modal-title text-white">Dar de Alta Una Carrera</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white";>
                                 <span aria-hidden="true">&times;</span>
