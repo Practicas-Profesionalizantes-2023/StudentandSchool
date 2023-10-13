@@ -124,7 +124,12 @@ public function checkForDuplicates($table,$value1, $value2)
 
         if ($count > 0) {
             // Ya existe un registro con el mismo DNI o correo electrónico
-            return "Email o DNI ya registrados anteriormente.";
+               // Ya existe un registro con el mismo DNI o correo electrónico
+               echo '<div style="border: 1px solid #ccc; padding: 10px; background-color: #ffcccc; text-align: center;">';
+               echo 'El DNI o el correo electrónico ya han sido registrados anteriormente.<br>';
+               echo '<a href="volver.php" style="text-decoration: none; padding: 5px 10px; background-color: #4CAF50; color: white; border-radius: 5px;">Volver</a>';
+               echo '</div>';
+               return true;
         }
 
         return false;
@@ -912,6 +917,29 @@ function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, 
         return false;
     }
 }
+
+
+public function getCareerIdByStudentId($student_id) {
+    $query = "SELECT fk_career_id FROM estudents WHERE id_estudents = :student_id";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':student_id', $student_id, PDO::PARAM_INT);
+    $statement->execute();
+    return $statement->fetch(PDO::FETCH_COLUMN);
+}
+
+
+public function getSubjectsByCareerId($career_id) {
+    $query = "SELECT id_subjects FROM subjects WHERE fk_career_id = :career_id";
+    $statement = $this->pdo->prepare($query);
+    $statement->bindParam(':career_id', $career_id, PDO::PARAM_INT);
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_COLUMN);
+}
+
+public function getLastInsertId() {
+    return $this->pdo->lastInsertId();
+}
+
 function union_Student_gender_career(){
     $query = "SELECT
     estudents.id_estudents AS 'id_estudents',

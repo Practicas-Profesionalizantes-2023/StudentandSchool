@@ -194,7 +194,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <?php
             show_messages_verify('eliminado', "se eliminó el registro correctamente");
             show_messages_verify('editado', "se editó el registro correctamente");
-            show_messages_verify('transferido', "La inscripción del alumno se ha realizado con éxito");
+            show_messages_verify('transferido', "La inscripción del alumno se ha realizado con éxito. Se le han asignado las materias correspondientes.");
+
             ?>
         </div>
     </div>
@@ -283,6 +284,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <?php } ?>
                     </tbody>
                 </table>
+               
             </form>
         </div>
     </div>

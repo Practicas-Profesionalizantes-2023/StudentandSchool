@@ -5,6 +5,7 @@ require_once "../model/query.php";
 
 $database = new model_sql();
 $carrerData = $database->show_state("careers"); // Obtener datos de carreras
+$genderData = $database->show_table("genders"); // Obtener datos de carreras
 
 $nam_pre = $_POST['name'];
 $last_pre = $_POST['l_name'];

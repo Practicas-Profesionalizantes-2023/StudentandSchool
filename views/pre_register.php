@@ -27,6 +27,7 @@
                         <input type="text" placeholder="Ingrese su Nombre Completo" name="name">
                         <input type="text" placeholder="Ingrese su Apellido" name="l_name">
                         <input type="text" placeholder="Ingrese su Celular " name="phone"  required pattern="^\d{10}$" title="Debe contener exactamente 10 dígitos">
+                        <input type="text" placeholder="Ingrese su Direccion" name="street">
                         <input type="text" placeholder="Ingrese su Email" name="email">
                         <input type="date" placeholder="Ingrese su Fecha de Nacimiento" name="date">
                         <input type="text" placeholder="Ingrese su Dni" name="dni"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
@@ -36,14 +37,12 @@
                                 <option value="<?php echo $carrer['career_name']; ?>"><?php echo $carrer['career_name']; ?></option>
                             <?php } ?>
                         </select>
-                        <input type="text" placeholder="Ingrese su Direccion" name="street">
-                        <div class="gender-radio">
-                            <label for="gender">Género:</label>
-                            <input type="radio" name="gender" id="Male" value="Masculino">
-                            <label for="Male">Masculino</label>
-                            <input type="radio" name="gender" id="Female" value="Femenino">
-                            <label for="Female">Femenino</label>
-                        </div>
+                        <label for="gender">Genero:</label>
+                        <select name="gender">
+                            <?php foreach ($genderData as $gender) { ?>
+                                <option value="<?php echo $gender['details']; ?>"><?php echo $gender['details']; ?></option>
+                            <?php } ?>
+                        </select>
                         <button class="submit" name="save_data">Enviar Datos</button>
                     </form>
                 </div>
