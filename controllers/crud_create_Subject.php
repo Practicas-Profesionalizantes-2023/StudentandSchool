@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
 if(!empty($subject_name)){
     // Inserta la nueva materia en la base de datos y asocia la carrera
-    $insert=$database->insert_subject($subject_name,$details,$year,$carrer_id);
+    $insert=$database->insert_subject($subject_name,$details,$carrer_id);
     
     if($insert){
         // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL

@@ -26,7 +26,7 @@
                         <h3>Pre Inscribirse</h3>
                         <input type="text" placeholder="Ingrese su Nombre Completo" name="name">
                         <input type="text" placeholder="Ingrese su Apellido" name="l_name">
-                        <input type="text" placeholder="Ingrese su Celular " name="phone"  required pattern="^\d{10}$" title="Debe contener exactamente 11 dígitos">
+                        <input type="text" placeholder="Ingrese su Celular " name="phone"  required pattern="^\d{10}$" title="Debe contener exactamente 10 dígitos">
                         <input type="text" placeholder="Ingrese su Email" name="email">
                         <input type="date" placeholder="Ingrese su Fecha de Nacimiento" name="date">
                         <input type="text" placeholder="Ingrese su Dni" name="dni"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
