@@ -7,19 +7,20 @@ $database = new model_sql();
 $carrerData = $database->show_state("careers"); // Obtener datos de carreras
 $genderData = $database->show_table("genders"); // Obtener datos de carreras
 
-$nam_pre = $_POST['name'];
-$last_pre = $_POST['l_name'];
-$phone_pre = $_POST['phone'];
-$email_pre = $_POST['email'];
-$date_pre = $_POST['date'];
-$dni_pre = $_POST['dni'];
-$carrer_pre = $_POST['carrer'];
-$street_pre = $_POST['street'];
-$gender_pre = $_POST['gender'];
-$save_data = $_POST['save_data'];
-
 if (isset($save_data)) {
-    
+    $phone_max_length = 10;
+    $dni_max_length = 8;
+
+    $nam_pre = $_POST['name'];
+    $last_pre = $_POST['l_name'];
+    $phone_pre = $_POST['phone'];
+    $email_pre = $_POST['email'];
+    $date_pre = $_POST['date'];
+    $dni_pre = $_POST['dni'];
+    $carrer_pre = $_POST['carrer'];
+    $street_pre = $_POST['street'];
+    $gender_pre = $_POST['gender'];
+
     // Validar que los campos no estén vacíos
     if (empty($nam_pre) || empty($last_pre) || empty($phone_pre) || empty($email_pre) || empty($date_pre) || empty($dni_pre) || empty($carrer_pre) || empty($street_pre) || empty($gender_pre)) {
         // Al menos uno de los campos está vacío, muestra un mensaje de error.
@@ -33,9 +34,18 @@ if (isset($save_data)) {
         } else {
             // No se encontraron duplicados, procede con la inserción
 
+            // Valida la longitud del teléfono
+            if (strlen($phone_pre) > $phone_max_length) {
+                echo "El número de teléfono no puede tener más de $phone_max_length dígitos.";
+            }
+            // Valida la longitud del DNI
+            if (strlen($dni_pre) > $dni_max_length) {
+                echo "El DNI no puede tener más de $dni_max_length dígitos.";
+            }
+
             // Valida la fecha de nacimiento
             $birthdate = strtotime($date_pre);
-            $minimumAge = strtotime('-18 years'); // Calcula la fecha mínima para ser mayor de 17 años
+            $minimumAge = strtotime('-17 years'); // Calcula la fecha mínima para ser mayor de 17 años
 
             if ($birthdate <= $minimumAge) {
                 // La persona es mayor de 17 años, procede con la inserción
@@ -48,13 +58,10 @@ if (isset($save_data)) {
                     echo "Hubo un error al guardar los datos en la base de datos.";
                 }
             } else {
-                // Redirige a la página de inicio de sesión con un parámetro de error en la URL
-                header("Location: ../views/pre_register.php?edad=error");
+                echo "Debes ser mayor de 17 años para ingresar la fecha de nacimiento.";
             }
         }
     }
 }
-
-
 
 ?>
