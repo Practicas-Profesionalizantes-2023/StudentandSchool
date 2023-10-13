@@ -929,7 +929,7 @@ public function getCareerIdByStudentId($student_id) {
 
 
 public function getSubjectsByCareerId($career_id) {
-    $query = "SELECT id_subjects FROM subjects WHERE fk_career_id = :career_id";
+    $query = "SELECT id_subjects FROM subjects WHERE fk_career_id = :career_id AND details='Primer Año'";
     $statement = $this->pdo->prepare($query);
     $statement->bindParam(':career_id', $career_id, PDO::PARAM_INT);
     $statement->execute();

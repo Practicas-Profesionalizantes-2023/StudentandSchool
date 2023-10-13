@@ -29,6 +29,7 @@
                         <input type="text" placeholder="Ingrese su Celular " name="phone"  required pattern="^\d{10}$" title="Debe contener exactamente 10 dígitos">
                         <input type="text" placeholder="Ingrese su Direccion" name="street">
                         <input type="text" placeholder="Ingrese su Email" name="email">
+                        <label for="gender">Fecha de Nacimiento:</label>
                         <input type="date" placeholder="Ingrese su Fecha de Nacimiento" name="date">
                         <input type="text" placeholder="Ingrese su Dni" name="dni"  required pattern="^\d{8}$" title="Debe contener exactamente 8 dígitos">
                         <label for="carrer">Carrera:</label>
