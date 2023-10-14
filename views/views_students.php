@@ -5,6 +5,7 @@ require_once '../controllers/message_control.php';
 require_once '../controllers/crud_insert_student.php';
 require_once '../controllers/crud_edit_student.php';
 require_once '../controllers/crud_eliminate_student.php';
+require_once '../controllers/crud_views_students.php';
 checkSession();
 ?>
 
@@ -200,6 +201,14 @@ checkSession();
     </div>
     <div class="row py-5">
         <div class="col">
+        <form action="../controllers/crud_views_students.php" method="Post" class="search-form">
+                <div class="input-group">
+                    <input class="form-control" name="search" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" name="submit" type="submit">Buscar</button>
+                    </div>
+                </div>
+           
            <table class="table table-border small">
                <thead>
               
@@ -221,29 +230,45 @@ checkSession();
 
                </thead>
                <tbody>
-                
-              <?php foreach ($union_Student as $row) {
-                # code...
                
-               ?>
-               <tr>
+               <?php if (isset($searchResults)) { ?>
+                            <?php foreach($searchResults as $row) { ?>
+                                <tr>
+                                <td class="text-center long_letter align-middle"><?php echo trim($row['name'] . ' ' . $row['last_name']); ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo trim($row['direction'] . ' ' . $row['height']); ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['uk_dni'] ?></td>
+                                <td class=" align-middle"><?php echo $row['email'] ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['phone'] ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['birth_date'])); ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['school_year'] ?></td>
+                                <td class="text-center long_letter align-middle"> <?php echo $row['career_name'] ?></td>
+                                <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_estudents']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-direction="<?php echo $row['direction']; ?>" data-height="<?php echo $row['height']; ?>" data-dni="<?php echo $row['uk_dni']; ?>" data-mail="<?php echo $row['email']; ?>" data-phone="<?php echo $row['phone']; ?>"><i class="fas fa-edit"></i></a></td>
+                                <td><a class="btn btn-danger float-right delete_Btn text-white" data-id_students="<?php echo $row['id_estudents']; ?>"><i class="fas fa-trash-alt"></i></a></td>
                
-                <td class="text-center long_letter align-middle"><?php echo trim($row['name'] . ' ' . $row['last_name']); ?></td>
-                <td class="text-center long_letter align-middle"><?php echo trim($row['direction'] . ' ' . $row['height']); ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['uk_dni'] ?></td>
-                <td class=" align-middle"><?php echo $row['email'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['phone'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['birth_date'])); ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>
-                <td class="text-center long_letter align-middle"><?php echo $row['school_year'] ?></td>
-                <td class="text-center long_letter align-middle"> <?php echo $row['career_name'] ?></td>
-                <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_estudents']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-direction="<?php echo $row['direction']; ?>" data-height="<?php echo $row['height']; ?>" data-dni="<?php echo $row['uk_dni']; ?>" data-mail="<?php echo $row['email']; ?>" data-phone="<?php echo $row['phone']; ?>"><i class="fas fa-edit"></i></a></td>
-                <td><a class="btn btn-danger float-right delete_Btn text-white" data-id_students="<?php echo $row['id_estudents']; ?>"><i class="fas fa-trash-alt"></i></a></td>
+                                </tr>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <?php foreach ($union_Student as $row) { ?>
+                                <tr>
+                                <td class="text-center long_letter align-middle"><?php echo trim($row['name'] . ' ' . $row['last_name']); ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo trim($row['direction'] . ' ' . $row['height']); ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['uk_dni'] ?></td>
+                                <td class=" align-middle"><?php echo $row['email'] ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['phone'] ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo date('d/m/Y ', strtotime($row['birth_date'])); ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['details'] ?></td>
+                                <td class="text-center long_letter align-middle"><?php echo $row['school_year'] ?></td>
+                                <td class="text-center long_letter align-middle"> <?php echo $row['career_name'] ?></td>
+                                <td><a class="btn btn-warning float-right editBtn text-white" data-id="<?php echo $row['id_estudents']; ?>" data-name="<?php echo $row['name']; ?>" data-last="<?php echo $row['last_name']; ?>" data-direction="<?php echo $row['direction']; ?>" data-height="<?php echo $row['height']; ?>" data-dni="<?php echo $row['uk_dni']; ?>" data-mail="<?php echo $row['email']; ?>" data-phone="<?php echo $row['phone']; ?>"><i class="fas fa-edit"></i></a></td>
+                                <td><a class="btn btn-danger float-right delete_Btn text-white" data-id_students="<?php echo $row['id_estudents']; ?>"><i class="fas fa-trash-alt"></i></a></td>
                
-            </tr>
-               <?php }?>
+                                </tr>
+                            <?php } ?>
+                        <?php } ?>
                </tbody>
            </table>
+           </form>
            <div id="pagination" class="text-center">
            <button id="previous" class="btn-outline-primary">Anterior</button>
             <span id="page">Pagina 1</span>

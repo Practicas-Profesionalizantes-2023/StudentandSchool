@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $currentYear = date('Y');
     $currentMonth = date('m');
     $minimumAge = strtotime('-17 years'); // Fecha mínima para ser mayor o igual a 17 años
-
+    if(!empty($phone)&&!empty($uk_dni)){
     if (strlen($phone) > $phone_max_length  ||strlen($phone) <$phone_max_length) {
         header("Location: ../views/views_students.php?telefono_digito=error");
         exit();
@@ -39,14 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $academicYearStart = $currentYear;
     }
-
+    }
     $keep = $_POST['keep'];
     $birth_date = strtotime($date_pre);
 
   // ... (código existente)
 
 if (isset($keep)) {
-    // Verificar duplicados
    
 
     if ($birth_date <= $minimumAge) {
