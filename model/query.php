@@ -889,6 +889,42 @@ function insertStudent($name, $last_name, $direction, $height, $uk_dni, $email, 
     }
 }
 
+public function search_students($search) {
+    $query = "SELECT 
+    estudents.id_estudents AS 'id_estudents',
+    estudents.name AS 'name',
+    estudents.last_name AS 'last_name',
+    estudents.direction AS 'direction',
+    estudents.birth_date AS 'birth_date',
+    estudents.height AS 'height',
+    estudents.phone AS 'phone',
+    estudents.uk_dni AS 'uk_dni',
+    estudents.email AS 'email',
+    estudents.school_year AS 'school_year',
+    estudents.state AS 'state',
+    careers.career_name AS 'career_name',
+    genders.details AS 'details'
+FROM 
+    estudents
+JOIN 
+    careers ON estudents.fk_career_id = careers.id_career
+JOIN 
+    genders ON estudents.fk_id_gender = genders.id_gender
+WHERE 
+    (estudents.name LIKE :search_name OR estudents.school_year LIKE :search_school_year)
+    AND estudents.state = 1;
+";
+
+    $statement = $this->pdo->prepare($query);
+    $searchParam = "%$search%"; // Add wildcards for partial matching
+    $statement->bindParam(':search_name', $searchParam, PDO::PARAM_STR);
+    $statement->bindParam(':search_school_year', $searchParam, PDO::PARAM_STR);
+    $statement->execute();
+
+    $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $results;
+}
 
 public function getCareerIdByStudentId($student_id) {
     $query = "SELECT fk_career_id FROM estudents WHERE id_estudents = :student_id";
