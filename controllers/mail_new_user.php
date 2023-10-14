@@ -73,7 +73,7 @@ try {
             <p>A continuación, encontrarás los detalles de tu cuenta:</p>
             <ul>
                 <li><strong>Usuario (DNI):</strong> ' . $_POST['dni'] . '</li>
-                <li><strong>Contraseña:</strong> ' . $_POST['password'] . '</li>
+                <li><strong>Contraseña:</strong> ' . $generatedPassword . '</li>
             </ul>
             <p>Recuerda no compartir este mensaje con nadie y ten en cuenta que cuando ingreses por primera vez, se te pedirá que cambies tu contraseña.</p>
         </div>

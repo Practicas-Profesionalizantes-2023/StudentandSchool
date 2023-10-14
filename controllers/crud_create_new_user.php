@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $name = $_POST['name'];
     $dni = $_POST['dni'];
-    $password = $_POST['password'];
-    $hash_password = password_hash($password, PASSWORD_DEFAULT);
+    $generatedPassword = generateRandomPassword(8);
+    $hash_password = password_hash($generatedPassword, PASSWORD_DEFAULT);
     $mail=$_POST['mail'];
     $fk_rol_id = $_POST['rol'];
 
@@ -43,4 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
    
       }
 
+      function generateRandomPassword($length = 8) {
+        // Characters to be used for generating the password
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $password = '';
+    
+        // Generate the random password
+        for ($i = 0; $i < $length; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $password .= $characters[$index];
+        }
+    
+        return $password;
+    }
 ?>

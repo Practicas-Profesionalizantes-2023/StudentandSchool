@@ -300,10 +300,10 @@ checkSession();
                 <label for="subject">Ingrese un Correo Electrónico</label>
                 <input type="text" placeholder="Ingrese el correo electrónico" name="mail" class="form-control" required>
               </div>
-              <div class="form-group">
+              <!--<div class="form-group">
                 <label for="subject">Ingrese La Contraseña</label>
                 <input class="form-control" type="password" name="password" placeholder="Contraseña" id="password" required>
-              </div>
+              </div>--->
               <div class="form-group">
                 <label for="rol">Elija el rol del usuario:</label>
                 <select name="rol" id="rool" class="form-control" required>
