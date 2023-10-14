@@ -22,9 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             // No se encontraron duplicados, procede con la inserción
             $insert_usser = $database->create_account($name, $dni, $hash_password,$mail, $fk_rol_id);
-
+            
             if ($insert_usser) {
                 // Redirige a la página de dashboard de administrador con un parámetro de mensaje de éxito en la URL
+                require_once 'mail_new_user.php';
                 header("Location: ../views/views_internal_users.php?creado=correcto");
                 exit(); // Asegura que no se ejecuten más instrucciones después de la redirección
             } else {
