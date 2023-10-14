@@ -222,6 +222,11 @@ $careerData = $database->show_state("careers");
                                 <?php } ?>
                             </tbody>
                         </table>
+                        <div id="pagination" class="text-center">
+                        <button id="previous" class="btn-outline-primary">Anterior</button>
+                        <span id="page">Pagina 1</span>
+                         <button id="next" class="btn-outline-primary">Siguiente</button>
+                       </div>
                     </div>
                 </div>
             </main>
@@ -353,8 +358,8 @@ $careerData = $database->show_state("careers");
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="../js/modal_career.js"></script>
+    <script src="../js/page_table.js"></script>
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
