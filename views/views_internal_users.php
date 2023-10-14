@@ -180,6 +180,8 @@ checkSession();
           show_messages_verify('creado', "se registro correctamente");
           show_messages_error('dato_no_encontrado', "no se encontraron datos");
           show_messages_error('dni_email', "Ya existe el dni o el email");
+          show_messages_error('dni_digito', "recuerde ingresar un dni valido de 8 digitos");
+
 
           ?>
           <a class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>

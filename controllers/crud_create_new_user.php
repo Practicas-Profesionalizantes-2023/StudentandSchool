@@ -14,6 +14,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if(isset($_POST['save_data'])){
 
+        $dni_max_length=8;
+        // Valida la longitud del DNI
+        if (strlen($dni) > $dni_max_length ||strlen($dni) <$dni_max_length) {
+            header("Location: ../views/views_internal_users.php?dni_digito=error");
+            exit();
+        }
         // Verifica duplicados antes de intentar la inserción
         $checkforduplicated = $database->checkForDuplicates("internal_users", $dni,$mail);
         if ($checkforduplicated !== false) {
