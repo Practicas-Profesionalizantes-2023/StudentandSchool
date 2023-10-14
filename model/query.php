@@ -79,6 +79,8 @@ public function show_table($table){
     
     }
 
+
+
 //para mostrar de la tabla los que tengan estado 1
 public function show_state($table){
 

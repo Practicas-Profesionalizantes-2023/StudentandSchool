@@ -168,7 +168,7 @@ checkSession();
 
             <div id="pagination" class="text-center">
             <button id="previous" class="btn-outline-primary">Anterior</button>
-            <span id="page">Page 1</span>
+            <span id="page">Pagina 1</span>
             <button id="next" class="btn-outline-primary">Siguiente</button>
           </div>
         </div>

@@ -218,9 +218,9 @@ checkSession();
                     </tbody>
                 </table>
                 <div id="pagination" class="text-center">
-            <button id="previous" class="btn-outline-primary">Siguiente</button>
-            <span id="page">Page 1</span>
-            <button id="next" class="btn-outline-primary">Anterior</button>
+            <button id="previous" class="btn-outline-primary">Anterior</button>
+            <span id="page">Pagina 1</span>
+            <button id="next" class="btn-outline-primary">Siguiente</button>
           </div>
             </div>
         </div>
@@ -260,7 +260,7 @@ checkSession();
                             </select>
                         </div>
                     <div class="text-center">
-                        <a href="../views/views_teacher.php" class="btn btn-outline-secondary mr-2">Cerrar</a>
+                        <a href="../views/views_crud_admin_careers.php" class="btn btn-outline-secondary mr-2">Cerrar</a>
                         <button type="submit" class="btn btn-outline-primary" name="keep">Guardar Datos</button>
                     </div>
                 </form>

@@ -261,7 +261,9 @@ checkSession();
                 <?php } ?>
               </tbody>
             </table>
+          
           </form>
+          
         </div>
       </div>
     </main>
