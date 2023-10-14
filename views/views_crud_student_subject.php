@@ -192,7 +192,7 @@ checkSession();
     <div class="row py-5">
         <div class="col">
             <div class="table-responsive">
-                <table class="table table-border small">
+                <table class="table table-border small" id="myTable">
                     <thead class="bg-primary text-white">
                         <tr>
                             <th class="text-center">Nombre</th>

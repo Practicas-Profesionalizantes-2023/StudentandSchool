@@ -209,7 +209,7 @@ checkSession();
                     </div>
                 </div>
            
-           <table class="table table-border small">
+           <table class="table table-border small" id="myTable">
                <thead>
               
                     

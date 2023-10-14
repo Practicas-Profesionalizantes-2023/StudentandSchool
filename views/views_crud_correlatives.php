@@ -196,7 +196,7 @@ checkSession()
     <div class="row py-5">
         <div class="col">
             <div class="table-responsive">
-                <table class="table table-border small">
+                <table class="table table-border small" id="myTable">
                     <thead class="bg-primary text-white">
                         <tr>
                         
@@ -219,6 +219,11 @@ checkSession()
                         <?php } ?>
                     </tbody>
                 </table>
+                <div id="pagination" class="text-center">
+                 <button id="previous" class="btn-outline-primary">Anterior</button>
+                  <span id="page">Pagina 1</span>
+                 <button id="next" class="btn-outline-primary">Siguiente</button>
+               </div>
             </div>
         </div>
     </div>
@@ -317,6 +322,7 @@ checkSession()
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/modal_correlative.js"></script>
+<script src="../js/page_table.js"></script>
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

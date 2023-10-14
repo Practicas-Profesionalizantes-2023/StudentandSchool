@@ -198,7 +198,7 @@ checkSession();
                 </button>
               </div>
             </div>
-            <table id="table-body" class="table table-border small">
+            <table id="myTable" class="table table-border small" >
               <thead class="bg-primary">
                 <tr>
                   <th class="text-center">Nombre</th>

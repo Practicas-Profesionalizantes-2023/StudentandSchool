@@ -205,7 +205,7 @@ checkSession();
     </div>
     <div class="row py-5">
         <div class="col-10">
-           <table class="table table-border small">
+           <table class="table table-border small" id="myTable">
                <thead>
               
                     

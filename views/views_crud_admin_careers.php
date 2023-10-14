@@ -197,7 +197,7 @@ $careerData = $database->show_state("careers");
                 </div>
                 <div class="row py-3">
                     <div class="col">
-                        <table class="table table-border small">
+                        <table class="table table-border small" id="myTable">
                             <thead>
                                 <tr class="bg-primary">
                                     <th class="text-center long-letter">Nombre de la Carrera</th>
