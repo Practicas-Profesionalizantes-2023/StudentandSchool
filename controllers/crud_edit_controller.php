@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if(isset($_POST['save_data'])){
 
-         
+     $phone_max_length=10;
+        
     // Verifica si se ha enviado el formulario
     $user_id = $_POST["user_id"];
     $name = isset($_POST["name"]) ? $_POST["name"] : null;

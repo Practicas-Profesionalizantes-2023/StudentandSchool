@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $checkforduplicated = $database->checkForDuplicates("internal_users", $dni,$mail);
         if ($checkforduplicated !== false) {
             // Se encontraron duplicados, muestra el mensaje personalizado
-            echo $checkforduplicated;
+            header("Location: ../views/views_internal_users.php?dni_email=error");
+
         } else {
             // No se encontraron duplicados, procede con la inserción
             $insert_usser = $database->create_account($name, $dni, $hash_password,$mail, $fk_rol_id);

@@ -241,12 +241,8 @@ $careerData = $database->show_state("careers");
                 <div class="modal-body">
                     <form action="../controllers/crud_asignament_teacher.php" method="post">
                         <div class="form-group">
-                            <label for="teacher" class="text-white">Seleccione un Profesor</label>
-                            <select name="teacher" id="select_teacher" class="form-control" required>
-                                <?php foreach ($show_teacher as $row) { ?>
-                                    <option value="<?php echo $row['id_teacher']; ?>"><?php echo $row['name']; ?></option>
-                                <?php } ?>
-                            </select>
+                          <p>asignale materias a <?php echo $get_teacher['name']." ".$get_teacher['surname']?> </p>
+                        <input type="hidden" name="teacher" value="<?php echo $get_teacher['id_teacher'];?>">
                         </div>
                         <div class="form-group">
                             <label for="subjects" class="text-white">Seleccione las Materias (Mantén presionada la tecla Ctrl para seleccionar varias)</label>

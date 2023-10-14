@@ -124,7 +124,7 @@ session_start();
 										<h2><strong>Instituto de Educación</strong> Institutec </h2>
 											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
+											<a href="views/views_carrer.php" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -143,7 +143,7 @@ session_start();
 										<p class="lead" data-animation="animated fadeInLeft"> Forjamos líderes con excelencia académica y compañerismo. Únete a nosotros para alcanzar tus metas. </p>
 											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
+											<a href="views/views_carrer.php" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -162,7 +162,7 @@ session_start();
 										<p class="lead" data-animation="animated fadeInLeft">Potenciamos tu potencial con educación de calidad y un ambiente de apoyo. Únete a Institutec y marca la diferencia en tu futuro.</p>
 											<a href="views/contact.php" class="hover-btn-new"><span>Contáctanos</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="#" class="hover-btn-new"><span>Leer Màs</span></a>
+											<a href="views/views_carrer.php" class="hover-btn-new"><span>Leer Màs</span></a>
 									</div>
 								</div>
 							</div><!-- end row -->            
@@ -202,7 +202,6 @@ session_start();
 
                         <p>Este lema refleja la idea de que en Institutec se prepara a los estudiantes para el éxito, como "jugadores" en la vida, sin importar cuál sea su camino. Además, enfatiza la importancia de la dignidad y la excelencia en la educación que ofrece Institutec. Si deseas hacer ajustes o necesitas más ideas, no dudes en preguntar.</p>
 
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 				
@@ -230,7 +229,7 @@ session_start();
 
 						<p>En Institutec, estamos comprometidos con la excelencia y el compañerismo, porque creemos que son las piedras angulares de un futuro brillante y prometedor para todos nuestros estudiantes y la sociedad en su conjunto.</p>
 
-                        <a href="#" class="hover-btn-new orange"><span>Learn More</span></a>
+                        <a href="views/views_carrer.php" class="hover-btn-new orange"><span>Leer Mas</span></a>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
 				

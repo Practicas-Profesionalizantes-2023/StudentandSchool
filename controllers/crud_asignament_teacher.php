@@ -2,7 +2,7 @@
 require_once "../model/query.php";
 $database= new model_sql();
 
-$show_teacher=$database->show_state("teachers");
+/*$show_teacher=$database->show_state("teachers");*/
 $show_subject=$database->show_state("subjects");
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["assign"])) {
     $selectedSubjects = $_POST["subjects"];
@@ -19,5 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["assign"])) {
     }
 }
 
+$id_teacher = $_GET['id'];
+$get_teacher=$database-> getUserTeacher($id_teacher);
 
 ?>

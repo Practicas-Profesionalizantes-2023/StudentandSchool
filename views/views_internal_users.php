@@ -179,6 +179,8 @@ checkSession();
           show_messages_verify('habilitado_correcto', "se registro se habilitó correctamente");
           show_messages_verify('creado', "se registro correctamente");
           show_messages_error('dato_no_encontrado', "no se encontraron datos");
+          show_messages_error('dni_email', "Ya existe el dni o el email");
+
           ?>
           <a class="btn btn-primary btn-lg create_career_Btn text-white float-right"><i class="fas fa-plus-circle fa-lg"></i></a>
         </div>
@@ -263,7 +265,12 @@ checkSession();
             </table>
           
           </form>
-          
+          <div id="pagination" class="text-center">
+           <button id="previous" class="btn-outline-primary">Anterior</button>
+            <span id="page">Pagina 1</span>
+            <button id="next" class="btn-outline-primary">Siguiente</button>
+          </div>
+        </div>
         </div>
       </div>
     </main>
@@ -362,6 +369,7 @@ checkSession();
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/modal_internal_user.js"></script>
+<script src="../js/page_table.js"></script>
 <script src="../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
